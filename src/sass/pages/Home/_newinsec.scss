@@ -1,0 +1,58 @@
+@import "../../mixins";
+.newIn {
+  .container {
+    .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 30px;
+      h2 {
+        @include heading;
+      }
+      .carts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        .cart {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          img {
+            width: 360px;
+            height: 400px;
+          }
+          .cartInfo{
+            width: 100%;
+            h3 {
+              font-size: 25px;
+              color: #221c35;
+              font-weight: 200;
+              font-family: "La Mango Light", Arial, sans-serif;
+            }
+            p {
+              font-size: 17px;
+              color: #221c35;
+              margin-bottom: 40px;
+              font-weight: 200;
+            }
+          }
+          a {
+            text-align: center;
+            width: 100%;  
+            @include learnMore;
+          }
+        }
+      }
+      .seeAll {
+        margin-top: 30px;
+        margin-bottom: 70px;
+        a {
+          @include learnMore;
+        }
+      }
+    }
+  }
+}

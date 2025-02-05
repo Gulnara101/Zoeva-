@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Graphik Regular Web";
+  src: url("../Fonts/Graphik-Regular-Web.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: "La Mango Regular";
+  src: url("../Fonts/LaMangoRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: "La Mango Light";
+  src: url("../Fonts/LaMangoLight.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: "La Mango Bold";
+  src: url("../Fonts/LaMangoBold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: "Graphik Regular Web", Arial, sans-serif;
+}
+
+
+// @import "../Fonts/Graphik-Regular-Web.woff2";
+
+// body {
+//   font-family: "Graphik Regular Web", Arial, sans-serif;
+// }
+
+// @import "../Fonts/LaMangoRegular.woff2"

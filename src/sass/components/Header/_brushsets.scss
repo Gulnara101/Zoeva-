@@ -1,0 +1,18 @@
+.brushSetsHover {
+  padding: 20px;
+  width: 200px;
+  .itemList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .items {
+      a {
+        color: black;
+        &:hover {
+          border-bottom: 1px solid;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

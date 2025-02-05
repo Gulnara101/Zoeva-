@@ -1,0 +1,33 @@
+.soldsec {
+  background-color: #221c35;
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h2 {
+      font-size: 50px;
+      padding-top: 50px;
+      color: #fff;
+      font-weight: 200;
+      font-family: "La Mango Light", Arial, sans-serif;
+    }
+    .sold {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-bottom: 50px;
+      p {
+        font-size: 26px;
+        color: #fff;
+      }
+      h3 {
+        font-size: 36px;
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+  }
+}

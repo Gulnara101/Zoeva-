@@ -1,0 +1,94 @@
+@import "../../mixins";
+.realReviews {
+  background-color: #f2e9ea;
+  margin-top: 130px;
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .reviewText {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 2px solid rgb(219, 216, 216);
+        width: 80%;
+        padding-bottom: 10px;
+        .sisterhoods {
+          display: flex;
+          width: 100%;
+          justify-content: end;
+          align-items: center;
+          margin-top: 20px;
+          .starIcon {
+            font-size: 23px;
+            color: #221c35;
+          }
+          .navigationIcon {
+            margin-left: 3px;
+            font-size: 18px;
+            color: #7a7878;
+            cursor: pointer;
+          }
+          p {
+            margin-left: 10px;
+            margin-right: 7px;
+            font-size: 14px;
+            color: #777;
+          }
+        }
+        h4 {
+          margin-top: 20px;
+          font-size: 27px;
+          color: #221c35;
+        }
+        h2 {
+          @include heading;
+        }
+      }
+    }
+  }
+}
+
+.swiper {
+  width: 100%;
+  margin: 15px auto;
+  .swiper-slide {
+    font-size: 18px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    height: 200px;
+    .slidePage {
+      width: 65%;
+      .starIcon {
+        font-size: 23px;
+        color: #221c35;
+      }
+      .slideText {
+        h3 {
+          margin-top: 10px;
+          font-size: 18px;
+          font-weight: 700;
+        }
+        p {
+          margin-top: 5px;
+          font-size: 14px;
+          color: #777;
+          font-style: italic;
+        }
+        h6 {
+          margin-top: 7px;
+          font-size: 12px;
+          font-weight: 900;
+          color: #7a7878;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "./base";
+@use "./mixins";
+
+// Components
+@use "./components/Header/header";
+@use "./components/footer";
+
+// Pages
+
+// Home page
+@use "./pages/Home/soldsec";
+@use "./pages/Home/aboutsec";
+@use "./pages/Home/hero";
+@use "./pages/Home/discoversec";
+@use "./pages/Home/values";
+@use "./pages/Home/morezoevasec";
+@use "./pages/Home/reviews";
+@use "./pages/Home/newinsec";
+@use "./pages/Home/bestseller";
+
+// Header page
+@use "./components/Header/brushsets";
