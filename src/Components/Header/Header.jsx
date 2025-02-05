@@ -34,7 +34,9 @@ const Header = () => {
         <nav className="navBar">
           <ul className="navList">
             <li className="navItem">
-            <Link to="#" className="new">NEW</Link>
+              <Link to="#" className="new">
+                NEW
+              </Link>
             </li>
             {navBarData.map((item) => (
               <li key={item.id} className="navItem">
