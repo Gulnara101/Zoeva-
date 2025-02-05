@@ -2,6 +2,11 @@
   display: flex;
   padding-top: 50px;
   justify-content: space-around;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 3;
   .all {
     h2 {
       font-size: 30px;

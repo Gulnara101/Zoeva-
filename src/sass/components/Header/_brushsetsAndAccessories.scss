@@ -1,6 +1,9 @@
 .brushSetsHover {
   padding: 20px;
   width: 200px;
+  position: absolute;
+  z-index: 3;
+  background-color: white;
   .itemList {
     display: flex;
     flex-direction: column;

@@ -83,25 +83,35 @@ header {
         a {
           color: black;
           font-size: 16px;
+          &:hover {
+            color: #221c35;
+            border-bottom: 1px solid;
+          }
         }
-        .new{
-          background: linear-gradient(to right, crimson,pink,springgreen);
+        .new {
+          background: linear-gradient(to right, crimson, pink, springgreen);
           background-size: 200% 200%;
           animation: rainbow 2s ease-in-out infinite;
           background-clip: text;
-          -webkit-background-clip:text;
-          color:rgba(0,0,0,1);
-          display:block;
-          text-align:center;
-          transition: color .2s ease-in-out;
-          text-transform:uppercase;
-          font-weight:900;
-             color:rgba(0,0,0,0);
+          -webkit-background-clip: text;
+          color: rgba(0, 0, 0, 1);
+          display: block;
+          text-align: center;
+          transition: color 0.2s ease-in-out;
+          text-transform: uppercase;
+          font-weight: 900;
+          color: rgba(0, 0, 0, 0);
         }
-        @keyframes rainbow { 
-          0%{background-position:left}
-          50%{background-position:right}
-          100%{background-position:left}
+        @keyframes rainbow {
+          0% {
+            background-position: left;
+          }
+          50% {
+            background-position: right;
+          }
+          100% {
+            background-position: left;
+          }
         }
       }
     }

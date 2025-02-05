@@ -2,12 +2,17 @@
   display: flex;
   padding-top: 50px;
   justify-content: space-around;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 3;
   .faceMenu {
     ul {
       li {
         margin-bottom: 15px;
         a {
-          font-size: 30px;
+          font-size: 30px !important;
           color: #221c35;
           font-weight: 200;
           font-family: "La Mango Light", Arial, sans-serif;
