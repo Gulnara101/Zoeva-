@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiUser, CiShoppingBasket } from "react-icons/ci";
@@ -40,7 +40,7 @@ const Header = () => {
             </li>
             {navBarData.map((item) => (
               <li key={item.id} className="navItem">
-                <Link to={item.url}>{item.title}</Link>
+                <Link to="#">{item.title}</Link>
               </li>
             ))}
           </ul>

@@ -7,15 +7,12 @@ import Discover from "../Components/Home/Discover";
 import MoreZoeva from "../Components/Home/MoreZoeva";
 import Reviews from "../Components/Home/Reviews";
 import NewInSec from "../Components/Home/NewInSec";
-import BestSellersSec from "../Components/Home/BestSellersSec"; 
-import Brushes from "../Components/Header/Brushes";
-
+import BestSellersSec from "../Components/Home/BestSellersSec";
 
 const Home = () => {
   return (
     <div>
       <HeroSec />
-      <Brushes/>
       <BestSellersSec />
       <NewInSec />
       <SoldSec />

@@ -1,0 +1,60 @@
+.faceHover {
+  display: flex;
+  padding-top: 50px;
+  justify-content: space-around;
+  .faceMenu {
+    ul {
+      li {
+        margin-bottom: 15px;
+        a {
+          font-size: 30px;
+          color: #221c35;
+          font-weight: 200;
+          font-family: "La Mango Light", Arial, sans-serif;
+          cursor: pointer;
+          &:hover {
+            border-bottom: 1px solid;
+            color: #221c35;
+          }
+        }
+      }
+    }
+  }
+  .brush {
+    display: flex;
+    flex-direction: column;
+    h2 {
+      font-size: 30px;
+      color: #221c35;
+      margin-bottom: 12px;
+      font-weight: 200;
+      font-family: "La Mango Light", Arial, sans-serif;
+    }
+    .brushCarts {
+      display: flex;
+      gap: 50px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      .brushCart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        img {
+          width: 190px;
+          height: 220px;
+        }
+        h3 {
+          font-size: 27px;
+          color: #221c35;
+          font-weight: 200;
+          margin-bottom: 10px;
+          margin-top: 15px;
+          font-family: "La Mango Light", Arial, sans-serif;
+        }
+      }
+    }
+  }
+}

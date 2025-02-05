@@ -19,4 +19,6 @@
 @use "./pages/Home/bestseller";
 
 // Header page
-@use "./components/Header/brushsets";
+@use "./components/Header/_brushsetsAndAccessories";
+@use "./components/Header/brushes";
+@use "./components/Header/faceEyeLips";
