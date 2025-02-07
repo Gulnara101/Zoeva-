@@ -71,6 +71,22 @@ header {
             transform: scale(1.2);
           }
         }
+        .overlay {
+          background: rgba(0, 0, 0, 0.5);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+          z-index: 3;
+          &.open {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
       }
     }
     .navBar {
@@ -83,13 +99,14 @@ header {
         a {
           color: black;
           font-size: 16px;
-          &:hover {
-            color: #221c35;
-            border-bottom: 1px solid;
-          }
         }
         .new {
-          background: linear-gradient(to right, crimson, pink, springgreen);
+          background: linear-gradient(
+            to right,
+            purple,
+            rgb(248, 192, 255),
+            rgba(204, 0, 255, 0.301)
+          );
           background-size: 200% 200%;
           animation: rainbow 2s ease-in-out infinite;
           background-clip: text;

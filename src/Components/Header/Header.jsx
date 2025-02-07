@@ -9,6 +9,7 @@ import Face from "../Header/Face";
 import Eyes from "../Header/Eyes";
 import Lips from "../Header/Lips";
 import Accessories from "../Header/Accessories";
+import Cart from "../../Pages/Cart";
 
 const Header = () => {
   const [activeSets, setActiveSets] = useState(false);
@@ -17,6 +18,7 @@ const Header = () => {
   const [activeEyes, setActiveEyes] = useState(false);
   const [activeLips, setActiveLips] = useState(false);
   const [activeAccessories, setActiveAccessories] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
   return (
     <header>
@@ -34,7 +36,17 @@ const Header = () => {
             <IoSearchOutline className="icon" />
             <p>SEARCH</p>
             <CiUser className="icon" />
-            <CiShoppingBasket className="icon" />
+            <CiShoppingBasket
+              className="icon"
+              onClick={() => setCartOpen(true)}
+            />
+            {cartOpen && (
+              <div
+                className={`overlay ${cartOpen ? "open" : ""}`}
+                onClick={() => setCartOpen(false)}
+              ></div>
+            )}
+            <Cart isOpen={cartOpen} setIsOpen={setCartOpen} />
             <img src="#" alt="" />
             <p className="lng">ENGLISH</p>
             <div className="quantities">

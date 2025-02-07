@@ -1,0 +1,105 @@
+@import "../../mixins";
+.mycart {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 350px;
+  padding: 30px;
+  height: 100vh;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: 0.9s all;
+  z-index: 3;
+  &.open {
+    right: 0;
+  }
+  .cartText {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    justify-content: space-between;
+    h2 {
+      @include heading;
+      font-size: 40px !important;
+    }
+    .closeIcon {
+      cursor: pointer;
+      color: #221c35;
+    }
+  }
+  .cartProduct {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    .productImg {
+      img {
+        width: 113px;
+        height: 128px;
+      }
+    }
+    .productDetails {
+      h2 {
+        @include heading;
+        font-size: 30px !important;
+      }
+      .price {
+        margin-top: 7px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .quantityNum {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+        .control {
+          cursor: pointer;
+          color: rgb(71, 71, 71);
+          font-size: 11px;
+        }
+        .quantity {
+          font-size: 14px;
+          margin-left: 17px;
+        }
+      }
+      .remove {
+        margin-top: 5px;
+        cursor: pointer;
+        color: #221c35;
+        font-size: 14px;
+        transition: color 0.2s ease-in;
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+  .checkoutBtn {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    position: absolute;
+    bottom: 30px;
+    width: 90%;
+    margin: 0 auto;
+    right: 18px;
+    .totalNum {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+      h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-right: 180px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+    a {
+      width: 100%;
+      text-align: center;
+      @include learnMore;
+    }
+  }
+}
