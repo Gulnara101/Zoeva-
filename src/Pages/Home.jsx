@@ -14,16 +14,16 @@ import Cart from "../Pages/Cart";
 const Home = () => {
   return (
     <div>
-      <Cart />
+      {/* <Cart /> */}
       <HeroSec />
       <BestSellersSec />
       <NewInSec />
       <SoldSec />
-      <Discover />
+      {/* <Discover /> */}
       <AboutZoeva />
-      <MoreZoeva />
+      {/* <MoreZoeva /> */}
       <Reviews />
-      <Values />
+      {/* <Values /> */}
     </div>
   );
 };

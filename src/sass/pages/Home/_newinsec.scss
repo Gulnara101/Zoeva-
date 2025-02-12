@@ -12,8 +12,8 @@
         @include heading;
       }
       .carts {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         gap: 30px;
         .cart {
           display: flex;
@@ -24,7 +24,7 @@
             width: 360px;
             height: 400px;
           }
-          .cartInfo{
+          .cartInfo {
             width: 100%;
             h3 {
               font-size: 25px;
@@ -41,7 +41,7 @@
           }
           a {
             text-align: center;
-            width: 100%;  
+            width: 100%;
             @include learnMore;
           }
         }
@@ -52,6 +52,137 @@
         a {
           @include learnMore;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1560px) {
+  .newIn {
+    .carts {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 20px;
+      .cart {
+        flex: 0 0 auto;
+        width: 300px;
+        .cartInfo {
+          h3 {
+            font-size: 23px !important;
+            display: block;
+            max-width: 98%;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1350px) {
+  .newIn {
+    .carts {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 20px;
+      .cart {
+        flex: 0 0 auto;
+        width: 260px;
+        .cartText {
+          h3 {
+            font-size: 20px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1220px) {
+  .newIn {
+    .carts {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      .cart{
+        flex: 0 0 auto;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .newIn {
+    .carts {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      .cart{
+        // flex: 0 0 auto;
+        width: 300px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .newIn {
+    .carts {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px;
+      .cart{
+        flex: 0 0 auto;
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 760px) {
+  .newIn {
+    .carts {
+      display: grid !important;
+      grid-template-columns: repeat(1, 1fr) !important;
+      .cart{
+        width: 500px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 510px) {
+  .newIn {
+    .carts {
+      display: grid !important;
+      grid-template-columns: repeat(1, 1fr) !important;
+      .cart{
+        width: 300px;
+        img{
+          width: 150px;
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 360px) {
+  .newIn {
+    .carts {
+      display: grid !important;
+      grid-template-columns: repeat(1, 1fr) !important;
+      .cart{
+        width: 250px;
       }
     }
   }

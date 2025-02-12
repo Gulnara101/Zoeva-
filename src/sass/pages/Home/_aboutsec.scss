@@ -1,4 +1,5 @@
 @import "../../mixins";
+
 .aboutsec {
   .container {
     .row {
@@ -6,12 +7,14 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
+
       .aboutText {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 30px;
+
         h3 {
           @include heading;
         }
@@ -24,6 +27,7 @@
           @include learnMore;
         }
       }
+
       .aboutImage {
         img {
           width: 100%;
@@ -32,5 +36,109 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1240px) {
+  .aboutsec {
+    .container {
+      .row {
+        .aboutText {
+          text-align: center;
+          flex-direction: column;
+          max-width: 90%;
+          span {
+            line-height: 1.2;
+          }
+        }
+        .aboutImage {
+          img {
+            height: 550px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutsec {
+    .container {
+      .row {
+        .aboutImage {
+          img {
+            height: 450px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutsec {
+    .container {
+      .row {
+        gap: 10px;
+
+        .aboutText {
+          h3 {
+            font-size: 22px !important;
+          }
+          span {
+            font-size: 12px;
+          }
+        }
+
+        .aboutImage {
+          img {
+            height: 400px;
+            padding: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .aboutsec {
+    .container {
+      .row {
+        flex-direction: column;
+        .aboutText {
+          h3 {
+            font-size: 20px !important;
+            padding-top: 20px !important;
+          }
+          span {
+            font-size: 12px;
+            margin: 0px;
+            padding: 0px;
+            line-height: 0.3;
+          }
+        }
+
+        .aboutImage {
+          img {
+            height: 370px;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 433px) {
+  span {
+    line-height: 1.2 !important;
+  }
+}
+
+@media (max-width: 433px) {
+  img {
+    width: 100% !important;
+    height: auto !important;
   }
 }

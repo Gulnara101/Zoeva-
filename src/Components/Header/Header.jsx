@@ -10,6 +10,8 @@ import Eyes from "../Header/Eyes";
 import Lips from "../Header/Lips";
 import Accessories from "../Header/Accessories";
 import Cart from "../../Pages/Cart";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import flag from "../../Images/eyesPhotos/28.webp";
 
 const Header = () => {
   const [activeSets, setActiveSets] = useState(false);
@@ -19,6 +21,11 @@ const Header = () => {
   const [activeLips, setActiveLips] = useState(false);
   const [activeAccessories, setActiveAccessories] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <header>
@@ -35,7 +42,7 @@ const Header = () => {
           <div className="userControls">
             <IoSearchOutline className="icon" />
             <p>SEARCH</p>
-            <CiUser className="icon" />
+            <CiUser className="userIcon" />
             <CiShoppingBasket
               className="icon"
               onClick={() => setCartOpen(true)}
@@ -48,12 +55,21 @@ const Header = () => {
             )}
             <Cart isOpen={cartOpen} setIsOpen={setCartOpen} />
             <img src="#" alt="" />
-            <p className="lng">ENGLISH</p>
+            <div className="lng">
+              <img src={flag} alt="#" />
+              <p>ENGLISH</p>
+            </div>
             <div className="quantities">
               <span>1</span>
             </div>
           </div>
         </div>
+        <div className="burgerMenuIcon" onClick={toggleMenu}>
+          <span className={menuOpen ? "line open" : "line"}></span>
+          <span className={menuOpen ? "line open" : "line"}></span>
+          <span className={menuOpen ? "line open" : "line"}></span>
+        </div>
+        {menuOpen && <BurgerMenu isOpen={menuOpen} toggleMenu={toggleMenu} />}
         <nav className="navBar">
           <ul className="navList">
             <li className="navItem">

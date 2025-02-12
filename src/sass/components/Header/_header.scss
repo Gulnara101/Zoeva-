@@ -15,7 +15,7 @@ header {
         color: white;
         letter-spacing: 0.5px;
       }
-    }
+    } 
     .headerActions {
       position: relative;
       padding: 1.5rem;
@@ -48,7 +48,7 @@ header {
           border-radius: 30px;
           position: absolute;
           top: 14px;
-          right: 103px;
+          right: 136px;
           width: 17px;
           height: 17px;
           span {
@@ -61,9 +61,25 @@ header {
           margin-right: 25px;
         }
         .lng {
-          font-size: 15px;
+          display: flex;
+          img{
+            width: 30px;
+            height: 25px;
+            margin-right: 5px;
+          }
+          p{
+            font-size: 15px;
+          }
         }
         .icon {
+          cursor: pointer;
+          font-size: 25px;
+          transition: transform 0.3s ease-in;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+        .userIcon{
           cursor: pointer;
           font-size: 25px;
           transition: transform 0.3s ease-in;
@@ -132,5 +148,168 @@ header {
         }
       }
     }
+    .active{
+      display: flex;
+      flex-direction: column;
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40vw;
+      height: 100vh;
+      box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+      .navList{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------
+
+@media (max-width: 989px) {
+  .navBar {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: -250px; 
+    width: 250px;
+    height: 100vh;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    transition: left 0.3s ease-in-out; 
+    z-index: 1000;
+    a {
+      padding: 15px;
+      display: block;
+      color: black;
+      text-decoration: none;
+      font-size: 18px;
+    }
+  }
+
+  .navBar.active {
+    left: 0;
+  }
+
+  .burgerMenuIcon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    top: 80px;
+    left: 30px;
+    z-index: 10;
+    transition: z-index 0.3s ease;
+    span {
+      background: black;
+      display: block;
+      width: 20px;
+      height: 1px;
+      margin: 3px 0;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    span:nth-child(2) {
+      width: 10px;
+    }
+  }
+
+  .navBar.active + .burgerMenuIcon {
+    z-index: -1; 
+  }
+
+  .burgerMenuIcon .line.open:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .burgerMenuIcon .line.open:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burgerMenuIcon .line.open:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .headerActions{
+    margin-top: 20px;
+  }
+
+  .userControls{
+    right: 1rem !important;
+    .userIcon{
+      display: none;
+    }
+    .lng{
+      p{
+        display: none;
+      }
+      img{
+        position: absolute;
+        right: 142px;
+        bottom: 0px;
+      }
+    }
+    .quantities {
+      right: 15px !important;
+    }
+    p{
+      margin-right: 0px !important;
+    }
+  }
+}
+
+@media (max-width: 749px) {
+  .userControls{
+    top: 1.2rem !important;
+    p{
+      display: none;
+    }
+    .lng{
+      img{
+        right: 82px;
+      }
+    }
+  }
+  .headerActions{
+    height: 60px;
+    margin-top: 0px;
+    .logo{
+      img{
+        width: 105px;
+        height: 25px;
+      }
+    }
+  }
+  .burgerMenuIcon{
+    top: 50px;
+  }
+}
+
+@media (max-width: 450px) {
+  .topBar{
+    a{
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .lng{
+    img{
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 344px) {
+  .burgerMenuIcon{
+    top: 65px;
   }
 }

@@ -5,6 +5,9 @@
 @use "./components/Header/header";
 @use "./components/footer";
 
+// Burger menu
+@use "./components/burgermenu";
+
 // Pages
 
 // Home page
@@ -26,3 +29,8 @@
 // Cart page
 @use "./pages/Cart/cart";
 @use "./pages/Cart/cartPage";
+
+// Custom input
+@use "./components/customInput";
+
+@use "./pages/checkout";

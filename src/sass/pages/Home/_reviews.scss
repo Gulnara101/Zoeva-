@@ -3,7 +3,7 @@
   background-color: #f2e9ea;
   margin-top: 130px;
   .container {
-    width: 90%;
+    width: 90% !important;
     margin: 0 auto;
     .row {
       display: flex;
@@ -92,3 +92,20 @@
     }
   }
 }
+
+
+@media (max-width:865px){
+  .slideText {
+    h3{
+      font-size: 15px !important;
+    }
+    p{
+      display: block;
+      max-width: 98%;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+    }
+  }
+}
+

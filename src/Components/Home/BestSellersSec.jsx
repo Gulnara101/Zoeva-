@@ -16,7 +16,7 @@ const BestSellersSec = () => {
                   <span>{item.rating}</span>
                 </div>
                 <div className="cartText">
-                  <h3>{item.title}</h3>
+                  <h3>{item.title}</h3> 
                   <h4>{item.color}</h4>
                   <p>{item.price}</p>
                 </div>

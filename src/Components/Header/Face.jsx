@@ -15,7 +15,7 @@ const Face = () => {
         </ul>
       </div>
       <div className="brush">
-        <h2>BRUSHES</h2>
+        <h2>FACE</h2>
         <div className="brushCarts">
           {faceData.slice(0, 4).map((item) => (
             <div className="brushCart" key={item.id}>
