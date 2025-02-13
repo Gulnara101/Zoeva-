@@ -1,22 +1,47 @@
-.swiper {
+@import "../../mixins";
+.hero-swiper {
   width: 100%;
-  // height: 100vh;
+  height: 100%;
+  margin-top: 140px;
+  .slides {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    a{
+      @include learnMore;
+      width: 80%;
+      text-align: center;
+      display: none;
+      margin-bottom: 30px;
+    }
+
+    .mobileImg {
+      display: none; 
+    }
+
+    @media (max-width: 770px) {
+      .desktopImg {
+        display: none; 
+      }
+      .mobileImg {
+        display: block; 
+      }
+      a{
+        display: block;
+      }
+    }
+  }
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  margin-top: auto;
-}
 

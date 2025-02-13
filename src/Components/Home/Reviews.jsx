@@ -36,7 +36,19 @@ const Reviews = () => {
 
           <Swiper
             modules={[Autoplay, Navigation]}
-            slidesPerView={3}
+            slidesPerView={1}
+            breakpoints={{
+              0: {
+                slidesPerView: 1
+              },
+              630: {
+                slidesPerView: 2,
+                centeredSlides: false,
+              },
+              990: {
+                slidesPerView: 3
+              }
+            }}
             centeredSlides={true}
             spaceBetween={30}
             loop={true}
@@ -50,7 +62,7 @@ const Reviews = () => {
             className="mySwiper"
           >
             {comments.map((item) => (
-              <SwiperSlide key={item.id}>
+              <SwiperSlide key={item.id} className="swiperSlidePage">
                 <div className="slidePage">
                   {[...Array(5)].map((_, index) => (
                     <MdStar className="starIcon" key={index} />

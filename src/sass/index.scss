@@ -6,8 +6,8 @@
 @use "./components/footer";
 
 // Burger menu
-@use "./components/burgermenu";
-
+@use "./components/BurgerMenu/burgermenu";
+@use "./components//BurgerMenu/faceBurger";
 // Pages
 
 // Home page

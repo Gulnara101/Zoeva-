@@ -8,13 +8,12 @@ import MoreZoeva from "../Components/Home/MoreZoeva";
 import Reviews from "../Components/Home/Reviews";
 import NewInSec from "../Components/Home/NewInSec";
 import BestSellersSec from "../Components/Home/BestSellersSec";
-
 import Cart from "../Pages/Cart";
 
 const Home = () => {
   return (
     <div>
-      {/* <Cart /> */}
+      <Cart />
       <HeroSec />
       <BestSellersSec />
       <NewInSec />

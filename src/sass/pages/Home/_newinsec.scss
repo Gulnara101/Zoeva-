@@ -178,11 +178,17 @@
 
 @media (max-width: 360px) {
   .newIn {
-    .carts {
-      display: grid !important;
-      grid-template-columns: repeat(1, 1fr) !important;
-      .cart{
-        width: 250px;
+    .container{
+      .row{
+        .carts {
+          .cart{
+            width: 250px;
+            img{
+              width: 150px;
+              height: 200px;
+            }
+          }
+        }
       }
     }
   }

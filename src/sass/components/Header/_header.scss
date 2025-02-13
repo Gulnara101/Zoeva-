@@ -1,4 +1,15 @@
 header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  padding-bottom: 20px;
+  &.hidden {
+    transform: translateY(-100%);
+  }
   .row {
     .topBar {
       background-color: #221c35;
@@ -15,7 +26,7 @@ header {
         color: white;
         letter-spacing: 0.5px;
       }
-    } 
+    }
     .headerActions {
       position: relative;
       padding: 1.5rem;
@@ -62,12 +73,12 @@ header {
         }
         .lng {
           display: flex;
-          img{
+          img {
             width: 30px;
             height: 25px;
             margin-right: 5px;
           }
-          p{
+          p {
             font-size: 15px;
           }
         }
@@ -79,7 +90,7 @@ header {
             transform: scale(1.2);
           }
         }
-        .userIcon{
+        .userIcon {
           cursor: pointer;
           font-size: 25px;
           transition: transform 0.3s ease-in;
@@ -148,7 +159,7 @@ header {
         }
       }
     }
-    .active{
+    .active {
       display: flex;
       flex-direction: column;
       background: white;
@@ -161,7 +172,7 @@ header {
       padding: 20px;
       transition: left 0.3s ease-in-out;
       z-index: 1000;
-      .navList{
+      .navList {
         display: flex;
         flex-direction: column;
       }
@@ -178,12 +189,12 @@ header {
     background: white;
     position: fixed;
     top: 0;
-    left: -250px; 
+    left: -250px;
     width: 250px;
     height: 100vh;
-    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: left 0.3s ease-in-out; 
+    transition: left 0.3s ease-in-out;
     z-index: 1000;
     a {
       padding: 15px;
@@ -222,7 +233,7 @@ header {
   }
 
   .navBar.active + .burgerMenuIcon {
-    z-index: -1; 
+    z-index: -1;
   }
 
   .burgerMenuIcon .line.open:nth-child(1) {
@@ -237,79 +248,103 @@ header {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
-  .headerActions{
+  .headerActions {
     margin-top: 20px;
   }
 
-  .userControls{
-    right: 1rem !important;
-    .userIcon{
-      display: none;
-    }
-    .lng{
-      p{
-        display: none;
+  header {
+    .row {
+      .topBar {
+        .userControls {
+          right: 1rem !important;
+          .userIcon {
+            display: none;
+          }
+          .lng {
+            p {
+              display: none;
+            }
+            img {
+              position: absolute;
+              right: 142px;
+              bottom: 0px;
+            }
+          }
+          .quantities {
+            right: 15px !important;
+          }
+          p {
+            margin-right: 0px !important;
+          }
+        }
       }
-      img{
-        position: absolute;
-        right: 142px;
-        bottom: 0px;
+    }
+  }
+}
+
+@media (max-width: 865px) {
+  header {
+    .row {
+      .headerActions {
+        .userControls {
+          .quantities {
+            right: 50px;
+          }
+          .controlP {
+            display: none;
+          }
+        }
       }
-    }
-    .quantities {
-      right: 15px !important;
-    }
-    p{
-      margin-right: 0px !important;
     }
   }
 }
 
 @media (max-width: 749px) {
-  .userControls{
-    top: 1.2rem !important;
-    p{
-      display: none;
-    }
-    .lng{
-      img{
-        right: 82px;
+  header {
+    .row {
+      .headerActions {
+        height: 60px;
+        margin-top: 0px;
+        .userControls {
+          top: 1.2rem !important;
+          .lng {
+            img {
+              right: 82px;
+            }
+          }
+        }
+        .logo {
+          img {
+            width: 105px;
+            height: 25px;
+          }
+        }
       }
     }
   }
-  .headerActions{
-    height: 60px;
-    margin-top: 0px;
-    .logo{
-      img{
-        width: 105px;
-        height: 25px;
-      }
-    }
-  }
-  .burgerMenuIcon{
+  .burgerMenuIcon {
     top: 50px;
   }
 }
 
 @media (max-width: 450px) {
-  .topBar{
-    a{
+  .topBar {
+    a {
       font-size: 12px;
     }
   }
 }
 
 @media (max-width: 370px) {
-  .lng{
-    img{
+  .lng {
+    img {
       display: none;
     }
   }
 }
 
 @media (max-width: 344px) {
-  .burgerMenuIcon{
+  .burgerMenuIcon {
     top: 65px;
   }
 }

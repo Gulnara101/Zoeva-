@@ -4,6 +4,8 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer";
 // import BurgerMenu from "./Components/BurgerMenu/BurgerMenu";
 import Home from "./Pages/Home";
+import LipsBurger from "./Components/BurgerMenu/LipsBurger";
+import BrushesBurger from "./Components/BurgerMenu/BrushesBurger";
 // import CartPage from "./Pages/CartPage";
 // import Checkout from "./Pages/Checkout";
 
@@ -13,7 +15,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/menu" element={<BurgerMenu/>}/> */}
+        {/* <Route path="/menuf" element={<BrushesBurger/>}/> */}
         {/* <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout/>} /> */}
       </Routes>

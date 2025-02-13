@@ -33,13 +33,19 @@
 }
 
 @media (max-width: 360px) {
-  h2 {
-    font-size: 35px !important;
-  }
-  p {
-    font-size: 20px !important;
-  }
-  h3 {
-    font-size: 28px !important;
+  .soldsec {
+    .row {
+      h2 {
+        font-size: 35px !important;
+      }
+      .sold {
+        p {
+          font-size: 20px ;
+        }
+        h3 {
+          font-size: 28px;
+        }
+      }
+    }
   }
 }

@@ -131,14 +131,30 @@
 }
 
 @media (max-width: 433px) {
-  span {
-    line-height: 1.2 !important;
+  .aboutsec {
+    .container {
+      .row {
+        .aboutText {
+          span {
+            line-height: 1.2;
+          }
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 433px) {
-  img {
-    width: 100% !important;
-    height: auto !important;
+  .aboutsec {
+    .container {
+      .row {
+        .aboutImage {
+          img {
+            width: 100%;
+            height: 0 auto;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiUser, CiShoppingBasket } from "react-icons/ci";
@@ -26,9 +26,22 @@ const Header = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setHidden(currentScrollY > prevScrollY && currentScrollY > 50);
+      setPrevScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollY]);
 
   return (
-    <header>
+    <header className={hidden ? "hidden" : ""}>
       <div className="row">
         <div className="topBar">
           <Link to="https://uk.trustpilot.com/review/www.zoevacosmetics.com?sort=recency">
@@ -41,7 +54,7 @@ const Header = () => {
           </div>
           <div className="userControls">
             <IoSearchOutline className="icon" />
-            <p>SEARCH</p>
+            <p className="controlP">SEARCH</p>
             <CiUser className="userIcon" />
             <CiShoppingBasket
               className="icon"
@@ -57,7 +70,7 @@ const Header = () => {
             <img src="#" alt="" />
             <div className="lng">
               <img src={flag} alt="#" />
-              <p>ENGLISH</p>
+              <p className="controlP">ENGLISH</p>
             </div>
             <div className="quantities">
               <span>1</span>
