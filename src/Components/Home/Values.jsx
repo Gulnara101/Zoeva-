@@ -1,4 +1,5 @@
 import React from "react";
+import Valuetwo from "../Home/ValueTwo";
 
 const Values = () => {
   return (
@@ -38,6 +39,9 @@ const Values = () => {
               </p>
             </div>
           </div>
+        </div>
+        <div className="valueTwo">
+          <Valuetwo />
         </div>
       </div>
     </section>

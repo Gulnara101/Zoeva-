@@ -1,11 +1,14 @@
 @import "../../mixins";
+
 .discoverSec {
-    padding: 40px;
-    margin: 0 auto;
-    width: 100%;
+  padding: 40px;
+  margin: 0 auto;
+  width: 100%;
+
   .row {
     display: flex;
     gap: 28px;
+
     .cart {
       width: 100%;
       display: flex;
@@ -13,10 +16,13 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+
       img {
-        width: 487px;
+        width: 100%;
+        max-width: 487px;
         height: auto;
       }
+
       h3 {
         font-size: 48px;
         font-family: "La Mango Light", Arial, sans-serif;
@@ -24,14 +30,86 @@
         margin-bottom: 15px;
         color: #221c35;
       }
+
       p {
         font-size: 14px;
         letter-spacing: 0.5px;
         margin-bottom: 25px;
         color: #221c35;
       }
+
       a {
         @include learnMore;
+      }
+    }
+  }
+
+  .discoverTwo {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .discoverSec {
+    .row {
+      gap: 20px;
+      .cart {
+        img {
+          max-width: 400px;
+        }
+        h3 {
+          font-size: 42px;
+        }
+        p {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 749px) {
+  .discoverSec {
+    .row {
+display: none;
+    }
+    .discoverTwo{
+      display: block;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .discoverSec {
+    .row {
+      .cart {
+        img {
+          max-width: 250px;
+        }
+        h3 {
+          font-size: 28px;
+        }
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
+// 360px və daha kiçik ekranlar üçün daha sıx düzülüş
+@media (max-width: 360px) {
+  .discoverSec {
+    .row {
+      .cart {
+        img {
+          max-width: 200px;
+        }
+        h3 {
+          font-size: 24px;
+        }
+        p {
+          font-size: 9px;
+        }
       }
     }
   }

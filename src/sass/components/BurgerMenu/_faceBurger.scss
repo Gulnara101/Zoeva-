@@ -1,15 +1,16 @@
 @import "../../mixins";
 .faceBurgerMenu {
-  height: 100vh;
-  background-color: red;
   display: flex;
   flex-direction: column;
   width: 400px;
+  height: 100%;
   background-color: #fff;
   padding: 20px;
-  position: absolute;
+  position: fixed;
   top: 0;
-  .burgerHeadMenu {
+  left: 0;
+  bottom: 0;
+    .burgerHeadMenu {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,6 +47,13 @@
         align-items: center;
         margin-top: 10px;
         gap: 15px;
+        cursor: pointer;
+        &:hover{
+          h3{
+            color: burlywood;
+          }
+          color: burlywood;
+        }
       }
     }
   }

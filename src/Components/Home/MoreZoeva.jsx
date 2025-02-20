@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import MoreTwo from "../Home/MoreTwo";
 
 const MoreZoeva = () => {
   return (
     <section className="moreOfZoevaSec">
       <div className="container">
         <div className="row">
-          <h2>More of Zoeva</h2>
+          <h2>More of Zoeva</h2> 
           <div className="carts">
             <div className="cart">
               <img
@@ -51,6 +52,9 @@ const MoreZoeva = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="moreeTwo">
+          <MoreTwo />
         </div>
       </div>
     </section>

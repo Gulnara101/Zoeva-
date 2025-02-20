@@ -103,15 +103,17 @@ header {
           position: fixed;
           top: 0;
           left: 0;
+          bottom: 0;
           width: 100vw;
           height: 100vh;
           opacity: 0;
           visibility: hidden;
           transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
-          z-index: 3;
+          z-index: 999;
+
           &.open {
             opacity: 1;
-            visibility: visible;
+            visibility: visible; 
           }
         }
       }
@@ -303,13 +305,21 @@ header {
   header {
     .row {
       .headerActions {
-        height: 60px;
         margin-top: 0px;
         .userControls {
           top: 1.2rem !important;
+          right: 0;
+          .quantities {
+            right: 13px;
+          }
+          .userIcon {
+            display: none;
+          }
           .lng {
             img {
-              right: 82px;
+              position: absolute;
+              right: 80px;
+              bottom: 0px;
             }
           }
         }

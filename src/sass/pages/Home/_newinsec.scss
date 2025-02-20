@@ -1,28 +1,38 @@
 @import "../../mixins";
 .newIn {
   .container {
+    width: 100%;
     .row {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 100%;
+      margin: auto;
       gap: 30px;
       h2 {
         @include heading;
       }
       .carts {
+        width: 100% !important;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
+        padding: 0 20px;
         .cart {
           display: flex;
           align-items: center;
           justify-content: center;
           flex-direction: column;
-          img {
-            width: 360px;
+          .cartImg {
+            width: 100%;
             height: 400px;
+            img {
+              // width: 360px;
+              // height: 400px;
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
           }
           .cartInfo {
             width: 100%;
@@ -104,40 +114,55 @@
   }
 }
 
-
 @media (max-width: 1220px) {
   .newIn {
     .carts {
       display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      .cart{
+      grid-template-columns: repeat(4, 1fr) !important;
+      .cart {
+        img {
+          max-width: 100%;
+          height: auto;
+        }
         flex: 0 0 auto;
-        width: 100%;
+        width: 260px;
       }
     }
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1130px) {
   .newIn {
     .carts {
+      overflow: hidden !important;
+      width: 90% !important;
       display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      .cart{
-        // flex: 0 0 auto;
-        width: 300px;
+      grid-template-columns: repeat(4, 245px) !important;
+      gap: 3px !important;
+      .cart {
+        width: 100% !important;
+        align-items: center;
+        justify-content: center;
+        // width: 100%;
+        padding: auto !important;
+        .cartImg {
+          width: 100% !important;
+
+          img {
+            width: 100% !important;
+          }
+        }
       }
     }
   }
 }
-
-@media (max-width: 1000px) {
+@media (max-width: 990px) {
   .newIn {
     .carts {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 10px;
-      .cart{
+      .cart {
         flex: 0 0 auto;
         width: 100%;
       }
@@ -145,48 +170,83 @@
   }
 }
 
-
 @media (max-width: 760px) {
   .newIn {
     .carts {
       display: grid !important;
-      grid-template-columns: repeat(1, 1fr) !important;
-      .cart{
-        width: 500px;
+      grid-template-columns: repeat(2, 1fr) !important;
+      .cart {
+        width: 490px;
       }
     }
   }
 }
 
-
-@media (max-width: 510px) {
+@media (max-width: 600px) {
   .newIn {
     .carts {
       display: grid !important;
-      grid-template-columns: repeat(1, 1fr) !important;
-      .cart{
-        width: 300px;
-        img{
-          width: 150px;
-          height: 200px;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 5px !important;
+      .cart {
+        width: 100% !important;
+        .cartImg {
+          height: 250px !important;
+          img {
+            height: 100% !important;
+            object-fit: cover;
+          }
+        }
+        .cartInfo {
+          h3 {
+            font-size: 16px !important;
+          }
+          p {
+            font-size: 14px !important;
+          }
         }
       }
     }
   }
 }
 
-
-@media (max-width: 360px) {
+@media (max-width: 400px) {
   .newIn {
-    .container{
-      .row{
-        .carts {
-          .cart{
-            width: 250px;
-            img{
-              width: 150px;
-              height: 200px;
-            }
+    .carts {
+      grid-template-columns: repeat(1, 1fr) !important;
+      .cart {
+        width: 100% !important;
+        .cartImg {
+          height: 220px !important;
+        }
+        .cartInfo {
+          h3 {
+            font-size: 14px !important;
+          }
+          p {
+            font-size: 12px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 280px) {
+  .newIn {
+    .carts {
+      grid-template-columns: repeat(1, 1fr) !important;
+      gap: 2px !important;
+      .cart {
+        .cartImg {
+          height: 180px !important;
+        }
+        .cartInfo {
+          h3 {
+            font-size: 12px !important;
+          }
+          p {
+            font-size: 10px !important;
           }
         }
       }

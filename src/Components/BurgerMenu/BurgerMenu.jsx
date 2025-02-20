@@ -12,11 +12,9 @@ import Face from "../BurgerMenu/FaceBurger";
 import Lips from "../BurgerMenu/LipsBurger";
 
 const BurgerMenu = () => {
-  // const [itemClick, setItemClick] = useState(null);
   const [selectedComponent, setSelectedComponent] = useState(null);
 
   const handleItemClick = (index) => {
-    // setItemClick(index);
     if (index === 1) {
       setSelectedComponent(<Face />);
     } else if (index === 2) {

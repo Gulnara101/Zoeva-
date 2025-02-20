@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5";
 import excample from "../Images/eyesPhotos/27.webp";
 import { Link } from "react-router-dom";
 import { FaMinus } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa6"; 
+import { FaPlus } from "react-icons/fa6";
 
 const Cart = (props) => {
   const { isOpen, setIsOpen } = props;

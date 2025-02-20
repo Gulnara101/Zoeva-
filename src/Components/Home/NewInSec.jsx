@@ -11,7 +11,9 @@ const NewInSec = () => {
           <div className="carts">
             {newInData.slice(0, 4).map((item) => (
               <div className="cart" key={item.id}>
+               <div className="cartImg">
                 <img src={item.image} alt={item.title} />
+               </div>
                 <div className="cartInfo">
                   <h3>{item.title}</h3> 
                   <p>{item.price}</p>
