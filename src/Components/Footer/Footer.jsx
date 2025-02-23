@@ -5,6 +5,8 @@ import { FaFacebookSquare, FaInstagram, FaYoutube } from "react-icons/fa";
 import { AiOutlineTikTok } from "react-icons/ai";
 import footerData from "../../Mocks/footerData";
 import FooterTwo from "../Footer/FooterTwo";
+import greenStar from "../../Images/svg/greenStar.svg";
+import greenStarTwo from "../../Images/svg/greenStarTwo.svg";
 
 const Footer = () => {
   return (
@@ -50,6 +52,12 @@ const Footer = () => {
             <div className="footerActive">
               <FooterTwo />
             </div>
+          </div>
+          <div className="footerContentMedium">
+            <h2>Excellent</h2>
+            <img src={greenStar} alt="#" />
+            <p>2.393 reviews on</p>
+            <img src={greenStarTwo} alt="#" className="trustpilot"/>
           </div>
           <div className="footerContentBottom">
             <div className="iconLogo">

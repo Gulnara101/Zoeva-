@@ -12,7 +12,7 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
-
+      margin-top: 10%;
       h2 {
         @include heading;
         font-size: 60px !important;
@@ -139,33 +139,38 @@
                 text-align: center;
                 @include learnMore;
               }
-              .shopPay {
-                margin-top: 20px;
-                padding: 16px 60px;
-                border-radius: 5px;
-                background-color: #5433eb;
-                &:hover {
-                  background-color: #4a2e97;
+              .payMethods {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                .shopPay {
+                  margin-top: 20px;
+                  padding: 16px 60px;
+                  border-radius: 5px;
+                  background-color: #5433eb;
+                  &:hover {
+                    background-color: #4a2e97;
+                  }
                 }
-              }
-              .paypal {
-                background: #ffc439;
-                padding: 16px 60px;
-                border-radius: 5px;
-                img {
-                  width: 76px;
-                  height: 24px;
+                .paypal {
+                  background: #ffc439;
+                  padding: 16px 60px;
+                  border-radius: 5px;
+                  img {
+                    width: 76px;
+                    height: 24px;
+                  }
+                  &:hover {
+                    background-color: #f8b720;
+                  }
                 }
-                &:hover {
-                  background-color: #f8b720;
-                }
-              }
-              .gpay {
-                background-color: #000;
-                padding: 16px 60px;
-                border-radius: 5px;
-                &:hover {
-                  background-color: #000000da;
+                .gpay {
+                  background-color: #000;
+                  padding: 16px 60px;
+                  border-radius: 5px;
+                  &:hover {
+                    background-color: #000000da;
+                  }
                 }
               }
             }
@@ -180,7 +185,7 @@
               li {
                 border-top: 1px solid rgb(224, 219, 219);
                 padding-top: 10px;
-                .questions{
+                .questions {
                   display: flex;
                   align-items: center;
                   justify-content: space-between;
@@ -190,14 +195,180 @@
                     font-size: 36px !important;
                   }
                   .icon {
-                   font-size: 25px;
-                   color: grey;
+                    font-size: 25px;
+                    color: grey;
                   }
                 }
                 p {
                   font-size: 14px;
                   color: #221c35;
                   padding-bottom: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .cartPage {
+    .container {
+      .row {
+        .content {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .cartDetail {
+            width: 100%;
+            .cartItem {
+              .price {
+                margin-left: 120px;
+              }
+            }
+          }
+          .cartPayDetail {
+            margin-top: 40px;
+            width: 100%;
+            .cartPay {
+              .checkout {
+                .payMethods {
+                  display: flex;
+                  flex-direction: row;
+                  gap: 10px;
+                  // width: 100%;
+                  align-items: center;
+                  .shopPay {
+                    margin-bottom: 7px;
+                  }
+                  a {
+                    display: flex;
+                    align-items: center;
+                    width: 170px;
+                    height: 45px;
+                  }
+                }
+              }
+            }
+            .payFaq {
+              width: 60%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .cartPage {
+    .container {
+      .row {
+        margin-top: 15%;
+        h2 {
+          font-size: 35px !important;
+        }
+        .content {
+          .cartDetail {
+            .title {
+              display: none;
+            }
+            .cartItem {
+              .product {
+                h3 {
+                  position: absolute;
+                  left: 200px;
+                }
+              }
+              position: relative;
+              .price {
+                position: absolute;
+                top: 40px;
+                left: 80px;
+              }
+              .quantityNum {
+                .count {
+                  position: absolute;
+                  left: 180px;
+                  top: 80px;
+                }
+                .removeItem {
+                  position: absolute;
+                  top: 80px;
+                  right: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .cartPage {
+    .container {
+      .row {
+        .content {
+          .cartPayDetail {
+            .cartPay {
+              .checkout {
+                a {
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 60px;
+                }
+                .payMethods {
+                  display: flex;
+                  flex-direction: column;
+                  width: 100%;
+                  align-items: center;
+                  a {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    height: 60px;
+                  }
+                }
+              }
+            }
+            .payFaq {
+              width: 80%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .cartPage {
+    .container {
+      .row {
+        .content {
+          .cartDetail {
+            .cartItem {
+              .product {
+                h3 {
+                  position: absolute;
+                  left: 115px;
+                }
+              }
+              position: relative;
+              .price {
+                position: absolute;
+                left: 0px;
+              }
+              .quantityNum {
+                .count {
+                  position: absolute;
+                  left: 100px;
                 }
               }
             }

@@ -57,16 +57,18 @@ const CartPage = () => {
                   <p>$14.68</p>
                 </div>
                 <div className="checkout">
-                  <Link>Checkout</Link>
-                  <Link className="shopPay">
-                    <img src={shopPay} alt="#" />
-                  </Link>
-                  <Link className="paypal">
-                    <img src={Paypal} alt="#" />
-                  </Link>
-                  <Link className="gpay">
-                    <img src={Gpay} alt="#" />
-                  </Link>
+                  <Link to="/checkout">Checkout</Link>
+                  <div className="payMethods">
+                    <Link className="shopPay">
+                      <img src={shopPay} alt="#" />
+                    </Link>
+                    <Link className="paypal">
+                      <img src={Paypal} alt="#" />
+                    </Link>
+                    <Link className="gpay">
+                      <img src={Gpay} alt="#" />
+                    </Link>
+                  </div>
                 </div>
               </div>
               <div className="payFaq">

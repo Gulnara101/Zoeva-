@@ -50,7 +50,9 @@ const Header = () => {
         </div>
         <div className="headerActions">
           <div className="logo">
+          <Link to="/">
             <img src={Logo} alt="Logo" />
+          </Link>
           </div>
           <div className="userControls">
             <IoSearchOutline className="icon" />

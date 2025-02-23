@@ -92,6 +92,26 @@ footer {
           display: none;
         }
       }
+      .footerContentMedium{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding-top: 30px;
+        img{
+          width: 105px;
+          height: 105px;
+          margin-right: 10px;
+        }
+        h2{
+          font-size: 18px;
+          margin-right: 10px;
+        }
+        .trustpilot{
+          width: 90px;
+          margin-left: 10px;
+        }
+      }
       .footerContentBottom {
         margin-top: 100px;
         padding-bottom: 30px;

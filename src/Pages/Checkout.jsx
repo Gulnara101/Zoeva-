@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { RiShoppingBasketLine } from "react-icons/ri";
 import { FiLock } from "react-icons/fi";
+import baskett from "../Images/svg/baskett.svg";
 import Logo from "../Images/svg/logo.svg";
 import shopPay from "../Images/svg/paytype1.svg";
 import Paypal from "../Images/paypalLogo.svg";
@@ -10,6 +10,7 @@ import CustomInput from "../Components/CustomInput";
 import visa from "../Images/footerPayLogo/visalogo.jpg";
 import master from "../Images/footerPayLogo/Mastercard_logo.webp";
 import amex from "../Images/footerPayLogo/amex-logo.jpeg";
+import uniPay from "../Images/footerPayLogo/unionn.png";
 import maestro from "../Images/footerPayLogo/Maestro-logo.png";
 import paypal from "../Images/svg/paypalLogo.svg";
 import shop from "../Images/svg/shop.svg";
@@ -19,14 +20,26 @@ import cardSvg from "../Images/svg/card.svg";
 
 const Checkout = () => {
   const [selectedOption, setSelectedOption] = useState("shipping");
+  const [isChecked, setIsChecked] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState("creditCard");
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <section className="checkoutPage">
       <div className="container">
         <div className="row">
           <div className="checkout">
             <div className="headingCheck">
-              <img className="logoZoeva" src={Logo} alt="logo" />
-              <RiShoppingBasketLine className="basketIcon" />
+              <Link to="/">
+                <img src={Logo} alt="Logo" className="logoZoeva"/>
+              </Link>
+              <Link to="/card">
+                <img src={baskett} alt="#" className="basketIcon" />
+              </Link>
             </div>
             <div className="expressCheckout">
               <h3>Express checkout</h3>
@@ -73,22 +86,38 @@ const Checkout = () => {
                 All transactions are secure and encrypted.
               </p>
               <div className="paymentMethods">
-                <div className="cartDetails">
+                <div
+                  className="cartDetails"
+                  onClick={() => setSelectedMethod("creditCard")}
+                >
                   <div className="creditCard">
                     <div className="cartDetail">
-                      <input type="radio" />
+                      <input
+                        type="radio"
+                        checked={selectedMethod === "creditCard"}
+                        onChange={() => setSelectedMethod("creditCard")}
+                      />
                       <p>Credit card</p>
                     </div>
                     <div className="carts">
-                      <img src={visa} alt="#" />
-                      <img src={master} alt="#" />
-                      <img src={maestro} alt="#" />
-                      <img src={amex} alt="#" />
-                      <div className="union">+1</div>
+                      <img src={visa} alt="Visa" />
+                      <img src={master} alt="MasterCard" />
+                      <img src={maestro} alt="Maestro" />
+                      <img src={amex} alt="Amex" />
+                      <div className="union">
+                        <p>+1</p>
+                      </div>
+                      <div className="uniPayLogo">
+                        <img src={uniPay} alt="uniPay" />
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="creditCardActive">
+                <div
+                  className={`creditCardActive ${
+                    selectedMethod === "creditCard" ? "visible" : "hidden"
+                  }`}
+                >
                   <div className="cardActiveContainer">
                     <CustomInput placeholder="Card Number" type="number" />
                     <div className="cardActive">
@@ -100,10 +129,17 @@ const Checkout = () => {
                     </div>
                     <CustomInput placeholder="Name on card" type="text" />
                     <div className="checkBoxDeactive">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => setIsChecked(!isChecked)}
+                      />
                       <p>Use shipping address as billing address</p>
                     </div>
-                    <div className="billing">
+
+                    <div
+                      className={`billing ${isChecked ? "hidden" : "visible"}`}
+                    >
                       <div className="billingHead">
                         <h4>Billing address</h4>
                       </div>
@@ -111,15 +147,28 @@ const Checkout = () => {
                     </div>
                   </div>
                 </div>
-                <div className="paypalDetails">
+
+                <div
+                  className="paypalDetails"
+                  onClick={() => setSelectedMethod("paypal")}
+                >
                   <div className="cartDetail">
-                    <input type="radio" />
+                    <input
+                      type="radio"
+                      checked={selectedMethod === "paypal"}
+                      onChange={() => setSelectedMethod("paypal")}
+                    />
                     <p>PayPal</p>
                   </div>
-                  <img src={paypal} alt="#" className="paypalLogo" />
+                  <img src={paypal} alt="PayPal" className="paypalLogo" />
                 </div>
-                <div className="paypalActive">
-                  <img src={cardSvg} alt="#" />
+
+                <div
+                  className={`paypalActive ${
+                    selectedMethod === "paypal" ? "visible" : "hidden"
+                  }`}
+                >
+                  <img src={cardSvg} alt="PayPal Card" />
                   <p>
                     After clicking "Pay with PayPal", you will be redirected to
                     PayPal to complete your purchase securely.
@@ -173,10 +222,13 @@ const Checkout = () => {
                 </div>
                 <img src={shop} alt="#" />
               </div>
-              <button className="payBtn">Pay now</button>
-              <button className="paypalBtn">
-                Pay with <img src={Paypal} alt="#" />
-              </button>
+              {selectedMethod === "paypal" ? (
+                <button className="paypalBtn">
+                  Pay with <img src={paypal} alt="#" />
+                </button>
+              ) : (
+                <button className="payBtn">Pay now</button>
+              )}
               <div className="end">
                 <Link>Cancellation policy</Link>
               </div>
@@ -197,8 +249,12 @@ const Checkout = () => {
                 </div>
               </div>
               <div className="giftCode">
-                <CustomInput placeholder="Discount code or gift card" />
-                <button>Apply</button>
+                <CustomInput
+                  placeholder="Discount code or gift card"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                />
+                <button className={inputValue ? "filled" : ""}>Apply</button>
               </div>
               <div className="subtotal">
                 <p>Subtotal</p>
