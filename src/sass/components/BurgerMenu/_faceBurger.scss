@@ -16,7 +16,8 @@
     align-items: center;
     h4 {
       margin-top: 10px;
-      font-size: 23px;
+      font-size: 23px !important;
+      @include heading;
     }
   }
   .menuList {

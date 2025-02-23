@@ -8,12 +8,12 @@ const EyesBurger = () => {
     <div className="faceBurgerMenu">
       <div className="burgerHeadMenu">
         <RiArrowLeftSLine />
-        <h4>Eyes</h4>
+        <h4>EYES</h4>
         <IoClose />
       </div>
       <div className="menuList">
         <ul className="navList">
-          {burgerData.slice(14, 20).map((item) => (
+          {burgerData.slice(15, 21).map((item) => (
             <li className="navItem" key={item.id}>
               <img src={item.image} alt={item.title} />
               <h3>{item.title}</h3>

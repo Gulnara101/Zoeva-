@@ -8,6 +8,26 @@ import burger7 from "../Images/burgerMenu/7.avif";
 import burger8 from "../Images/burgerMenu/8.webp";
 import burger9 from "../Images/burgerMenu/9.webp";
 import burger10 from "../Images/burgerMenu/10.webp";
+import burger11 from "../Images/small.webp";
+import burger12 from "../Images/small2.webp";
+import burger13 from "../Images/small3.webp";
+import burger14 from "../Images/small4.avif";
+import burger15 from "../Images/photo1.webp";
+import burger16 from "../Images/photo2.webp";
+import burger17 from "../Images/photo3.avif";
+import burger18 from "../Images/photo4.webp";
+import burger19 from "../Images/photo5.webp";
+import burger20 from "../Images/photo6.webp";
+import burger21 from "../Images/lip1.avif";
+import burger22 from "../Images/lip2.avif";
+import burger23 from "../Images/lip3.webp";
+import burger24 from "../Images/lip4.webp";
+import burger25 from "../Images/brush1.webp";
+import burger26 from "../Images/brush2.webp";
+import burger27 from "../Images/brush3.avif";
+import burger28 from "../Images/brush4.avif";
+
+
 
 const burgerData = [
   {
@@ -63,98 +83,155 @@ const burgerData = [
   {
     id: 11,
     title: "REAL MAGIC",
-    image: burger1,
+    image: burger11,
   },
   {
     id: 12,
     title: "HIGHLIGHTER",
-    image: burger2,
+    image: burger12,
   },
   {
     id: 13,
     title: "BRUSH",
-    image: burger3,
+    image: burger2,
   },
   {
     id: 14,
     title: "POWDER",
-    image: burger4,
+    image: burger13,
   },
   {
     id: 15,
     title: "SHOW ALL",
-    image: burger5,
+    image: burger14,
   },
   {
     id: 16,
     title: "MASCARA",
-    image: burger6,
+    image: burger20,
   },
   {
     id: 17,
     title: "EYESHADOW",
-    image: burger7,
+    image: burger19,
   },
   {
     id: 18,
     title: "EYEBROWS",
-    image: burger8,
+    image: burger18,
   },
   {
     id: 19,
     title: "EYELINER",
-    image: burger9,
+    image: burger17,
   },
   {
     id: 20,
     title: "EYESHADOW PALETTES",
-    image: burger10,
+    image: burger16,
   },
   {
     id: 21,
     title: "SHOW ALL",
-    image: burger1,
+    image: burger15,
   },
   {
     id: 22,
     title: "LIPSTICK",
-    image: burger2,
+    image: burger21,
   },
   {
     id: 23,
     title: "LIP LINER",
-    image: burger3,
+    image: burger22,
   },
   {
     id: 24,
     title: "LIP GLOSS",
-    image: burger4,
+    image: burger23,
   },
   {
     id: 25,
     title: "SHOW ALL",
-    image: burger5,
+    image: burger24,
   },
   {
     id: 26,
     title: "FACE BRUSHES",
-    image: burger6,
+    image: burger25,
   },
   {
     id: 27,
     title: "EYE BRUSHES",
-    image: burger7,
+    image: burger26,
   },
   {
     id: 28,
     title: "BRUSH KITS",
-    image: burger8,
+    image: burger27,
   },
 
   {
     id: 29,
     title: "SHOW ALL",
-    image: burger9,
+    image: burger28,
+  },
+  {
+    id: 30,
+    title: "Shop",
+    children: [
+      {
+        title: "FAQ & Contact",
+      },
+      {
+        title: "Shipping & Delivery",
+      },
+      {
+        title: "Returns",
+      },
+      {
+        title: "Payment Options",
+      },
+    ],
+  },
+  {
+    id: 31,
+    title: "About",
+    children: [
+      {
+        title: "About Us",
+      },
+      {
+        title: "Careers",
+      },
+      {
+        title: "Our Responsibility",
+      },
+      {
+        title: "Our Faves",
+      },
+      {
+        title: "Store Locator",
+      },
+    ],
+  },
+  {
+    id: 32,
+    title: "Info",
+    children: [
+      {
+        title: "Legal",
+      },
+      {
+        title: "Terms & Conditions",
+      },
+      {
+        title: "Cookie Policy",
+      },
+      {
+        title: "Privacy Policy",
+      },
+    ],
   },
 ];
 

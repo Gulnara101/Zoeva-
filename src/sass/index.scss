@@ -3,7 +3,8 @@
 
 // Components
 @use "./components/Header/header";
-@use "./components/footer";
+@use "./components/Footer/footer";
+@use "./components/Footer/footerTwo";
 
 // Burger menu
 @use "./components/BurgerMenu/burgermenu";
@@ -35,5 +36,6 @@
 
 // Custom input
 @use "./components/customInput";
+@use "./components/inputsGroups.scss";
 
 @use "./pages/checkout";

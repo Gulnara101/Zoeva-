@@ -6,13 +6,31 @@ import {
 } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+
+import { useNavigate } from "react-router-dom";
 import burgerData from "../../Mocks/burgerMenu";
 import Eye from "../BurgerMenu/EyesBurger";
 import Face from "../BurgerMenu/FaceBurger";
 import Lips from "../BurgerMenu/LipsBurger";
+import Brush from "../BurgerMenu/BrushesBurger";
 
 const BurgerMenu = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const handleToggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   const handleItemClick = (index) => {
     if (index === 1) {
@@ -21,15 +39,17 @@ const BurgerMenu = () => {
       setSelectedComponent(<Eye />);
     } else if (index === 3) {
       setSelectedComponent(<Lips />);
+    } else if (index === 4) {
+      setSelectedComponent(<Brush />);
     }
   };
 
   return (
     <div className="burgerMenu">
       <div className="menu">
-        <RiArrowLeftSLine />
+        <RiArrowLeftSLine onClick={handleBack} />
         <h4>Menu</h4>
-        <IoClose />
+        <IoClose onClick={toggleMenu} />
       </div>
       {burgerData.slice(0, 1).map((item) => (
         <div className="burger" key={item.id}>
@@ -60,14 +80,18 @@ const BurgerMenu = () => {
       <div className="burgerList">
         <ul className="navList">
           <h4>BRUSHES & ACCESSORIES</h4>
-          {burgerData.slice(4, 8).map((item) => (
-            <li className="navItem" key={item.id}>
+          {burgerData.slice(4, 8).map((item, index) => (
+            <li
+              className="navItem"
+              key={item.id}
+              onClick={() => handleItemClick(index + 4)}
+            >
               <div className="left">
                 <img src={item.image} alt={item.title} />
                 <h3>{item.title}</h3>
               </div>
               <div className="right">
-                <RiArrowRightSLine />
+                {index === 0 && <RiArrowRightSLine />}
               </div>
             </li>
           ))}
@@ -103,21 +127,24 @@ const BurgerMenu = () => {
         <FaRegUser />
         <p>Log in</p>
       </div>
-      <div className="endBurger">
-        <p>Shop</p>
-        <RiArrowDownSLine />
-      </div>
-      <div className="endBurger">
-        <p>About</p>
-        <RiArrowDownSLine />
-      </div>
-      <div className="endBurger">
-        <p>Info</p>
-        <RiArrowDownSLine />
-      </div>
-      <div className="selectedComponent">
-        {selectedComponent} 
-      </div>
+      {burgerData.slice(29, 32).map((item, index) => (
+        <div className="endBurger" key={item.id}>
+          <ul className="titles">
+            <li className="headTitle">
+              <div className="head" onClick={() => handleToggle(index)}>
+                {item.title}
+                <RiArrowDownSLine className="downIcon" />
+              </div>
+              <ul className={`children ${openIndex === index ? "open" : ""}`}>
+                {item.children.map((child) => (
+                  <li key={child.id}>{child.title}</li>
+                ))}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      ))}
+      <div className="selectedComponent">{selectedComponent}</div>
     </div>
   );
 };

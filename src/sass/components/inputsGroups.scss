@@ -1,0 +1,60 @@
+.inputsGroups {
+  .selectContainer {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    background-color: white;
+    select {
+      width: 100%;
+      padding: 17px 15px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+      outline: none;
+      background: transparent;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    label {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #929191;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    select.filled + label {
+      top: 10px;
+      font-size: 12px;
+      color: #ccc;
+    }
+  }
+
+  .userName {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .textInput {
+    margin-top: 20px;
+  }
+  .postal {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .inputAnswear {
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+    .question {
+      position: absolute;
+      right: 15px;
+      top: 17px;
+      color: rgb(97, 93, 93);
+    }
+  }
+}

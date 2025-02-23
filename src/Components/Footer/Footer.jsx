@@ -1,9 +1,10 @@
 import React from "react";
-import footerPaymentIcons from "../Mocks/footerPaymentIcon";
+import footerPaymentIcons from "../../Mocks/footerPaymentIcon";
 import { Link } from "react-router-dom";
 import { FaFacebookSquare, FaInstagram, FaYoutube } from "react-icons/fa";
 import { AiOutlineTikTok } from "react-icons/ai";
-import footerData from "../Mocks/footerData";
+import footerData from "../../Mocks/footerData";
+import FooterTwo from "../Footer/FooterTwo";
 
 const Footer = () => {
   return (
@@ -46,6 +47,9 @@ const Footer = () => {
                 </ul>
               </div>
             ))}
+            <div className="footerActive">
+              <FooterTwo />
+            </div>
           </div>
           <div className="footerContentBottom">
             <div className="iconLogo">

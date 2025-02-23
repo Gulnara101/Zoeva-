@@ -8,7 +8,7 @@ const FaceBurger = () => {
     <div className="faceBurgerMenu">
       <div className="burgerHeadMenu">
         <RiArrowLeftSLine />
-        <h4>Face</h4>
+        <h4>FACE</h4>
         <IoClose />
       </div>
       <div className="menuList">

@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiShoppingBasketLine } from "react-icons/ri";
-import { GoQuestion } from "react-icons/go";
 import { FiLock } from "react-icons/fi";
 import Logo from "../Images/svg/logo.svg";
 import shopPay from "../Images/svg/paytype1.svg";
 import Paypal from "../Images/paypalLogo.svg";
 import Gpay from "../Images/svg/paytype2.svg";
 import CustomInput from "../Components/CustomInput";
-import countryData from "../Mocks/countries";
 import visa from "../Images/footerPayLogo/visalogo.jpg";
 import master from "../Images/footerPayLogo/Mastercard_logo.webp";
 import amex from "../Images/footerPayLogo/amex-logo.jpeg";
@@ -16,11 +14,11 @@ import maestro from "../Images/footerPayLogo/Maestro-logo.png";
 import paypal from "../Images/svg/paypalLogo.svg";
 import shop from "../Images/svg/shop.svg";
 import excample from "../Images/eyesPhotos/25.webp";
-
+import InputsGroups from "../Components/InputsGroups";
+import cardSvg from "../Images/svg/card.svg";
 
 const Checkout = () => {
-const [selected, setSelected] = useState("");
-
+  const [selectedOption, setSelectedOption] = useState("shipping");
   return (
     <section className="checkoutPage">
       <div className="container">
@@ -54,46 +52,15 @@ const [selected, setSelected] = useState("");
                 <h3>Contact</h3>
                 <Link>Log in</Link>
               </div>
-              <CustomInput />
+              <div className="textInput">
+                <CustomInput />
+              </div>
               <div className="contactWithEmail">
                 <input type="checkbox" />
                 <p>Email me with news and offers</p>
               </div>
               <h3 className="delivery">Delivery</h3>
-              <div className="selectContainer">
-                <select
-                  value={selected}
-                  onChange={(e) => setSelected(e.target.value)}
-                  className={selected ? "filled" : ""}
-                >
-                  <option value="" disabled hidden></option>
-                  <option value="" disabled selected>
-                    Country/Region
-                  </option>
-                  {countryData.map((item) => (
-                    <option key={item.id} value={item.code}>
-                      {item.name}
-                    </option>
-                  ))}
-                </select>
-                <label className={selected ? "active" : ""}>
-                  Country/Region
-                </label>
-              </div>
-              <div className="userName">
-                <CustomInput placeholder="First name" />
-                <CustomInput placeholder="Last name" />
-              </div>
-              <CustomInput className="address"  placeholder="Address" />
-              <CustomInput placeholder="Apartment, suite, etc. (optional)" />
-              <div className="postal">
-                <CustomInput placeholder="Postal code" type="number"/>
-                <CustomInput placeholder="City" />
-              </div>
-              <div className="inputAnswear">
-                <CustomInput className="phone" type="number" placeholder="Phone (optional)" />
-                <GoQuestion className="question" />
-              </div>
+              <InputsGroups />
               <h4>Shipping method</h4>
               <div className="shipping">
                 <p>
@@ -107,41 +74,97 @@ const [selected, setSelected] = useState("");
               </p>
               <div className="paymentMethods">
                 <div className="cartDetails">
-                  <div className="cartDetail">
-                    <input type="radio" />
-                    <p>Credit card</p>
-                  </div>
-                  <div className="carts">
-                    <img src={visa} alt="#" />
-                    <img src={master} alt="#" />
-                    <img src={maestro} alt="#" />
-                    <img src={amex} alt="#" />
-                    <div className="union">+1</div>
+                  <div className="creditCard">
+                    <div className="cartDetail">
+                      <input type="radio" />
+                      <p>Credit card</p>
+                    </div>
+                    <div className="carts">
+                      <img src={visa} alt="#" />
+                      <img src={master} alt="#" />
+                      <img src={maestro} alt="#" />
+                      <img src={amex} alt="#" />
+                      <div className="union">+1</div>
+                    </div>
                   </div>
                 </div>
-                {/* <div className="cartDetails">
-                  <div className="cartDetail">
-                    <input type="radio" />
-                    <p>Pay later with Klarna</p>
+                <div className="creditCardActive">
+                  <div className="cardActiveContainer">
+                    <CustomInput placeholder="Card Number" type="number" />
+                    <div className="cardActive">
+                      <CustomInput
+                        placeholder="Expiration (MM / YY)"
+                        type="number"
+                      />
+                      <CustomInput placeholder="Security Code" type="number" />
+                    </div>
+                    <CustomInput placeholder="Name on card" type="text" />
+                    <div className="checkBoxDeactive">
+                      <input type="checkbox" />
+                      <p>Use shipping address as billing address</p>
+                    </div>
+                    <div className="billing">
+                      <div className="billingHead">
+                        <h4>Billing address</h4>
+                      </div>
+                      <InputsGroups />
+                    </div>
                   </div>
-                  <img src={klarna} alt="#" />
-                </div> */}
-                <div className="cartDetails">
+                </div>
+                <div className="paypalDetails">
                   <div className="cartDetail">
                     <input type="radio" />
                     <p>PayPal</p>
                   </div>
                   <img src={paypal} alt="#" className="paypalLogo" />
                 </div>
+                <div className="paypalActive">
+                  <img src={cardSvg} alt="#" />
+                  <p>
+                    After clicking "Pay with PayPal", you will be redirected to
+                    PayPal to complete your purchase securely.
+                  </p>
+                </div>
               </div>
               <h3 className="remember">Remember me</h3>
-              <div className="rememberMe">
-                <input type="radio" />
-                <p>Same as shipping address</p>
-              </div>
-              <div className="rememberMe">
-                <input type="radio" />
-                <p>Use a different billing address</p>
+
+              <div className="rememberContainer">
+                <div
+                  className={`rememberMeShipping ${
+                    selectedOption === "shipping" ? "selected" : ""
+                  }`}
+                  onClick={() => setSelectedOption("shipping")}
+                >
+                  <input
+                    type="radio"
+                    name="billingOption"
+                    checked={selectedOption === "shipping"}
+                    onChange={() => setSelectedOption("shipping")}
+                  />
+                  <p>Same as shipping address</p>
+                </div>
+                <div
+                  className={`rememberMe ${
+                    selectedOption === "different" ? "selectedd" : ""
+                  }`}
+                  onClick={() => setSelectedOption("different")}
+                >
+                  <input
+                    type="radio"
+                    name="billingOption"
+                    checked={selectedOption === "different"}
+                    onChange={() => setSelectedOption("different")}
+                  />
+                  <p>Use a different billing address</p>
+                </div>
+
+                <div
+                  className={`inputsGroup ${
+                    selectedOption === "different" ? "show" : ""
+                  }`}
+                >
+                  {selectedOption === "different" && <InputsGroups />}
+                </div>
               </div>
               <div className="secure">
                 <div className="secureAbout">
@@ -150,7 +173,10 @@ const [selected, setSelected] = useState("");
                 </div>
                 <img src={shop} alt="#" />
               </div>
-              <button>Pay now</button>
+              <button className="payBtn">Pay now</button>
+              <button className="paypalBtn">
+                Pay with <img src={Paypal} alt="#" />
+              </button>
               <div className="end">
                 <Link>Cancellation policy</Link>
               </div>

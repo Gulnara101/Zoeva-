@@ -33,7 +33,7 @@ const Cart = (props) => {
           <h4>Subtotal</h4>
           <p>$7.34</p>
         </div>
-        <Link>Checkout</Link>
+        <Link to="/checkout">Checkout</Link>
       </div>
     </div>
   );

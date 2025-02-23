@@ -13,7 +13,7 @@ const BrushesBurger = () => {
       </div>
       <div className="menuList">
         <ul className="navList">
-          {burgerData.slice(24, 29).map((item) => (
+          {burgerData.slice(25, 29).map((item) => (
             <li className="navItem" key={item.id}>
               <img src={item.image} alt={item.title} />
               <h3>{item.title}</h3>

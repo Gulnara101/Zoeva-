@@ -1,5 +1,5 @@
 footer {
-  background-color: rgb(236, 228, 241);
+  background-color: #f2e9ea;
   .footerGetOff {
     background-color: #221c35;
     width: 100%;
@@ -88,6 +88,9 @@ footer {
             }
           }
         }
+        .footerActive {
+          display: none;
+        }
       }
       .footerContentBottom {
         margin-top: 100px;
@@ -115,47 +118,55 @@ footer {
 }
 
 @media (max-width: 990px) {
-  .footerContentTop {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .socialIcon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .footerNav {
-      ul {
-        cursor: pointer;
-        li {
-          display: none;
+  footer {
+    .container {
+      .row {
+        .footerContentTop {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          gap: 0px !important;
+          .socialIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .footerNav {
+            display: none ;
+          }
+          .footerActive {
+            margin-top: 40px;
+            width: 100%;
+            display: block;
+          }
+        }
+        .footerContentBottom {
+          .iconLogo {
+            display: flex;
+            flex-wrap: wrap;
+          }
         }
       }
     }
   }
-  .footerContentBottom {
-    .iconLogo {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
 }
 
-@media (max-width: 460px) {
-  .footerGetOff{
-    h3 {
-      font-size: 35px !important;
-    }
-    p {
-      font-size: 30px !important;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
+// @media (max-width: 460px) {
+//   .footerGetOff {
+//     h3 {
+//       font-size: 35px !important;
+//     }
+//     p {
+//       font-size: 30px !important;
+//     }
+//     form {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 10px;
+//       align-items: center;
+//       justify-content: center;
+//     }
+//   }
+// }

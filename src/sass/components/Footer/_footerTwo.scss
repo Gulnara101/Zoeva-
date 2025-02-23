@@ -1,0 +1,66 @@
+@import "../../mixins";
+.footerDropdown {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: transparent;
+  width: 100%;
+  .footerContainer {
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    justify-content: start;
+    .dropDownList {
+      font-size: 40px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      gap: 20px;
+      margin: 0 auto;
+      width: 100%;
+      .headLi {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        cursor: pointer;
+        div {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: space-between;
+          @include heading;
+          font-size: 35px !important;
+          .down,
+          .up {
+            font-size: 20px;
+          }
+        }
+        .dropdown {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
+          margin: 0 auto;
+          cursor: pointer;
+          justify-content: start;
+          align-items: start;
+          margin-bottom: 30px;
+          li {
+            a {
+              color: #221c35;
+              font-size: 15px;
+              letter-spacing: 1.2;
+            }
+          }
+        }
+        .block {
+          display: flex;
+        }
+        .none {
+          display: none;
+        }
+      }
+    }
+  }
+}
