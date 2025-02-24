@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
-const CustomInput = ({ type = "text", placeholder = "Email" }) => {
-  const [value, setValue] = useState("");
-
+const CustomInput = ({ type = "text", placeholder = "Email", value, onChange }) => {
   return (
     <div className="inputContainer">
       <input
         className={value ? "filled" : ""}
         type={type}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={onChange} 
         required
       />
       <label className={value ? "active" : ""}>{placeholder}</label>

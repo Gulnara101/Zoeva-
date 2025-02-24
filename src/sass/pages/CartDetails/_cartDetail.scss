@@ -1,0 +1,143 @@
+@import "../../mixins";
+.cardDetail {
+  .row {
+    display: flex;
+    .productMoreImg {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      gap: 5px;
+      justify-content: center;
+      padding-left: 30px;
+      .moreImages {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+        padding-right: 2px;
+        img {
+          width: 100px;
+          height: 110px;
+          object-fit: cover;
+          cursor: pointer;
+        }
+      }
+    }
+    .mainProduct {
+      img {
+        width: 80vw;
+        max-width: 880px;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+    .mainProductDetails {
+      .mainProductDetailsContainer {
+        width: 90%;
+        margin: 0 auto;
+        .detailNavigate {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: 100%;
+          border-bottom: 1px solid rgb(216, 214, 214);
+          padding: 7px 7px 7px 0;
+          p {
+            font-size: 12px;
+            &:hover{
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+        }
+        .productMode {
+          font-size: 14px;
+          color: #000000d5;
+          margin: 20px 0 25px 0;
+        }
+        .productTitle {
+          @include heading;
+          // font-size: 48px !important;
+        }
+        .productRating {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          img {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+          }
+          p {
+            font-size: 12px;
+            color: #000;
+          }
+        }
+        .productColor {
+          margin: 22px 0;
+        }
+        button {
+          @include learnMore;
+          border: none;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          p {
+            margin: 0 10px;
+          }
+        }
+        .delivery {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          margin: 20px 0;
+          a {
+            font-size: 12px;
+            text-decoration: underline;
+          }
+          img {
+            width: 25px;
+            height: 20px;
+            margin: 0 10px 0 0;
+          }
+        }
+        .productCom {
+          font-size: 36px;
+          color: #221c35;
+          font-family: "La Mango Light", Arial, sans-serif;
+        }
+        .productAbout {
+          font-size: 14px;
+          color: #221c35;
+          line-height: 1.6;
+          border-bottom: 1px solid rgb(216, 214, 214);
+          padding-bottom: 21px;
+        }
+        .toggleMenu {
+          .faq {
+            border-bottom: 1px solid rgb(216, 214, 214);
+            padding: 20px 0;
+            .question {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding-bottom: 5px;
+              cursor: pointer;
+              h3 {
+                font-size: 36px !important;
+                @include heading;
+              }
+            }
+          }
+          .answer {
+            margin-top: 20px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

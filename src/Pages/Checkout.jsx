@@ -12,7 +12,7 @@ import master from "../Images/footerPayLogo/Mastercard_logo.webp";
 import amex from "../Images/footerPayLogo/amex-logo.jpeg";
 import uniPay from "../Images/footerPayLogo/unionn.png";
 import maestro from "../Images/footerPayLogo/Maestro-logo.png";
-import paypal from "../Images/svg/paypalLogo.svg";
+import paypal from "../Images/paypayBtn.svg";
 import shop from "../Images/svg/shop.svg";
 import excample from "../Images/eyesPhotos/25.webp";
 import InputsGroups from "../Components/InputsGroups";
@@ -35,7 +35,7 @@ const Checkout = () => {
           <div className="checkout">
             <div className="headingCheck">
               <Link to="/">
-                <img src={Logo} alt="Logo" className="logoZoeva"/>
+                <img src={Logo} alt="Logo" className="logoZoeva" />
               </Link>
               <Link to="/card">
                 <img src={baskett} alt="#" className="basketIcon" />
@@ -104,11 +104,12 @@ const Checkout = () => {
                       <img src={master} alt="MasterCard" />
                       <img src={maestro} alt="Maestro" />
                       <img src={amex} alt="Amex" />
+
                       <div className="union">
                         <p>+1</p>
-                      </div>
-                      <div className="uniPayLogo">
-                        <img src={uniPay} alt="uniPay" />
+                        <div className="uniPayLogo">
+                          <img src={uniPay} alt="uniPay" />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -254,7 +255,7 @@ const Checkout = () => {
                   value={inputValue}
                   onChange={handleInputChange}
                 />
-                <button className={inputValue ? "filled" : ""}>Apply</button>
+                <button className={inputValue ? "filled" : " "}>Apply</button>
               </div>
               <div className="subtotal">
                 <p>Subtotal</p>

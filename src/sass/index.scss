@@ -9,6 +9,7 @@
 // Burger menu
 @use "./components/BurgerMenu/burgermenu";
 @use "./components//BurgerMenu/faceBurger";
+
 // Pages
 
 // Home page
@@ -24,6 +25,14 @@
 @use "./pages/Home/reviews";
 @use "./pages/Home/newinsec";
 @use "./pages/Home/bestseller";
+
+// Cart Detail page
+@use "./pages/CartDetails/cartDetail";
+@use "./pages/CartDetails/perfectPair";
+@use "./pages/CartDetails/anwendung";
+@use "./pages/CartDetails/comments";
+@use "./pages/CartDetails/wirEmpfehlenAuch";
+@use "./pages/CartDetails/kurzlichAngesehen";
 
 // Header page
 @use "./components/Header/topBar";

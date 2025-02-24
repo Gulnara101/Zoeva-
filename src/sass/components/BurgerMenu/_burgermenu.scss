@@ -11,6 +11,32 @@
   left: 0;
   bottom: 0;
   overflow-y: auto;
+
+  
+// .selectedComponent{
+//   transition: 2s all;
+
+//   border:3px solid red !important;
+//   position: absolute;
+//   right: -100%;
+
+//   &.active{
+//     right:0%
+//   }
+
+//   .faceBurgerMenu{
+//     border:3px solid red !important;
+//     position: absolute !important;
+//     top:0%;
+//     right:-100% !important;
+//     background-color: red;
+//     margin-left: 70px;
+
+//   }
+// }
+.active{
+
+}
   .menu {
     display: flex;
     justify-content: space-between;

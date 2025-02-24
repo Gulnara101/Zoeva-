@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   RiArrowLeftSLine,
   RiArrowRightSLine,
-  RiArrowDownSLine,
+  RiArrowDownSLine, 
 } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
@@ -19,6 +19,7 @@ const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const [openIndex, setOpenIndex] = useState(null);
+  const element=useRef()
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -29,14 +30,21 @@ const BurgerMenu = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    setSelectedComponent(null)
+    console.log('test');
+    
   };
 
+  const resetBurgerMenu=()=>{
+    setSelectedComponent(null);
+  }
+
   const handleItemClick = (index) => {
+    element.current.className='active'
     if (index === 1) {
-      setSelectedComponent(<Face />);
+      setSelectedComponent(<Face resetBurgerMenu={resetBurgerMenu} />);
     } else if (index === 2) {
-      setSelectedComponent(<Eye />);
+      setSelectedComponent(<Eye  />);
     } else if (index === 3) {
       setSelectedComponent(<Lips />);
     } else if (index === 4) {
@@ -144,7 +152,7 @@ const BurgerMenu = () => {
           </ul>
         </div>
       ))}
-      <div className="selectedComponent">{selectedComponent}</div>
+      <div ref={element} className="selectedComponent active">{selectedComponent}</div>
     </div>
   );
 };

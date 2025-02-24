@@ -185,6 +185,7 @@
                     font-size: 14px;
                   }
                 }
+
                 .carts {
                   display: flex;
                   gap: 7px;
@@ -555,6 +556,7 @@
               }
             }
           }
+
           .giftCode {
             display: flex;
             align-items: center;
@@ -567,19 +569,21 @@
             button {
               background-color: transparent;
               border: 1px solid #c2c1c1;
-              border-radius: 3px;
-              width: 74px;
-              height: 48px;
+              border-radius: 5px;
+              width: 75px;
+              height: 49px;
               font-size: 14px;
               color: #535353;
               font-weight: 800;
               cursor: pointer;
-              .filled {
-                background-color: #000;
+              transition: background-color 0.4s ease, color 0.4s ease;
+              &.filled {
+                background-color: #090612;
                 color: #fff;
               }
             }
           }
+
           .subtotal {
             margin-top: 25px;
             display: flex;
@@ -630,3 +634,14 @@
     }
   }
 }
+
+// @media (max-width: 1600px) {
+//   .checkoutPage {
+//     .container {
+//       .row {
+//         width: 80%; 
+//         margin: 0 auto;  
+//       }
+//     }
+//   }
+// }
