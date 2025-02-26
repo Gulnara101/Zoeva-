@@ -44,30 +44,36 @@ const BestSellersSec = () => {
                     <p>{item.price}</p>
                   </div>
                   <Link>{item.btn}</Link>
-                  {activeCard === item.id && item.ttl && (
-                    <div className="hoverDiv">
+                  <div
+                    className={
+                      activeCard === item.id && item.ttl
+                        ? "hoverDiv"
+                        : " hiddenDiv"
+                    }
+                  >
+                    <div className="hoverText">
                       <p>{item.ttl}</p>
                       <span>{item.mode}</span>
-                      <div className="hoverImages">
-                        {item.img.map((mini, index) => (
-                          <div className="hoverImgs" key={index}>
-                            {typeof mini === "string" ? (
-                              <img src={mini} alt={item.ttl} />
-                            ) : (
-                              <div
-                                className="color"
-                                style={{
-                                  backgroundColor: mini.value,
-                                  width: 50,
-                                  height: 16,
-                                }}
-                              ></div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
                     </div>
-                  )}
+                    <div className="hoverImages">
+                      {item?.img?.map((mini, index) => (
+                        <div className="hoverImgs" key={index}>
+                          {typeof mini === "string" ? (
+                            <img src={mini} alt={item.ttl} />
+                          ) : (
+                            <div
+                              className="color"
+                              style={{
+                                backgroundColor: mini.value,
+                                width: 50,
+                                height: 16,
+                              }}
+                            ></div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                   <div className="type">
                     <p>{item.type}</p>
                   </div>

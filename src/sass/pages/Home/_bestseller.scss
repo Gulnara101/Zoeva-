@@ -16,6 +16,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
+
         .cart {
           position: relative;
           display: flex;
@@ -96,64 +97,75 @@
               }
             }
           }
+          .hiddenDiv {
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            height: 0;
+            transform: translateY(60px);
+            overflow: hidden;
+          }
+          .hoverDiv {
+            z-index: 99;
+            position: absolute;
+            bottom: 33%;
+            left: 0;
+            background: white;
+            width: 100%;
+            max-height: 0;
+            color: black;
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
+              max-height 0.5s ease-in-out;
+            .hoverText {
+              padding: 10px 5px;
+            }
+            .hoverImages {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 3px;
+              padding: 10px 5px;
+              .hoverImgs {
+                img {
+                  width: 50px;
+                  height: 16px;
+                  cursor: pointer;
+                  transition: transform 0.4s ease-in;
+
+                  &:hover {
+                    border: 1px solid black;
+                  }
+                }
+                .color {
+                  &:hover {
+                    border: 1px solid black;
+                  }
+                }
+              }
+            }
+            p {
+              font-size: 14px;
+              padding: 12px 0px;
+            }
+            span {
+              font-size: 12px;
+              margin-bottom: 25px;
+              letter-spacing: 1.1px;
+            }
+          }
           &:hover {
             .hoverDiv {
               opacity: 1;
-              height: auto;
-              transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-              bottom: 33%;
+              max-height: 200px;
+              transform: translateY(0);
             }
-          }
-        }
-        .hoverDiv {
-          z-index: 99;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          background: red;
-          width: 100%;
-          min-height: 0;
-          height: 0;
-          color: black;
-          padding: 10px 5px;
-          display: flex;
-          justify-content: start;
-          flex-direction: column;
-          opacity: 0;
-          transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-          .hoverImages {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3px;
-            img {
-              width: 50px;
-              height: 16px;
-              cursor: pointer;
-              transition: transform 0.4s ease-in;
-              &:hover {
-                border: 1px solid black;
-              }
-            }
-            .color {
-              &:hover {
-                border: 1px solid black;
-              }
-            }
-          }
-
-          p {
-            font-size: 14px;
-            padding: 12px 0px;
-          }
-
-          span {
-            font-size: 12px;
-            margin-bottom: 25px;
-            letter-spacing: 1.1px;
           }
         }
       }
+
       .seeAll {
         margin-top: 60px;
         margin-bottom: 70px;

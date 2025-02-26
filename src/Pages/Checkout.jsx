@@ -42,7 +42,9 @@ const Checkout = () => {
               </Link>
             </div>
             <div className="expressCheckout">
-              <h3>Express checkout</h3>
+              <div className="expressText">
+                <h3>Express checkout</h3>
+              </div>
               <div className="payType">
                 <Link className="shopPay">
                   <img src={shopPay} alt="#" />
@@ -69,8 +71,11 @@ const Checkout = () => {
                 <CustomInput />
               </div>
               <div className="contactWithEmail">
-                <input type="checkbox" />
-                <p>Email me with news and offers</p>
+                <label className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="customCheckbox"></span>
+                  <p>Email me with news and offers</p>
+                </label>
               </div>
               <h3 className="delivery">Delivery</h3>
               <InputsGroups />
@@ -130,14 +135,16 @@ const Checkout = () => {
                     </div>
                     <CustomInput placeholder="Name on card" type="text" />
                     <div className="checkBoxDeactive">
-                      <input
-                        type="checkbox"
-                        checked={isChecked}
-                        onChange={() => setIsChecked(!isChecked)}
-                      />
-                      <p>Use shipping address as billing address</p>
+                      <label className="checkboxContainer">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => setIsChecked(!isChecked)}
+                        />
+                        <span className="customCheckbox"></span>
+                        <p>Use shipping address as billing address</p>
+                      </label>
                     </div>
-
                     <div
                       className={`billing ${isChecked ? "hidden" : "visible"}`}
                     >
@@ -148,7 +155,6 @@ const Checkout = () => {
                     </div>
                   </div>
                 </div>
-
                 <div
                   className="paypalDetails"
                   onClick={() => setSelectedMethod("paypal")}

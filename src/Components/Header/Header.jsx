@@ -4,7 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { CiUser, CiShoppingBasket } from "react-icons/ci";
 import Logo from "../../Images/svg/logo.svg";
 import BrushSets from "../Header/BrushSets";
-import Brushes from "../Header/Brushes";
+import Brushes from "../Header/Brushes"; 
 import Face from "../Header/Face";
 import Eyes from "../Header/Eyes";
 import Lips from "../Header/Lips";
@@ -22,12 +22,12 @@ const Header = () => {
   const [activeAccessories, setActiveAccessories] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [hidden, setHidden] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {

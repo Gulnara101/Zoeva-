@@ -4,7 +4,7 @@ import excample from "../../Images/eyesPhotos/27.webp";
 
 const PerfectPair = () => {
   return (
-    <div className="PerfectPair">
+    <div className="perfectPair">
       <div className="container">
         <div className="row">
           <div className="perfectPairProductImage">

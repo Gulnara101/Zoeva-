@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import excample from "../Images/eyesPhotos/27.webp";
 import { Link } from "react-router-dom";
@@ -7,6 +7,18 @@ import { FaPlus } from "react-icons/fa6";
 
 const Cart = (props) => {
   const { isOpen, setIsOpen } = props;
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
     <div className={`mycart ${isOpen ? "open" : ""}`}>
       <div className="cartText">
