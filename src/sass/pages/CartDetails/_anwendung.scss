@@ -1,0 +1,72 @@
+@import "../../mixins";
+.anwendung {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      h2 {
+        @include heading;
+        margin-bottom: 30px;
+      }
+      .anwendungCarts {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        .anwendungCart {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          gap: 30px;
+          .anwendungVideo {
+            height: 31vw;
+            max-height: 50rem;
+            position: relative;
+            width: 100%;
+            video {
+              object-fit: cover;
+              height: 100%;
+              width: 90%;
+              &::-webkit-media-controls {
+                opacity: 0;
+                transition: all 0.4s ease-in-out;
+              }
+            }
+
+            &:hover video::-webkit-media-controls {
+              opacity: 1;
+            }
+          }
+
+          .anwendungAbout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            width: 70%;
+            margin: 0 auto;
+            h3 {
+              @include heading;
+              margin-bottom: 20px;
+            }
+            p {
+              font-size: 14px;
+              color: #221c35;
+              line-height: 1.6;
+              letter-spacing: 0.032em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

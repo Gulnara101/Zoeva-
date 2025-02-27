@@ -16,7 +16,7 @@ const CardDetail = () => {
     setOpenId(openId === id ? null : id);
   };
   return (
-    <div className="cardDetail">
+    <section className="cardDetail">
       <div className="row">
         <div className="productMoreImg">
           <div className="inOutIcon">
@@ -98,7 +98,7 @@ const CardDetail = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
