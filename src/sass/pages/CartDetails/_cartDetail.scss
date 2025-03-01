@@ -2,35 +2,44 @@
 .cardDetail {
   .row {
     display: flex;
-    .productMoreImg {
+    align-items: flex-start;
+    justify-content: center;
+    .productMore {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-      gap: 5px;
-      justify-content: center;
-      padding-left: 30px;
-      .moreImages {
+      width: 100%;
+      .productMoreImg {
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 100%;
         gap: 5px;
         justify-content: center;
-        padding-right: 2px;
-        img {
-          width: 100px;
-          height: 110px;
-          object-fit: cover;
-          cursor: pointer;
+        padding-left: 30px;
+        .moreImages {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+          justify-content: center;
+          padding-right: 2px;
+          img {
+            width: 100px;
+            height: 110px;
+            object-fit: cover;
+            cursor: pointer;
+          }
+        }
+        .leftRightIcon {
+          display: none;
         }
       }
-    }
-    .mainProduct {
-      img {
-        width: 80vw;
-        max-width: 880px;
-        height: auto;
-        object-fit: cover;
+      .mainProduct {
+        img {
+          width: 80vw;
+          max-width: 880px;
+          height: auto;
+          object-fit: cover;
+        }
       }
     }
     .mainProductDetails {
@@ -46,7 +55,7 @@
           padding: 7px 7px 7px 0;
           p {
             font-size: 12px;
-            &:hover{
+            &:hover {
               text-decoration: underline;
               cursor: pointer;
             }
@@ -137,6 +146,142 @@
             font-size: 14px;
           }
         }
+      }
+    }
+  }
+}
+@media (max-width: 1440px) {
+  .cardDetail {
+    margin-top: 12%;
+    .row {
+      .mainProduct {
+        img {
+          max-width: 800px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1340px) {
+  .cardDetail {
+    .row {
+      .mainProduct {
+        img {
+          max-width: 700px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1170px) {
+  .cardDetail {
+    .row {
+      .mainProduct {
+        img {
+          max-width: 600px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1050px) {
+  .cardDetail {
+    .row {
+      .mainProduct {
+        img {
+          max-width: 500px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 990px) {
+  .cardDetail {
+    .row {
+      .productMore {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 50%;
+        padding-left: 7px;
+        .productMoreImg {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          padding-left: 0;
+          .moreImages {
+            flex-direction: row;
+            justify-content: center;
+          }
+          .inOutIcon {
+            display: none;
+          }
+          .leftRightIcon {
+            display: block;
+          }
+        }
+        .mainProduct{
+          img {
+            max-width: 400px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width:750px){
+  .cardDetail {
+    margin-top: 10%;
+    .row {
+      flex-direction: column;
+      .productMore {
+       margin-top: 82px;
+       width: 100%;
+       .productMoreImg{
+        display: flex;
+        justify-self: start;
+        width: 100%;
+       }
+       .mainProduct {
+        img{
+          max-width: 100%;
+        }
+       }
+      }
+      .mainProductDetails{
+        .mainProductDetailsContainer{
+          .detailNavigate{
+            position: absolute;
+            top: 130px;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width:450px){
+  .cardDetail {
+    margin-top: 12%;
+    .row {
+      flex-direction: column;
+      .productMore {
+        margin-top: 82px;
+        width: 100%;
+       .productMoreImg{
+        display: flex;
+        justify-self: start;
+        width: 100%;
+        .leftRightIcon{
+          display: none;
+        }
+        .moreImages{
+          img{
+            width: 70px;
+            height: 100px;
+          }
+        }
+       }
       }
     }
   }

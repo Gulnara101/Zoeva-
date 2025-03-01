@@ -4,7 +4,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import BurgerMenu from "./Components/InputsGroups";
 import Home from "./Pages/Home";
-import LipsBurger from "./Components/BurgerMenu/LipsBurger";
+import LipsBurger from "./Pages/ProductFilter";
 import BrushesBurger from "./Components/BurgerMenu/BrushesBurger";
 import CartPage from "./Pages/CartPage";
 import Checkout from "./Pages/Checkout";
@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/cardDetails" element={<CartDetails />} />
         <Route path="/card" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/mmm" element={<LipsBurger />} />
       </Routes>
 
       {location.pathname !== "/checkout" && <Footer />}

@@ -1,30 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import sellerData from "../../Mocks/bestSellerData";
-import star1 from "../../Images/svg/stars/star1.svg";
-import star2 from "../../Images/svg/stars/star2.svg";
 import { Link } from "react-router-dom";
-
-const BestSellersSec = () => {
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+const WeAlsoRecom = () => {
   const [activeCard, setActiveCard] = useState(null);
-
-  const checkRating = (rating) => {
-    const ratingValue = parseFloat(rating);
-    const starsArray = Array(5).fill(star1);
-    if (ratingValue > 4 && ratingValue < 4.8) {
-      starsArray[4] = star2;
-    } 
-    return starsArray;
-  };
+  const swiperRef = useRef(null);
 
   return (
-    <section className="bestSeller">
-      <div className="container">
-        <div className="row">
-          <h3>Our bestsellers</h3>
-          <div className="carts">
-            {sellerData.slice(0, 8).map((item) => {
-              const starsArray = checkRating(item.rating);
-              return (
+    <section className="weAlsoRecom">
+      <div className="row">
+        <div className="weAlsoRecomHead">
+          <h2>We also recommend</h2>
+        </div>
+        <div className="paginationsIcon">
+          <FaChevronLeft
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="navigationIcon"
+          />
+          <FaChevronRight
+            onClick={() => swiperRef.current?.slideNext()}
+            className="navigationIcon"
+          />
+        </div>
+        <div className="weAlsoRecomProducts">
+          <Swiper
+            modules={[Navigation]}
+            slidesPerView={4}
+            slidesPerGroup={1}
+            spaceBetween={30}
+            speed={1500}
+            centeredSlides={false}
+            pagination={{ clickable: true }}
+            navigation={false}
+            className="mySwiper"
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+          >
+            {sellerData.slice(0, 8).map((item) => (
+              <SwiperSlide key={item.id} className="swiperSlidePage">
                 <div
                   className="cart"
                   key={item.id}
@@ -32,12 +47,6 @@ const BestSellersSec = () => {
                   onMouseLeave={() => setActiveCard(null)}
                 >
                   <img src={item.image} alt={item.title} />
-                  <div className="rating">
-                    {starsArray.map((star, index) => (
-                      <img key={index} src={star} alt="star" />
-                    ))}
-                    <span>{item.rating}</span>
-                  </div>
                   <div className="cartText">
                     <h3>{item.title}</h3>
                     <h4>{item.color}</h4>
@@ -65,8 +74,6 @@ const BestSellersSec = () => {
                               className="color"
                               style={{
                                 backgroundColor: mini.value,
-                                width: 50,
-                                height: 16,
                               }}
                             ></div>
                           )}
@@ -92,16 +99,13 @@ const BestSellersSec = () => {
                     )}
                   </div>
                 </div>
-              );
-            })}
-          </div>
-          <div className="seeAll">
-            <Link>View All</Link>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
   );
 };
 
-export default BestSellersSec;
+export default WeAlsoRecom;

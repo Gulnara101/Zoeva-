@@ -3,18 +3,18 @@ import CartDetail from "../Components/CartDetails/CardDetail";
 import PerfectPair from "../Components/CartDetails/PerfectPair";
 import Anwendung from "../Components/CartDetails/Anwendung";
 import Comments from "../Components/CartDetails/Comments";
-import WirEmpfehlenAuch from "../Components/CartDetails/WirEmpfehlenAuch";
+import WeAlsoRecom from "../Components/CartDetails/WeAlsoRecom";
 import KurzlichAngesehen from "../Components/CartDetails/KurzlichAngesehen";
 
 const CartDetails = () => {
   return (
     <div className="cartPageDetails">
       <CartDetail />
-      <PerfectPair />
+      {/* <PerfectPair />
       <Anwendung />
       <Comments />
-      <WirEmpfehlenAuch />
-      <KurzlichAngesehen />
+      <WeAlsoRecom />
+      <KurzlichAngesehen /> */}
     </div>
   );
 };

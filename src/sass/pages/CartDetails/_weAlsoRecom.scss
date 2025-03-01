@@ -1,0 +1,180 @@
+@import "../../mixins";
+.weAlsoRecom {
+    margin-top: 10%;
+  .row {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: space-around; 
+    align-items: center;
+    .weAlsoRecomHead {
+      h2 {
+        @include heading;
+      }
+    }
+    .paginationsIcon {
+      display: flex;
+      gap: 10px;
+      z-index: 9988;
+      position: absolute;
+      right: 30px;
+      .navigationIcon{
+        cursor: pointer;
+      }
+    }
+    .weAlsoRecomProducts {
+      display: flex;
+      align-items: end;
+      justify-content: end;
+      width: 72%;
+      .mySwiper {
+        width: 100%;
+        margin: 15px auto;
+        .swiperSlidePage {
+          font-size: 18px;
+          background: transparent;
+          display: flex;
+          justify-content: center;
+          text-align: left;
+          height: 100%;
+          .cart {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            img {
+              width: 270px;
+              height: 297px;
+            }
+            .cartText {
+              width: 100%;
+              h3 {
+                font-size: 23px !important;
+                margin-top: 9px;
+                line-height: 0.7;
+                @include heading;
+              }
+              h4 {
+                font-size: 13px;
+                color: #221c35;
+                margin-bottom: 12px;
+              }
+              p {
+                font-size: 16px;
+                color: #221c35;
+                margin-bottom: 25px;
+              }
+            }
+            a {
+              text-align: center;
+              width: 100%;
+              margin-bottom: 15px;
+              @include learnMore;
+            }
+            .type {
+              background-color: white;
+              padding: 2px 5px;
+              border-top-left-radius: 7px;
+              border-bottom-right-radius: 7px;
+              color: #221c35;
+              position: absolute;
+              top: 20px;
+              left: 10px;
+              p {
+                font-size: 12px;
+                margin-bottom: 5px;
+                letter-spacing: 1.3px;
+              }
+            }
+            .countColor {
+              position: absolute;
+              bottom: 42%;
+              left: 10px;
+              .hoverImgsMoreCount {
+                display: flex;
+                img {
+                  width: 36px;
+                  height: 16px;
+                  margin-right: 2px;
+                }
+                p {
+                  font-size: 13px;
+                }
+              }
+            }
+            .hiddenDiv {
+              transition: all 0.5s ease-in-out;
+              opacity: 0;
+              height: 0;
+              transform: translateY(60px);
+              overflow: hidden;
+            }
+            .hoverDiv {
+              z-index: 99;
+              position: absolute;
+              bottom: 40%;
+              left: 0;
+              background: white;
+              width: 100%;
+              max-height: 0;
+              color: black;
+              display: flex;
+              justify-content: start;
+              flex-direction: column;
+              opacity: 0;
+              transform: translateY(60px);
+              transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
+                max-height 0.5s ease-in-out;
+              .hoverText {
+                padding: 10px 5px;
+              }
+              .hoverImages {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 3px;
+                padding: 10px 5px;
+                .hoverImgs {
+                  img {
+                    width: 36px;
+                    height: 16px;
+                    cursor: pointer;
+                    transition: transform 0.4s ease-in;
+
+                    &:hover {
+                      border: 1px solid black;
+                    }
+                  }
+                  .color {
+                    width: 36px;
+                    height: 16px;
+                    &:hover {
+                      border: 1px solid black;
+                    }
+                  }
+                }
+              }
+              p {
+                font-size: 14px;
+                padding: 12px 0px;
+              }
+              span {
+                font-size: 12px;
+                margin-bottom: 25px;
+                letter-spacing: 1.1px;
+              }
+            }
+            &:hover {
+              .hoverDiv {
+                opacity: 1;
+                max-height: 200px;
+                transform: translateY(0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

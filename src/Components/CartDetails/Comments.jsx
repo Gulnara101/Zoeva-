@@ -10,6 +10,7 @@ import {
   AiOutlineRight,
 } from "react-icons/ai";
 import excample from "../../Images/facePhotos/22.webp";
+import com from "../../Images/comphoto.webp";
 
 const reviewsData = [
   {
@@ -17,6 +18,7 @@ const reviewsData = [
     comment:
       "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
     image: excample,
+    comImg: com,
     name: "John Doe",
     date: "2022-03-15",
     rating: 4,
@@ -41,6 +43,7 @@ const reviewsData = [
     comment:
       "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
     image: excample,
+    comImg: com,
     name: "John Doe",
     date: "2022-03-15",
     rating: 4,
@@ -53,6 +56,7 @@ const reviewsData = [
     comment:
       "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
     image: excample,
+    comImg: com,
     name: "John Doe",
     date: "2022-03-15",
     rating: 4,
@@ -421,6 +425,9 @@ const Comments = () => {
                       </div>
                       <div className="reviewerComment">
                         <p>{review.comment}</p>
+                        <span>Read more</span>
+                        <span>Read less</span>
+                        {review.comImg && <img src={review.comImg} alt="Comment Image" />}
                       </div>
                     </div>
                   </div>

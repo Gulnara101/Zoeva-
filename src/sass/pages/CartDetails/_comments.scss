@@ -410,9 +410,22 @@
                   }
                 }
                 .reviewerComment {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
                   margin-top: 15px;
+                  span{
+                    font-size: 14px;
+                    margin-left: 5px;
+                  }
                   p {
                     font-size: 16px;
+                  }
+                  img{
+                    margin-left: 4px;
+                    width: 100px;
+                    height: 100px;
+                    object-fit: cover;
                   }
                 }
               }

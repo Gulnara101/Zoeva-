@@ -31,7 +31,7 @@
 @use "./pages/CartDetails/perfectPair";
 @use "./pages/CartDetails/anwendung";
 @use "./pages/CartDetails/comments";
-@use "./pages/CartDetails/wirEmpfehlenAuch";
+@use "./pages/CartDetails/weAlsoRecom";
 @use "./pages/CartDetails/kurzlichAngesehen";
 @use "./pages/CartDetails/gutzuwissen";
 
@@ -50,3 +50,4 @@
 @use "./components/inputsGroups.scss";
 
 @use "./pages/checkout";
+@use "./pages/productFilter";
