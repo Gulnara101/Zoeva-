@@ -54,7 +54,7 @@ const MoreZoeva = () => {
           </div>
         </div>
         <div className="moreeTwo">
-          <MoreTwo />
+          <MoreTwo /> 
         </div>
       </div>
     </section>

@@ -55,7 +55,7 @@
                 font-size: 14px;
                 margin-bottom: 15px;
               }
-              span{
+              span {
                 font-size: 12px;
                 color: #221c35;
                 margin-bottom: 5px;
@@ -68,6 +68,9 @@
                 justify-content: start;
                 width: 100%;
                 align-items: center;
+                .icons {
+                  display: flex;
+                }
                 img {
                   width: 19px;
                   height: 19px;
@@ -76,14 +79,126 @@
               }
             }
           }
-          button{
+          button {
             @include learnMore;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            p{
+            p {
               margin: 0 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1300px) {
+  .perfectPair {
+    .container {
+      .row {
+        .perfectPairProductImage {
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 990px) {
+  .perfectPair {
+    .container {
+      .row {
+        .perfectPairProductAbout {
+          .perfectCards {
+            .perfectCard {
+              .perfectTitle {
+                .rating {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: start;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 750px) {
+  .perfectPair {
+    .container {
+      .row {
+        display: flex;
+        flex-direction: column;
+        .perfectPairProductAbout {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .perfectCards {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: start;
+            align-items: start;
+            .perfectCard {
+              .img{
+                img{
+                  width:250px;
+                  height: auto;
+                }
+              }
+              .perfectTitle {
+                .rating {
+                  display: flex;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .perfectPair {
+    .container {
+      .row {
+       .perfectPairProductAbout {
+         .perfectCards {
+           .perfectCard {
+             .img{
+                img{
+                  width:170px;
+                  height: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 350px) {
+  .perfectPair {
+    .container {
+      .row {
+       .perfectPairProductAbout {
+         .perfectCards {
+           .perfectCard {
+             .img{
+                img{
+                  width:120px;
+                  height: auto;
+                }
+              }
             }
           }
         }

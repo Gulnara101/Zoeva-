@@ -10,11 +10,11 @@ const CartDetails = () => {
   return (
     <div className="cartPageDetails">
       <CartDetail />
-      {/* <PerfectPair />
+      <PerfectPair />
       <Anwendung />
       <Comments />
       <WeAlsoRecom />
-      <KurzlichAngesehen /> */}
+      <KurzlichAngesehen />
     </div>
   );
 };

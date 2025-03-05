@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
 import { MdStar } from "react-icons/md";

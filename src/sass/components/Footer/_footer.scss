@@ -92,22 +92,22 @@ footer {
           display: none;
         }
       }
-      .footerContentMedium{
+      .footerContentMedium {
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: center;
         padding-top: 30px;
-        img{
+        img {
           width: 105px;
           height: 105px;
           margin-right: 10px;
         }
-        h2{
+        h2 {
           font-size: 18px;
           margin-right: 10px;
         }
-        .trustpilot{
+        .trustpilot {
           width: 90px;
           margin-left: 10px;
         }
@@ -154,7 +154,7 @@ footer {
             align-items: center;
           }
           .footerNav {
-            display: none ;
+            display: none;
           }
           .footerActive {
             margin-top: 40px;
@@ -172,21 +172,16 @@ footer {
     }
   }
 }
-
-// @media (max-width: 460px) {
-//   .footerGetOff {
-//     h3 {
-//       font-size: 35px !important;
-//     }
-//     p {
-//       font-size: 30px !important;
-//     }
-//     form {
-//       display: flex;
-//       flex-direction: column;
-//       gap: 10px;
-//       align-items: center;
-//       justify-content: center;
-//     }
-//   }
-// }
+@media (max-width: 370px) {
+  footer {
+    .container {
+      .row {
+        .footerContentMedium {
+          display: flex;
+          flex-wrap: wrap;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}

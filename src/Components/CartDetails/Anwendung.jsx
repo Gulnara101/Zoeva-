@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import video1 from "../../Videos/video1.mp4";
 import video2 from "../../Videos/video2.mp4";
 import video3 from "../../Videos/video3.mp4";
+import AnwendungSlide from "../CartDetails/AnwenSlider";
 
 const videos = [video1, video2, video3];
 
@@ -51,6 +52,9 @@ const Anwendung = () => {
               </div>
             ))}
           </div>
+        </div>
+        <div className="anwendungTwo">
+          <AnwendungSlide />
         </div>
       </div>
     </section>

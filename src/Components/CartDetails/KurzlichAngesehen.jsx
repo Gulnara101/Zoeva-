@@ -19,7 +19,7 @@ const KurzlichAngesehen = () => {
           <FaChevronLeft
             onClick={() => swiperRef.current?.slidePrev()}
             className="navigationIcon"
-          />
+          /> 
           <FaChevronRight
             onClick={() => swiperRef.current?.slideNext()}
             className="navigationIcon"
@@ -37,6 +37,12 @@ const KurzlichAngesehen = () => {
             navigation={false}
             className="mySwiper"
             onSwiper={(swiper) => (swiperRef.current = swiper)}
+            breakpoints={{
+              170: { slidesPerView: 1, spaceBetween: 30 },
+              440: { slidesPerView: 2, spaceBetween: 30 },
+              1100: { slidesPerView: 3, spaceBetween: 30 },
+              1466: { slidesPerView: 4, spaceBetween: 30 },
+            }}
           >
             {newInData.slice(0, 8).map((item) => (
               <SwiperSlide key={item.id} className="swiperSlidePage">

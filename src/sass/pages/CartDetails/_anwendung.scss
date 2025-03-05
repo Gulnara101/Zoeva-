@@ -69,5 +69,20 @@
         }
       }
     }
+    .anwendungTwo{
+      display: none;
+    }
+  }
+}
+@media (max-width:990px){
+  .anwendung{
+    .container{
+      .row{
+        display: none;
+      }
+      .anwendungTwo{
+        display: block;
+      }
+    }
   }
 }

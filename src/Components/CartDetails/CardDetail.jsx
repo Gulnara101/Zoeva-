@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
-  MdKeyboardArrowRight,
+  MdKeyboardArrowRight, 
   MdKeyboardArrowLeft,
 } from "react-icons/md";
 import excample from "../../Images/eyesPhotos/27.webp";
@@ -105,7 +105,7 @@ const CardDetail = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div> 
       </div>
     </section>
   );

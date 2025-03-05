@@ -1,11 +1,11 @@
 @import "../../mixins";
 .weAlsoRecom {
-    margin-top: 10%;
+  margin-top: 10%;
   .row {
     display: flex;
     width: 100%;
     gap: 20px;
-    justify-content: space-around; 
+    justify-content: space-around;
     align-items: center;
     .weAlsoRecomHead {
       h2 {
@@ -15,10 +15,10 @@
     .paginationsIcon {
       display: flex;
       gap: 10px;
-      z-index: 9988;
+      z-index: 998;
       position: absolute;
       right: 30px;
-      .navigationIcon{
+      .navigationIcon {
         cursor: pointer;
       }
     }
@@ -170,6 +170,45 @@
                 opacity: 1;
                 max-height: 200px;
                 transform: translateY(0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 750px) {
+  .weAlsoRecom {
+    .row {
+      flex-direction: column;
+      gap: 10px;
+      .paginationsIcon {
+        gap: 5px;
+      }
+      .weAlsoRecomProducts {
+        width: 90%;
+        .mySwiper {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 570px) {
+  .weAlsoRecom {
+    .row {
+      .paginationsIcon {
+        gap: 0;
+      }
+      .weAlsoRecomProducts {
+        width: 100%;
+        .mySwiper {
+          margin: 0 auto;
+          .swiperSlidePage {
+            .cart {
+              img{
+                width: 235px;
               }
             }
           }

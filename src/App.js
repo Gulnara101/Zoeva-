@@ -4,7 +4,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import BurgerMenu from "./Components/InputsGroups";
 import Home from "./Pages/Home";
-import LipsBurger from "./Pages/ProductFilter";
+import LipsBurger from "./Components/CartDetails/AnwenSlider";
 import BrushesBurger from "./Components/BurgerMenu/BrushesBurger";
 import CartPage from "./Pages/CartPage";
 import Checkout from "./Pages/Checkout";

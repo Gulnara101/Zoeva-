@@ -29,10 +29,12 @@ const PerfectPair = () => {
                   <p>$24,00</p>
                   <span>Lorem, ipsum dolor.</span>
                   <div className="rating">
-                    <img src="#" alt="icon" />
-                    <img src="#" alt="icon" />
-                    <img src="#" alt="icon" />
-                    <img src="#" alt="icon" />
+                    <div className="icons">
+                      <img src="#" alt="icon" />
+                      <img src="#" alt="icon" />
+                      <img src="#" alt="icon" />
+                      <img src="#" alt="icon" />
+                    </div>
                     <p>4.5 (2348)</p>
                   </div>
                 </div>
@@ -46,10 +48,12 @@ const PerfectPair = () => {
                   <p>$24,00</p>
                   <span>Lorem, ipsum dolor.</span>
                   <div className="rating">
-                    <img src="#" alt="icon" />
-                    <img src="#" alt="icon" />
-                    <img src="#" alt="icon" />
-                    <img src="#" alt="icon" />
+                    <div className="icons">
+                      <img src="#" alt="icon" />
+                      <img src="#" alt="icon" />
+                      <img src="#" alt="icon" />
+                      <img src="#" alt="icon" />
+                    </div>
                     <p>4.5 (2348)</p>
                   </div>
                 </div>

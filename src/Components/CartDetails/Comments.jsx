@@ -16,7 +16,7 @@ const reviewsData = [
   {
     id: "1",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     comImg: com,
     name: "John Doe",
@@ -29,7 +29,7 @@ const reviewsData = [
   {
     id: "2",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -41,7 +41,7 @@ const reviewsData = [
   {
     id: "3",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     comImg: com,
     name: "John Doe",
@@ -54,7 +54,7 @@ const reviewsData = [
   {
     id: "4",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     comImg: com,
     name: "John Doe",
@@ -67,7 +67,7 @@ const reviewsData = [
   {
     id: "5",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -79,7 +79,7 @@ const reviewsData = [
   {
     id: "6",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -91,7 +91,7 @@ const reviewsData = [
   {
     id: "7",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -103,7 +103,7 @@ const reviewsData = [
   {
     id: "8",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -115,7 +115,7 @@ const reviewsData = [
   {
     id: "9",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -127,7 +127,7 @@ const reviewsData = [
   {
     id: "10",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -139,7 +139,7 @@ const reviewsData = [
   {
     id: "11",
     comment:
-      "loremkjnvksjdnvsjknvkwjev nbswalivnelvnearlvbnerfvlgnerbvajkvbnrelvbndrsevlbrnevkrnbf zdbvn fdtrjhbn df",
+      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
     image: excample,
     name: "John Doe",
     date: "2022-03-15",
@@ -412,6 +412,9 @@ const Comments = () => {
                       </div>
                       <h3>See less</h3>
                       <h3>See more</h3>
+                      <div className="comentDate">
+                        <time datetime="2024-02-27T14:30:00">27/02/24</time>
+                      </div>
                     </div>
                     <div className="reviewerComments">
                       <div className="ratingStars">
@@ -427,7 +430,9 @@ const Comments = () => {
                         <p>{review.comment}</p>
                         <span>Read more</span>
                         <span>Read less</span>
-                        {review.comImg && <img src={review.comImg} alt="Comment Image" />}
+                        {review.comImg && (
+                          <img src={review.comImg} alt="Comment Image" />
+                        )}
                       </div>
                     </div>
                   </div>

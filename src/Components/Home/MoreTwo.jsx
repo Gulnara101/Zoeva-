@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
-
 import "swiper/css";
-// import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const MoreTwo = () => {
@@ -20,7 +18,6 @@ const MoreTwo = () => {
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             spaceBetween={10}
             slidesPerView={3}
-            //   navigation
             pagination={{
               type: "fraction",
             }}
