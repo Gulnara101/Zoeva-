@@ -42,6 +42,9 @@
 @use "./components/Header/brushes";
 @use "./components/Header/faceEyeLips";
 
+// Filter page
+@use "./pages/filter";
+
 // Cart page
 @use "./pages/Cart/cart";
 @use "./pages/Cart/cartPage";

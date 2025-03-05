@@ -5,7 +5,7 @@ import Footer from "./Components/Footer/Footer";
 import BurgerMenu from "./Components/InputsGroups";
 import Home from "./Pages/Home";
 import LipsBurger from "./Components/CartDetails/AnwenSlider";
-import BrushesBurger from "./Components/BurgerMenu/BrushesBurger";
+import FilterPage from "./Pages/FilterMenu";
 import CartPage from "./Pages/CartPage";
 import Checkout from "./Pages/Checkout";
 import CartDetails from "./Pages/CartDetails";
@@ -23,6 +23,7 @@ const App = () => {
         <Route path="/card" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/mmm" element={<LipsBurger />} />
+        <Route path="/filter" element ={<FilterPage/>}/>
       </Routes>
 
       {location.pathname !== "/checkout" && <Footer />}
