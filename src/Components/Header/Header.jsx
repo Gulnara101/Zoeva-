@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiUser, CiShoppingBasket } from "react-icons/ci";
 import Logo from "../../Images/svg/logo.svg";
 import BrushSets from "../Header/BrushSets";
-import Brushes from "../Header/Brushes"; 
+import Brushes from "../Header/Brushes";
 import Face from "../Header/Face";
 import Eyes from "../Header/Eyes";
 import Lips from "../Header/Lips";
@@ -12,8 +12,10 @@ import Accessories from "../Header/Accessories";
 import Cart from "../../Pages/Cart";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import flag from "../../Images/eyesPhotos/28.webp";
+import MainContext from "../../Context/MainContext";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [activeSets, setActiveSets] = useState(false);
   const [activeBrush, setActiveBrush] = useState(false);
   const [activeFace, setActiveFace] = useState(false);
@@ -24,11 +26,9 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
-
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen((prev) => !prev);
   };
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -50,9 +50,9 @@ const Header = () => {
         </div>
         <div className="headerActions">
           <div className="logo">
-          <Link to="/">
-            <img src={Logo} alt="Logo" />
-          </Link>
+            <Link to="/">
+              <img src={Logo} alt="Logo" />
+            </Link>
           </div>
           <div className="userControls">
             <IoSearchOutline className="icon" />
@@ -80,11 +80,11 @@ const Header = () => {
           </div>
         </div>
         <div className="burgerMenuIcon" onClick={toggleMenu}>
-          <span className={menuOpen ? "line open" : "line"}></span>
-          <span className={menuOpen ? "line open" : "line"}></span>
-          <span className={menuOpen ? "line open" : "line"}></span>
-        </div>
-        {menuOpen && <BurgerMenu isOpen={menuOpen} toggleMenu={toggleMenu} />}
+        <span className={menuOpen ? "line open" : "line"}></span>
+        <span className={menuOpen ? "line open" : "line"}></span>
+        <span className={menuOpen ? "line open" : "line"}></span>
+      </div>
+      {menuOpen && <BurgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />}
         <nav className="navBar">
           <ul className="navList">
             <li className="navItem">

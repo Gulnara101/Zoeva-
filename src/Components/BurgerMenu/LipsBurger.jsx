@@ -3,11 +3,13 @@ import { RiArrowLeftSLine } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import burgerData from "../../Mocks/burgerMenu";
 
-const LipsBurger = () => {
+const LipsBurger = ({resetBurgerMenu}) => {
   return (
     <div className="faceBurgerMenu">
       <div className="burgerHeadMenu">
-        <RiArrowLeftSLine />
+        <div onClick={resetBurgerMenu}>
+          <RiArrowLeftSLine />
+        </div>
         <h4>LIPS</h4>
         <IoClose />
       </div>

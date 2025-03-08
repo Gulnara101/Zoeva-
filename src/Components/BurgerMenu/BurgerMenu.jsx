@@ -1,63 +1,72 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   RiArrowLeftSLine,
   RiArrowRightSLine,
-  RiArrowDownSLine, 
+  RiArrowDownSLine,
+  RiArrowUpSLine,
 } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 
-import { useNavigate } from "react-router-dom";
 import burgerData from "../../Mocks/burgerMenu";
 import Eye from "../BurgerMenu/EyesBurger";
 import Face from "../BurgerMenu/FaceBurger";
 import Lips from "../BurgerMenu/LipsBurger";
 import Brush from "../BurgerMenu/BrushesBurger";
+import MainContext from "../../Context/MainContext";
 
 const BurgerMenu = () => {
-  const [selectedComponent, setSelectedComponent] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
   const [openIndex, setOpenIndex] = useState(null);
-  const element=useRef()
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedComponent, setSelectedComponent] = useState(null);
+  const element = useRef();
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const handleBack = () => {
-    setSelectedComponent(null)
-    console.log('test');
-    
+    setSelectedComponent(null);
   };
 
-  const resetBurgerMenu=()=>{
+  const resetBurgerMenu = () => {
     setSelectedComponent(null);
-  }
+  };
 
   const handleItemClick = (index) => {
-    element.current.className='active'
+    element.current.className = "active";
     if (index === 1) {
       setSelectedComponent(<Face resetBurgerMenu={resetBurgerMenu} />);
     } else if (index === 2) {
-      setSelectedComponent(<Eye  />);
+      setSelectedComponent(<Eye resetBurgerMenu={resetBurgerMenu} />);
     } else if (index === 3) {
-      setSelectedComponent(<Lips />);
+      setSelectedComponent(<Lips resetBurgerMenu={resetBurgerMenu} />);
     } else if (index === 4) {
-      setSelectedComponent(<Brush />);
+      setSelectedComponent(<Brush resetBurgerMenu={resetBurgerMenu} />);
     }
   };
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
+
+  //   return () => {
+  //     document.body.style.overflow = "auto"; // Reset when the component unmounts
+  //   };
+  // }, [isOpen]);
 
   return (
-    <div className="burgerMenu">
+    <div className={`burgerMenu ${isOpen ? "open" : ""}`}>
       <div className="menu">
         <RiArrowLeftSLine onClick={handleBack} />
         <h4>Menu</h4>
-        <IoClose onClick={toggleMenu} />
+        <IoClose onClick={() => setIsOpen(false)} />
       </div>
       {burgerData.slice(0, 1).map((item) => (
         <div className="burger" key={item.id}>
@@ -137,22 +146,29 @@ const BurgerMenu = () => {
       </div>
       {burgerData.slice(29, 32).map((item, index) => (
         <div className="endBurger" key={item.id}>
-          <ul className="titles">
+          <ul className="titles" onClick={() => handleToggle(index)}>
             <li className="headTitle">
-              <div className="head" onClick={() => handleToggle(index)}>
+              <div className="head">
                 {item.title}
-                <RiArrowDownSLine className="downIcon" />
+                {openIndex === index ? (
+                  <RiArrowUpSLine className="downIcon" />
+                ) : (
+                  <RiArrowDownSLine className="downIcon" />
+                )}
               </div>
               <ul className={`children ${openIndex === index ? "open" : ""}`}>
-                {item.children.map((child) => (
-                  <li key={child.id}>{child.title}</li>
+                {item.children.map((child, childIndex) => (
+                  <li key={child.id || `child-${childIndex}`}>{child.title}</li>
                 ))}
               </ul>
             </li>
           </ul>
         </div>
       ))}
-      <div ref={element} className="selectedComponent active">{selectedComponent}</div>
+
+      <div ref={element} className="selectedComponent active">
+        {selectedComponent}
+      </div>
     </div>
   );
 };
