@@ -7,7 +7,7 @@
   bottom: 0%;
   right: -100%;
   width: 350px;
-  padding: 30px;
+  padding: 0px;
   height: 100vh;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   transition: 0.9s all;
@@ -15,13 +15,13 @@
   &.open {
     right: 0;
   }
-
   .cartText {
     display: flex;
     align-items: center;
     text-align: center;
     height: auto;
     justify-content: space-between;
+    padding: 20px;
     h2 {
       @include heading;
       font-size: 40px !important;
@@ -32,58 +32,70 @@
       color: #221c35;
     }
   }
-
-  .cartProduct {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-
-    .productImg {
-      img {
-        width: 113px;
-        height: 128px;
-      }
+  .cartTop {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+    padding: 20px;
+    .emptyCart {
+      text-align: center;
+      margin-top: 200px;
+      font-size: 22px;
+      color: #221c35;
     }
 
-    .productDetails {
-      h2 {
-        @include heading;
-        font-size: 30px !important;
+    .cartProduct {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      .productImg {
+        img {
+          width: 113px;
+          height: 128px;
+        }
       }
 
-      .price {
-        margin-top: 7px;
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      .quantityNum {
-        display: flex;
-        align-items: center;
-        margin-top: 5px;
-
-        .control {
-          cursor: pointer;
-          color: rgb(71, 71, 71);
-          font-size: 11px;
+      .productDetails {
+        h2 {
+          @include heading;
+          font-size: 24px;
         }
 
-        .quantity {
+        .price {
+          margin-top: 7px;
           font-size: 14px;
-          margin-left: 17px;
-          margin-right: 17px;
+          font-weight: 700;
         }
-      }
 
-      .remove {
-        margin-top: 5px;
-        cursor: pointer;
-        color: #221c35;
-        font-size: 14px;
-        transition: color 0.2s ease-in;
+        .quantityNum {
+          display: flex;
+          align-items: center;
+          margin-top: 5px;
 
-        &:hover {
-          color: red;
+          .control {
+            cursor: pointer;
+            color: rgb(71, 71, 71);
+            font-size: 11px;
+          }
+
+          .quantity {
+            font-size: 14px;
+            margin-left: 17px;
+            margin-right: 17px;
+          }
+        }
+
+        .remove {
+          margin-top: 5px;
+          cursor: pointer;
+          color: #221c35;
+          font-size: 14px;
+          transition: color 0.2s ease-in;
+
+          &:hover {
+            color: red;
+          }
         }
       }
     }
@@ -97,13 +109,13 @@
     bottom: 30px;
     width: 90%;
     margin: 0 auto;
-    right: 18px;
-
+    right:18px;
     .totalNum {
+      background-color: rgb(255, 255, 255);
+      height: 60px;
       display: flex;
-      margin-bottom: 10px;
-      // align-items: center;
       width: 100%;
+      align-items: center;
       justify-content: space-between;
       h4 {
         font-size: 15px;
@@ -126,7 +138,7 @@
 @media (max-width: 767px) {
   .mycart {
     width: 85%;
-    right: -690px; 
+    right: -690px;
     &.open {
       right: 0;
     }

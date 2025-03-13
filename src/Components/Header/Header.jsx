@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiUser, CiShoppingBasket } from "react-icons/ci";
@@ -11,8 +11,10 @@ import Lips from "../Header/Lips";
 import Accessories from "../Header/Accessories";
 import Cart from "../../Pages/Cart";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import flag from "../../Images/eyesPhotos/28.webp";
-import MainContext from "../../Context/MainContext";
+import flag from "../../Images/Flag_of_Germany.svg.webp";
+import Language from "../Language";
+import Search from "../Search";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +28,18 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
+  const [modulLng, setModulLng] = useState(false);
+  const [search, setSearch] = useState(false);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
+  const toggleModul = () => {
+    setModulLng((prev) => !prev);
+  };
+
+  const toggleSearch = () => {
+    setSearch((prev) => !prev);
+  };
+
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
@@ -55,8 +69,10 @@ const Header = () => {
             </Link>
           </div>
           <div className="userControls">
-            <IoSearchOutline className="icon" />
-            <p className="controlP">SEARCH</p>
+            <div className="searchModul" onClick={toggleSearch}>
+              <IoSearchOutline className="icon" />
+              <p className="controlP">SEARCH</p>
+            </div>
             <CiUser className="userIcon" />
             <CiShoppingBasket
               className="icon"
@@ -70,21 +86,27 @@ const Header = () => {
             )}
             <Cart isOpen={cartOpen} setIsOpen={setCartOpen} />
             <img src="#" alt="" />
-            <div className="lng">
+            <div className="lng" onClick={toggleModul}>
               <img src={flag} alt="#" />
               <p className="controlP">ENGLISH</p>
             </div>
+
+
+
             <div className="quantities">
-              <span>1</span>
+              <span>{totalQuantity}</span>
             </div>
+
+
+
           </div>
         </div>
         <div className="burgerMenuIcon" onClick={toggleMenu}>
-        <span className={menuOpen ? "line open" : "line"}></span>
-        <span className={menuOpen ? "line open" : "line"}></span>
-        <span className={menuOpen ? "line open" : "line"}></span>
-      </div>
-      {menuOpen && <BurgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />}
+          <span className={menuOpen ? "line open" : "line"}></span>
+          <span className={menuOpen ? "line open" : "line"}></span>
+          <span className={menuOpen ? "line open" : "line"}></span>
+        </div>
+        {menuOpen && <BurgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />}
         <nav className="navBar">
           <ul className="navList">
             <li className="navItem">
@@ -143,6 +165,8 @@ const Header = () => {
           </ul>
         </nav>
       </div>
+      {modulLng && <Language />}
+      {search && <Search />}
     </header>
   );
 };

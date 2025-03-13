@@ -1,21 +1,55 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
-  MdKeyboardArrowRight, 
+  MdKeyboardArrowRight,
   MdKeyboardArrowLeft,
 } from "react-icons/md";
-import excample from "../../Images/eyesPhotos/27.webp";
 import deliveryIcon from "../../Images/carDeliveryIcon.avif";
 import faqData from "../../Mocks/faqMenu";
+import bestdatam from "../../Mocks/bestSellerData";
+import star1 from "../../Images/svg/stars/star1.svg";
+import star2 from "../../Images/svg/stars/star2.svg";
 
 const CardDetail = () => {
   const [openId, setOpenId] = useState(null);
+  const { cardId } = useParams();
+  const [product, setProduct] = useState(null);
 
   const toggleFAQ = (id) => {
     setOpenId(openId === id ? null : id);
   };
+
+  const checkRating = (rating) => {
+    const ratingValue = parseFloat(rating) || 0;
+    const starsArray = Array(5).fill(star1);
+
+    if (ratingValue > 4 && ratingValue < 4.8) {
+      starsArray[4] = star2;
+    }
+    return starsArray;
+  };
+
+  const getProduct = (id) => {
+    const selectedProduct = bestdatam.find(
+      (product) => product.id === Number(id)
+    );
+    if (selectedProduct) {
+      setProduct(selectedProduct);
+    }
+  };
+
+  useEffect(() => {
+    getProduct(cardId);
+  }, [cardId]);
+
+  if (!product) {
+    return <p>Loading...</p>;
+  }
+
+  const stars = checkRating(product.rating);
+
   return (
     <section className="cardDetail">
       <div className="row">
@@ -28,10 +62,10 @@ const CardDetail = () => {
               <MdKeyboardArrowLeft />
             </div>
             <div className="moreImages">
-              <img src={excample} alt="#" />
-              <img src={excample} alt="#" />
-              <img src={excample} alt="#" />
-              <img src={excample} alt="#" />
+              <img src={product.image} alt="#" />
+              <img src={product.image} alt="#" />
+              <img src={product.image} alt="#" />
+              <img src={product.image} alt="#" />
             </div>
             <div className="inOutIcon">
               <MdKeyboardArrowDown />
@@ -41,46 +75,36 @@ const CardDetail = () => {
             </div>
           </div>
           <div className="mainProduct">
-            <img src={excample} alt="#" />
+            <img src={product.image} alt={product.title} />
           </div>
         </div>
         <div className="mainProductDetails">
           <div className="mainProductDetailsContainer">
             <div className="detailNavigate">
-              <p>Home</p>
+              <Link to="/">
+                <p>Home</p>
+              </Link>
               <MdKeyboardArrowRight />
-              <p>Product</p>
-              <MdKeyboardArrowRight />
-              <p>product title</p>
+              <p>{product.title}</p>
             </div>
-            <p className="productMode">Lorem, ipsum dolor.</p>
-            <h2 className="productTitle">Lorem ipsum dolor sit amet.</h2>
+            <p className="productMode">{product.ttl}</p>
+            <h2 className="productTitle">{product.title}</h2>
             <div className="productRating">
-              <img src="#" alt="icon" />
-              <img src="#" alt="icon" />
-              <img src="#" alt="icon" />
-              <img src="#" alt="icon" />
-              <p>4.5</p>
-              <p>2348</p>
+              {stars.map((star, index) => (
+                <img key={index} src={star} alt="star" />
+              ))}
+              <p>{product.rating}</p>
             </div>
-            <p className="productColor">Black</p>
+            <p className="productColor">{product.color}</p>
             <button>
-              ADD TO CART <p>|</p> $24,00
+              ADD TO CART <p>|</p> {product.price}
             </button>
             <div className="delivery">
               <img src={deliveryIcon} alt="icon" />
               <Link>Free shipping</Link>
             </div>
-            <h2 className="productCom">Lorem ipsum dolor sit.</h2>
-            <p className="productAbout">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Veritatis! Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Deleniti dignissimos vitae adipisci velit. Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Adipisci aperiam sit rem
-              perferendis molestiae! Nulla dignissimos explicabo, nobis ipsam
-              aperiam repudiandae, voluptatum inventore aspernatur, quod at
-              laudantium rem? Accusantium!
-            </p>
+            <h2 className="productCom">{product.shortDescription}.</h2>
+            <p className="productAbout">{product.longDescription}</p>
             <div className="toggleMenu">
               {faqData.map((item) => (
                 <div key={item.id} className="faq">
@@ -105,7 +129,7 @@ const CardDetail = () => {
               ))}
             </div>
           </div>
-        </div> 
+        </div>
       </div>
     </section>
   );

@@ -65,18 +65,18 @@
                 margin-right: 5px;
                 margin-top: 5px;
                 display: flex;
-                justify-content: start;
                 width: 100%;
                 align-items: center;
-                .icons {
-                  display: flex;
-                }
                 img {
                   width: 19px;
                   height: 19px;
                   margin-right: 2px;
                 }
+                p{
+                  margin: 15px 5px;
+                }
               }
+              
             }
           }
           button {

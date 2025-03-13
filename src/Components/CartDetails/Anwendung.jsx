@@ -1,13 +1,23 @@
-import React, { useEffect, useRef } from "react";
-import video1 from "../../Videos/video1.mp4";
-import video2 from "../../Videos/video2.mp4";
-import video3 from "../../Videos/video3.mp4";
+import React, { useEffect, useRef, useState } from "react";
 import AnwendungSlide from "../CartDetails/AnwenSlider";
-
-const videos = [video1, video2, video3];
+import { useParams } from "react-router-dom";
+import bestdatam from "../../Mocks/bestSellerData";
 
 const Anwendung = () => {
+  const { cardId } = useParams();
+  const [product, setProduct] = useState(null);
   const videoRefs = useRef([]);
+
+  useEffect(() => {
+    const getProduct = (id) => {
+      const selectedProduct = bestdatam.find(
+        (product) => product.id === Number(id)
+      );
+      setProduct(selectedProduct || null);
+    };
+
+    getProduct(cardId);
+  }, [cardId]);
 
   useEffect(() => {
     videoRefs.current.forEach((video) => {
@@ -15,23 +25,23 @@ const Anwendung = () => {
         try {
           video.play();
         } catch (error) {
-          console.error("error");
+          console.error("Error playing video:", error);
         }
       }
     });
-  }, []);
+  }, [product]);
 
   return (
     <section className="anwendung">
       <div className="container">
         <div className="row">
-          <h2>Anwendung</h2>
+          {product?.video?.length > 0 && <h2>Anwendung</h2>}
           <div className="anwendungCarts">
-            {videos.map((video, index) => (
+            {product?.video?.map((video, index) => (
               <div className="anwendungCart" key={index}>
                 <div className="anwendungVideo">
                   <video
-                    src={video}
+                    src={video.src}
                     ref={(el) => (videoRefs.current[index] = el)}
                     controls
                     loop
@@ -41,13 +51,7 @@ const Anwendung = () => {
                 </div>
                 <div className="anwendungAbout">
                   <h3>{index + 1}</h3>
-                  <p>
-                    {index === 0
-                      ? "Curl your lashes with our ZOEVA Ooh la Lash Curler for a more dramatic lengthening effect."
-                      : index === 1
-                      ? "Start at the base of your lashes and pull the mascara wand straight through from root to tip. One application provides an instant effect."
-                      : "Add additional coats for intense length, definition, and instant lift."}
-                  </p>
+                  <p>{video.description}</p>
                 </div>
               </div>
             ))}

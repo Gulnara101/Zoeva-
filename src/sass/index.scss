@@ -53,4 +53,9 @@
 @use "./components/customInput";
 @use "./components/inputsGroups.scss";
 
+// Language modul
+@use "./components/language";
+@use "./components/search";
+@use "./components/reviewModul";
+
 @use "./pages/checkout";

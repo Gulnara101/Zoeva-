@@ -1,0 +1,118 @@
+@import "../mixins";
+.searchModule {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .search {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    gap: 8px;
+    background: #f8f8f8;
+    padding: 30px 70px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    p {
+      margin-bottom: 10px;
+      font-size: 12px;
+      letter-spacing: 1.4px;
+    }
+    .sinput {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      input {
+        padding: 8px;
+        border: none;
+        border-radius: 4px;
+        outline: none;
+        width: 100%;
+        font-size: 17px;
+        background: transparent;
+      }
+      .searchIcon {
+        margin-left: 10px;
+        cursor: pointer;
+        font-size: 25px;
+        transition: transform 0.3s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .icon {
+        font-size: 30px;
+        transition: transform 0.3s;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  .searchedProduct {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #f8f8f8;
+    width: 90%;
+    overflow-y: auto;
+    max-height: 60vh;
+    h4 {
+      border-bottom: 1px solid rgb(214, 214, 214);
+      text-transform: uppercase;
+      font-size: 12px;
+      color: grey;
+      letter-spacing: 1px;
+      padding-bottom: 5px;
+    }
+    .searched {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      padding: 15px;
+      p {
+        margin-bottom: 10px;
+        font-size: 15px;
+        letter-spacing: 1.4px;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+      }
+      &:hover {
+        background-color: #f5f5f5;
+        h3 {
+          text-decoration: underline;
+        }
+      }
+      .productDetails {
+        h3 {
+          @include heading;
+          font-size: 25px;
+          margin-bottom: 0px;
+        }
+        span {
+          font-size: 12px;
+          color: rgb(94, 94, 94);
+        }
+      }
+    }
+    .searchValue {
+      padding: 20px 0px 15px 0;
+      border-top: 1px solid rgb(214, 214, 214);
+      h3 {
+        @include heading;
+        font-size: 30px;
+      }
+    }
+  }
+}

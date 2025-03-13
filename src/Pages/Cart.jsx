@@ -1,13 +1,23 @@
 import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
-import excample from "../Images/eyesPhotos/27.webp";
 import { Link } from "react-router-dom";
-import { FaMinus } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa6";
+import { FaMinus, FaPlus } from "react-icons/fa6";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  decreaseQuantity,
+} from "../Redux/CartRedux";
 
-const Cart = (props) => {
-  const { isOpen, setIsOpen } = props;
+const Cart = ({ isOpen, setIsOpen }) => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+  
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -19,31 +29,56 @@ const Cart = (props) => {
     };
   }, [isOpen]);
 
+  console.log("totalPrice:", totalPrice, "Type:", typeof totalPrice);
+
   return (
     <div className={`mycart ${isOpen ? "open" : ""}`}>
-      <div className="cartText">
-        <h2>Your cart</h2>
-        <IoClose className="closeIcon" onClick={() => setIsOpen(false)} />
-      </div>
-      <div className="cartProduct">
-        <div className="productImg">
-          <img src={excample} alt="#" />
+        <div className="cartText">
+          <h2>Your cart</h2>
+          <IoClose className="closeIcon" onClick={() => setIsOpen(false)} />
         </div>
-        <div className="productDetails">
-          <h2>title</h2>
-          <p className="price">$7.34</p>
-          <div className="quantityNum">
-            <FaMinus className="control" />
-            <p className="quantity">0</p>
-            <FaPlus className="control" />
-          </div>
-          <p className="remove">Remove</p>
-        </div>
+      <div
+        className="
+      cartTop"
+      >
+        {cartItems.length === 0 ? (
+          <p className="emptyCart">Your cart is empty</p>
+        ) : (
+          cartItems.map((item) => (
+            <div className="cartProduct" key={item.id}>
+              <div className="productImg">
+                <img src={item.image} alt={item.title} />
+              </div>
+              <div className="productDetails">
+                <h2>{item.title}</h2>
+                <p className="price">${Number(item.price).toFixed(2)}</p>
+
+                <div className="quantityNum">
+                  <FaMinus
+                    className="control"
+                    onClick={() => dispatch(decreaseQuantity(item))}
+                  />
+                  <p className="quantity">{item.quantity}</p>
+                  <FaPlus
+                    className="control"
+                    onClick={() => dispatch(addToCart(item))}
+                  />
+                </div>
+                <p
+                  className="remove"
+                  onClick={() => dispatch(removeFromCart(item))}
+                >
+                  Remove
+                </p>
+              </div>
+            </div>
+          ))
+        )}
       </div>
       <div className="checkoutBtn">
         <div className="totalNum">
           <h4>Subtotal</h4>
-          <p>$7.34</p>
+          <p>${Number(totalPrice).toFixed(2)}</p>
         </div>
         <Link to="/checkout">Checkout</Link>
       </div>

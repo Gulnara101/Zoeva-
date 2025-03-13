@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdOutlineStarPurple500, MdOutlineStarOutline } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { FaAngleDown, FaChevronUp } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   AiOutlineLike,
   AiOutlineDislike,
@@ -11,6 +11,10 @@ import {
 } from "react-icons/ai";
 import excample from "../../Images/facePhotos/22.webp";
 import com from "../../Images/comphoto.webp";
+import bestdatam from "../../Mocks/bestSellerData";
+import star1 from "../../Images/svg/stars/star1.svg";
+import star2 from "../../Images/svg/stars/star2.svg";
+import Modul from "../CartDetails/CommentModul";
 
 const reviewsData = [
   {
@@ -149,12 +153,22 @@ const reviewsData = [
     dislikes: 2,
   },
 ];
-
+reviewsData.forEach((review) => {
+  review.rating = Math.floor(Math.random() * 5) + 1;
+});
 const Comments = () => {
   const [rating, setRating] = useState(5);
   const [isOpen, setIsOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [selected, setSelected] = useState("Sort by");
+  const { cardId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [openModul, setOpenModul] = useState(false);
+
+  const handleModulClick = () => {
+    setOpenModul(!openModul);
+  };
 
   const options = [
     "Highest rating",
@@ -168,9 +182,35 @@ const Comments = () => {
     setRating(value);
     setIsOpen(false);
   };
+  const checkRating = (rating) => {
+    const ratingValue = parseFloat(rating) || 0;
+    const starsArray = Array(5).fill(star1);
+
+    if (ratingValue > 4 && ratingValue < 4.8) {
+      starsArray[4] = star2;
+    }
+    return starsArray;
+  };
+
+  const getProduct = (id) => {
+    const selectedProduct = bestdatam.find(
+      (product) => product.id === Number(id)
+    );
+    if (selectedProduct) {
+      setProduct(selectedProduct);
+    }
+  };
+
+  useEffect(() => {
+    getProduct(cardId);
+  }, [cardId]);
+
+  if (!product) {
+    return <p>Loading...</p>;
+  }
+  const stars = checkRating(product.rating);
 
   const reviewsPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(reviewsData.length / reviewsPerPage);
 
   const indexOfLastReview = currentPage * reviewsPerPage;
@@ -180,7 +220,11 @@ const Comments = () => {
     indexOfLastReview
   );
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-
+  const starCounts = reviewsData.reduce((acc, review) => {
+    acc[review.rating] = (acc[review.rating] || 0) + 1;
+    return acc;
+  }, {});
+  const ratings = [5, 4, 3, 2, 1];
   return (
     <section className="comments">
       <div className="container">
@@ -189,53 +233,44 @@ const Comments = () => {
           <div className="reviewStars">
             <div className="starRating">
               <div className="ratingNum">
-                <h2>4.4</h2>
+                <h2>{product?.rating?.split(" ")[0]}</h2>
               </div>
               <div className="ratingStar">
                 <div className="stars">
-                  <img src="#" alt="#" />
-                  <img src="#" alt="#" />
-                  <img src="#" alt="#" />
-                  <img src="#" alt="#" />
-                  <img src="#" alt="#" />
+                  {stars.map((star, index) => (
+                    <img key={index} src={star} alt="star" />
+                  ))}
                 </div>
-                <p>Lorem, ipsum dolor.</p>
+                <p>Based on {reviewsData.length} reviews</p>
               </div>
             </div>
             <div className="starRatingFilter">
-              <div className="starFilter">
-                <h2>5</h2>
-                <MdOutlineStarPurple500 className="starIcon" />
-                <input type="range" className="customRange" />
-                <h2>76</h2>
-              </div>
-              <div className="starFilter">
-                <h2>4</h2>
-                <MdOutlineStarPurple500 className="starIcon" />
-                <input type="range" className="customRange" />
-                <h2>76</h2>
-              </div>
-              <div className="starFilter">
-                <h2>3</h2>
-                <MdOutlineStarPurple500 className="starIcon" />
-                <input type="range" className="customRange" />
-                <h2>76</h2>
-              </div>
-              <div className="starFilter">
-                <h2>2</h2>
-                <MdOutlineStarPurple500 className="starIcon" />
-                <input type="range" className="customRange" />
-                <h2>76</h2>
-              </div>
-              <div className="starFilter">
-                <h2>1</h2>
-                <MdOutlineStarPurple500 className="starIcon" />
-                <input type="range" className="customRange" />
-                <h2>76</h2>
-              </div>
+              {ratings.map((star) => {
+                const maxCount = Math.max(...Object.values(starCounts), 1);
+                const value = starCounts[star] || 0;
+                const percentage = (value / maxCount) * 100;
+                return (
+                  <div className="starFilter" key={star}>
+                    <h2>{star}</h2>
+                    <MdOutlineStarPurple500 className="starIcon" />
+                    <input
+                      type="range"
+                      className="customRange"
+                      min="0"
+                      max={maxCount}
+                      value={value}
+                      readOnly
+                      style={{
+                        background: `linear-gradient(to right, #000 ${percentage}%, #ddd ${percentage}%)`,
+                      }}
+                    />
+                    <h2>{value}</h2>
+                  </div>
+                );
+              })}
             </div>
             <div className="addReview">
-              <button>Write A Review</button>
+              <button onClick={handleModulClick}>Write A Review</button>
             </div>
           </div>
           <div className="reviewStarsFilter">
@@ -474,6 +509,7 @@ const Comments = () => {
             </div>
           </div>
         </div>
+        {openModul && <Modul />}
       </div>
     </section>
   );

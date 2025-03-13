@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import sellerData from "../../Mocks/bestSellerData";
 import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../Redux/CartRedux";
 
 const BestSellersSec = () => {
   const [activeCard, setActiveCard] = useState(null);
+  const navigate = useNavigate();
+
+  const handleClick = (item) => {
+    navigate(`/cardDetails/${item.id}`);
+  };
+
+  const dispatch = useDispatch();
 
   const checkRating = (rating) => {
     const ratingValue = parseFloat(rating);
@@ -15,10 +24,13 @@ const BestSellersSec = () => {
     } 
     return starsArray;
   };
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
 
   return (
-    <section className="bestSeller">
-      <div className="container">
+    <section className="bestSeller"> 
+      <div className="container"> 
         <div className="row">
           <h3>Our bestsellers</h3>
           <div className="carts">
@@ -30,6 +42,7 @@ const BestSellersSec = () => {
                   key={item.id}
                   onMouseEnter={() => setActiveCard(item.id)}
                   onMouseLeave={() => setActiveCard(null)}
+                  onClick={() => handleClick(item)}
                 >
                   <img src={item.image} alt={item.title} />
                   <div className="rating">
@@ -43,7 +56,7 @@ const BestSellersSec = () => {
                     <h4>{item.color}</h4>
                     <p>{item.price}</p>
                   </div>
-                  <Link>{item.btn}</Link>
+                  <Link onClick={() => handleAddToCart(item)}>{item.btn}</Link>
                   <div
                     className={
                       activeCard === item.id && item.ttl

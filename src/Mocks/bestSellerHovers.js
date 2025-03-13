@@ -74,8 +74,6 @@ const hoverDatas = [
     id: 4,
     title: "Black Brown",
     image: mini28,
-    // image: mini29,
-    // image: mini30,
     mode: "Black Brown",
   },
 ];

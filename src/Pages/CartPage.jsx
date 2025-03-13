@@ -10,10 +10,18 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
-import excample from "../Images/eyesPhotos/27.webp";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  decreaseQuantity,
+} from "../Redux/CartRedux";
 
 const CartPage = () => {
   const [openFaq, setOpenFaq] = useState(true);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   const toggleFAQ = (id) => {
     setOpenFaq(openFaq === id ? true : id);
@@ -27,34 +35,51 @@ const CartPage = () => {
             <div className="cartDetail">
               <div className="title">
                 <p>Product</p>
-                <p>Price</p>
+                <p className="prc">Price</p>
                 <p className="quantity">Quantity</p>
               </div>
-              <div className="cartItem">
-                <div className="product">
-                  <img src={excample} alt="#" />
-                  <h3>title</h3>
-                </div>
-                <div className="price">
-                  <span>$7.34</span>
-                </div>
-                <div className="quantityNum">
-                  <div className="count">
-                    <FaMinus className="control" />
-                    <p className="quantity">0</p>
-                    <FaPlus className="control" />
+              {cartItems.length === 0 ? (
+                <p className="emptyCart">Your cart is empty</p>
+              ) : (
+                cartItems.map((item) => (
+                  <div className="cartItem" key={item.id}>
+                    <div className="product">
+                      <img src={item.image} alt={item.title} />
+                      <h3>{item.title}</h3>
+                    </div>
+                    <div className="price">
+                      <span>${Number(item.price).toFixed(2)}</span>
+                    </div>
+                    <div className="quantityNum">
+                      <div className="count">
+                        <FaMinus
+                          className="control"
+                          onClick={() => dispatch(decreaseQuantity(item))}
+                        />
+                        <p className="quantity">{item.quantity}</p>
+                        <FaPlus
+                          className="control"
+                          onClick={() => dispatch(addToCart(item))}
+                        />
+                      </div>
+                      <div className="removeItem">
+                        <p
+                          className="remove"
+                          onClick={() => dispatch(removeFromCart(item))}
+                        >
+                          Remove
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="removeItem">
-                    <p className="remove">Remove</p>
-                  </div>
-                </div>
-              </div>
+                ))
+              )}
             </div>
             <div className="cartPayDetail">
               <div className="cartPay">
                 <div className="total">
                   <p>Subtotal</p>
-                  <p>$14.68</p>
+                  <p>${Number(totalPrice).toFixed(2)}</p>
                 </div>
                 <div className="checkout">
                   <Link to="/checkout">Checkout</Link>
