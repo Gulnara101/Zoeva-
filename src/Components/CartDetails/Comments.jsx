@@ -9,153 +9,11 @@ import {
   AiOutlineLeft,
   AiOutlineRight,
 } from "react-icons/ai";
-import excample from "../../Images/facePhotos/22.webp";
-import com from "../../Images/comphoto.webp";
 import bestdatam from "../../Mocks/bestSellerData";
 import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
 import Modul from "../CartDetails/CommentModul";
 
-const reviewsData = [
-  {
-    id: "1",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    comImg: com,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "2",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "3",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    comImg: com,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "4",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    comImg: com,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "5",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "6",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "7",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "8",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "9",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "10",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-  {
-    id: "11",
-    comment:
-      "loremk jnvksjdnvsj knvkwjev nbswalivn elvnearlvbner fvlgnerb vajkvb nrelvbndr sevlbrne vkrnbf zdbvn fdtrjhbn df",
-    image: excample,
-    name: "John Doe",
-    date: "2022-03-15",
-    rating: 4,
-    status: "Verifield Buyer",
-    likes: 1,
-    dislikes: 2,
-  },
-];
-reviewsData.forEach((review) => {
-  review.rating = Math.floor(Math.random() * 5) + 1;
-});
 const Comments = () => {
   const [rating, setRating] = useState(5);
   const [isOpen, setIsOpen] = useState(false);
@@ -165,6 +23,13 @@ const Comments = () => {
   const [product, setProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [openModul, setOpenModul] = useState(false);
+  const [reviewsData, setReviewsData] = useState(() => {
+    return JSON.parse(localStorage.getItem("reviews")) || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("reviews", JSON.stringify(reviewsData));
+  }, [reviewsData])
 
   const handleModulClick = () => {
     setOpenModul(!openModul);
@@ -509,7 +374,7 @@ const Comments = () => {
             </div>
           </div>
         </div>
-        {openModul && <Modul />}
+        {openModul && <Modul setReviewsData={setReviewsData} />}
       </div>
     </section>
   );
