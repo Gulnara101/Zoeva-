@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { MdOutlineStarPurple500, MdOutlineStarOutline } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { FaAngleDown, FaChevronUp } from "react-icons/fa6";
@@ -13,6 +13,7 @@ import bestdatam from "../../Mocks/bestSellerData";
 import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
 import Modul from "../CartDetails/CommentModul";
+import FormContext from "../../Context/FormContext";
 
 const Comments = () => {
   const [rating, setRating] = useState(5);
@@ -26,10 +27,29 @@ const Comments = () => {
   const [reviewsData, setReviewsData] = useState(() => {
     return JSON.parse(localStorage.getItem("reviews")) || [];
   });
-
+  const context = useContext(FormContext);
+  console.log("Context Değeri:", context);
   useEffect(() => {
     localStorage.setItem("reviews", JSON.stringify(reviewsData));
-  }, [reviewsData])
+  }, [reviewsData]);
+
+  const getProduct = (id) => {
+    const selectedProduct = bestdatam.find(
+      (product) => product.id === Number(id)
+    );
+    if (selectedProduct) {
+      setProduct(selectedProduct);
+    }
+  };
+  useEffect(() => {
+    getProduct(cardId);
+  }, [cardId]);
+
+  if (!context) {
+    return <p>Veri yükleniyor...</p>;
+  }
+
+  const { formDataList } = context;
 
   const handleModulClick = () => {
     setOpenModul(!openModul);
@@ -47,6 +67,7 @@ const Comments = () => {
     setRating(value);
     setIsOpen(false);
   };
+
   const checkRating = (rating) => {
     const ratingValue = parseFloat(rating) || 0;
     const starsArray = Array(5).fill(star1);
@@ -57,27 +78,13 @@ const Comments = () => {
     return starsArray;
   };
 
-  const getProduct = (id) => {
-    const selectedProduct = bestdatam.find(
-      (product) => product.id === Number(id)
-    );
-    if (selectedProduct) {
-      setProduct(selectedProduct);
-    }
-  };
-
-  useEffect(() => {
-    getProduct(cardId);
-  }, [cardId]);
-
   if (!product) {
     return <p>Loading...</p>;
   }
-  const stars = checkRating(product.rating);
 
+  const stars = checkRating(product.rating);
   const reviewsPerPage = 5;
   const totalPages = Math.ceil(reviewsData.length / reviewsPerPage);
-
   const indexOfLastReview = currentPage * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
   const currentReviews = reviewsData.slice(
@@ -279,7 +286,7 @@ const Comments = () => {
             <Link>Clear filters</Link>
           </div>
           <div className="reviews">
-            {currentReviews.map((review, index) => (
+            {formDataList.map((review, index) => (
               <div className="review" key={index}>
                 <div className="comment">
                   <div className="reviewInfo">

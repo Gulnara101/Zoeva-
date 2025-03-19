@@ -8,7 +8,7 @@ const BrushSets = () => {
       <ul className="itemList">
         {data.map((item) => (
           <li key={item.id} className="items">
-            <Link> {item.title}</Link>
+            <Link to="/filter"> {item.title}</Link>
           </li>
         ))}
       </ul>

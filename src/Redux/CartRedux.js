@@ -1,24 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// LocalStorage-dən səbət məlumatlarını oxuma funksiyası
 const getCartFromLocalStorage = () => {
   const storedCart = localStorage.getItem("cartItems");
   return storedCart ? JSON.parse(storedCart) : [];
 };
 
-// Məhsulların ümumi qiymətini hesablamaq üçün funksiya
 const calculateTotalPrice = (cartItems) => {
   return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 };
 
-// Başlanğıc vəziyyət
 const initialState = {
   cartItems: getCartFromLocalStorage(),
   totalQuantity: getCartFromLocalStorage().reduce((sum, item) => sum + item.quantity, 0),
   totalPrice: calculateTotalPrice(getCartFromLocalStorage()),
 };
 
-// Qiyməti formatlama funksiyası (valyuta simvollarını silir)
 const formatPrice = (priceString) => {
   priceString = priceString.toString().replace(/[^0-9,.-]+/g, "").replace(",", ".");
   return parseFloat(priceString) || 0;

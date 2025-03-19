@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
-const CustomInput = ({ type = "text", placeholder = "Email", value, onChange }) => {
+const CustomInput = ({ type = "text", placeholder, value, onChange, hasError }) => {
   return (
     <div className="inputContainer">
       <input
-        className={value ? "filled" : ""}
+        className={`${hasError ? "error" : value ? "success" : ""}`}
         type={type}
         value={value}
-        onChange={onChange} 
+        onChange={onChange}
         required
       />
       <label className={value ? "active" : ""}>{placeholder}</label>

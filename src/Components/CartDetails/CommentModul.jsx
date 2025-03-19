@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { IoMdClose, IoMdStarOutline } from "react-icons/io";
 import { MdOutlineStar, MdOutlineFileUpload } from "react-icons/md";
 import { Link } from "react-router-dom";
+import  FormContext  from "../../Context/FormContext";
 
-const CommentModul = ({ required = false, setReviewsData }) => {
+const CommentModul = ({ required = false, setReviewsData}) => {
   const [reviewsData, setLocalReviewsData] = useState(() => {
     return JSON.parse(localStorage.getItem("reviews")) || [];
-  });
+  }); 
   const [hoverIndex, setHoverIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [comment, setComment] = useState("");
@@ -18,6 +19,23 @@ const CommentModul = ({ required = false, setReviewsData }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [userName, setUserName] = useState("");
+  const { addFormData } = useContext(FormContext);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    review: "",
+    headline:""
+  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addFormData(formData);
+    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitted(true);
+  };
 
   const messages = ["Very poor!", "Poor!", "Average!", "Good!", "Great!"];
 
@@ -60,45 +78,45 @@ const CommentModul = ({ required = false, setReviewsData }) => {
     if (required) setError("");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let errors = {};
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   let errors = {};
 
-    if (selectedIndex === null) errors.rating = "A star rating is required";
-    if (!comment.trim()) errors.comment = "Please write a review";
-    if (!userName.trim()) errors.userName = "Name is required";
-    if (!email.trim() || !isValid) errors.email = "Valid email is required";
+  //   if (selectedIndex === null) errors.rating = "A star rating is required";
+  //   if (!comment.trim()) errors.comment = "Please write a review";
+  //   if (!userName.trim()) errors.userName = "Name is required";
+  //   if (!email.trim() || !isValid) errors.email = "Valid email is required";
 
-    if (Object.keys(errors).length > 0) {
-      setError(errors);
-      return;
-    }
+  //   if (Object.keys(errors).length > 0) {
+  //     setError(errors);
+  //     return;
+  //   }
 
-    const newReview = {
-      id: (reviewsData.length + 1).toString(),
-      comment,
-      name: userName,
-      date: new Date().toISOString().split("T")[0],
-      rating: selectedIndex + 1,
-      status: "Verified Buyer",
-      likes: 0,
-      dislikes: 0,
-    };
+  //   const newReview = {
+  //     id: (reviewsData.length + 1).toString(),
+  //     comment,
+  //     name: userName,
+  //     date: new Date().toISOString().split("T")[0],
+  //     rating: selectedIndex + 1,
+  //     status: "Verified Buyer",
+  //     likes: 0,
+  //     dislikes: 0,
+  //   };
 
-    setLocalReviewsData((prev) => {
-      const updatedReviews = [...prev, newReview];
-      localStorage.setItem("reviews", JSON.stringify(updatedReviews));
-      return updatedReviews;
-    });
+  //   setLocalReviewsData((prev) => {
+  //     const updatedReviews = [...prev, newReview];
+  //     localStorage.setItem("reviews", JSON.stringify(updatedReviews));
+  //     return updatedReviews;
+  //   });
 
-    setReviewsData((prev) => [...prev, newReview]);
-    setError({});
-    setComment("");
-    setSelectedIndex(null);
-    setEmail("");
-    setUserName("");
-    setIsSubmitted(true);
-  };
+  //   setReviewsData((prev) => [...prev, newReview]);
+  //   setError({});
+  //   setComment("");
+  //   setSelectedIndex(null);
+  //   setEmail("");
+  //   setUserName("");
+  //   setIsSubmitted(true);
+  // };
 
   if (!isOpen) return null;
   return (
@@ -164,12 +182,15 @@ const CommentModul = ({ required = false, setReviewsData }) => {
 
                 <label>Write a review *</label>
                 <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
+                  // value={comment}
+                  // onChange={(e) => setComment(e.target.value)}
                   rows="5"
                   cols="72"
                   placeholder="Tell us what you like and what you don't like"
                   required
+                  name="review"
+                  value={formData.review}
+                  onChange={handleChange}
                 />
                 {error.comment && (
                   <p className="error-message">{error.comment}</p>
@@ -183,8 +204,12 @@ const CommentModul = ({ required = false, setReviewsData }) => {
                     <label>Your name *</label>
                     <input
                       type="text"
-                      value={userName}
-                      onChange={(e) => setUserName(e.target.value)}
+                      // value={userName}
+                      // onChange={(e) => setUserName(e.target.value)}
+                      // type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
                     />
                     {error.userName && (
                       <p className="error-message">{error.userName}</p>
@@ -193,9 +218,10 @@ const CommentModul = ({ required = false, setReviewsData }) => {
                   <div className="user">
                     <label>Your email address *</label>
                     <input
-                      type="text"
-                      value={email}
-                      onChange={(e) => validateEmail(e.target.value)}
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                     />
                     {error.email && (
                       <p className="error-message">{error.email}</p>

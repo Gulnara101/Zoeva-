@@ -17,7 +17,7 @@ const MainProvider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
-        isOpen, // Burada değerler tanımlı olmalı
+        isOpen,
         selectedComponent,
         toggleMenu,
         handleBack,

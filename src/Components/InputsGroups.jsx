@@ -3,10 +3,9 @@ import CustomInput from "../Components/CustomInput";
 import countryData from "../Mocks/countries";
 import { GoQuestion } from "react-icons/go";
 
-
 const InputsGroups = () => {
-      const [selected, setSelected] = useState("");
-    
+  const [selected, setSelected] = useState("");
+
   return (
     <div className="inputsGroups">
       <div className="selectContainer">

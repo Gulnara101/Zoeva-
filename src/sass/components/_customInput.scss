@@ -1,6 +1,7 @@
 .inputContainer {
   position: relative;
   width: 100%;
+
   input {
     width: 100%;
     padding: 15px 11px;
@@ -9,15 +10,24 @@
     font-size: 13px;
     outline-color: rgb(201, 133, 145);
     background: transparent;
+    transition: border-color 0.3s ease;
+
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
     }
-    &:focus + label {
-        top: 10px;
-        font-size: 12px;
-        color: rgb(201, 133, 145);
-      }
+
+    &:focus + label,
+    &.filled + label {
+      top: 10px;
+      font-size: 12px;
+      color: rgb(201, 133, 145);
+    }
+
+    &.error {
+      border-color: red; // Boş olduqda qırmızı border
+    }
   }
+
   label {
     position: absolute;
     left: 15px;
@@ -26,5 +36,11 @@
     color: #aaa;
     font-size: 13px;
     transition: all 0.3s ease;
+  }
+
+  .error-text {
+    color: red; // Qırmızı rəngdə error mesajı
+    font-size: 12px;
+    margin-top: 5px;
   }
 }
