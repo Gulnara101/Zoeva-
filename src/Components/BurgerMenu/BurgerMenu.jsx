@@ -8,7 +8,7 @@ import {
 import { FaRegUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 
-import burgerData from "../../Mocks/burgerMenu";
+import burgerData from "../../Mocks/burgerMenu"; 
 import Eye from "../BurgerMenu/EyesBurger";
 import Face from "../BurgerMenu/FaceBurger";
 import Lips from "../BurgerMenu/LipsBurger";

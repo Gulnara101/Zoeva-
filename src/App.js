@@ -9,6 +9,8 @@ import FilterPage from "./Pages/FilterMenu";
 import CartPage from "./Pages/CartPage";
 import Checkout from "./Pages/Checkout";
 import CartDetails from "./Pages/CartDetails";
+import Ahvj from "./Components/CartDetails/AnwenSlider";
+// import Search from "./Components/Search";
 
 const App = () => {
   const location = useLocation();
@@ -19,10 +21,11 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* <Route path="/:cardId" element={<Search />} /> */}
         <Route path="/cardDetails/:cardId" element={<CartDetails />} />
         <Route path="/card" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/mmm" element={<LipsBurger />} />
+        <Route path="/mmm" element={<Ahvj />} />
         <Route path="/filter" element ={<FilterPage/>}/>
       </Routes>
 

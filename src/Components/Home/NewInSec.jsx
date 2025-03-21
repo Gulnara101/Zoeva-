@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartRedux";
 
 const NewInSec = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
@@ -30,7 +30,7 @@ const NewInSec = () => {
             ))}
           </div>
           <div className="seeAll">
-            <Link>Wiew All</Link>
+            <Link to="/filter">View All</Link>
           </div>
         </div>
       </div>

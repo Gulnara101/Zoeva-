@@ -1,208 +1,208 @@
-@import "../../mixins";
-.perfectPair {
-  margin-top: 10%;
-  .container {
-    width: 78%;
-    margin: 0 auto;
-    .row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      gap: 12%;
-      .perfectPairProductImage {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-      }
-      .perfectPairProductAbout {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        .perfectPairHead {
-          h2 {
-            @include heading;
-          }
-        }
-        .perfectText {
-          p {
-            font-size: 14px;
-            letter-spacing: 0.6px;
-          }
-          margin-bottom: 20px;
-        }
-        .perfectCards {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          .perfectCard {
-            display: flex;
-            gap: 20px;
-            .img {
-              img {
-                width: 170px;
-                height: 190px;
-                object-fit: cover;
-              }
-            }
-            .perfectTitle {
-              h3 {
-                @include heading;
-                font-size: 24px !important;
-              }
-              p {
-                font-size: 14px;
-                margin-bottom: 15px;
-              }
-              span {
-                font-size: 12px;
-                color: #221c35;
-                margin-bottom: 5px;
-              }
-              .rating {
-                font-size: 14px;
-                margin-right: 5px;
-                margin-top: 5px;
-                display: flex;
-                width: 100%;
-                align-items: center;
-                img {
-                  width: 19px;
-                  height: 19px;
-                  margin-right: 2px;
-                }
-                p{
-                  margin: 15px 5px;
-                }
-              }
+// @import "../../mixins";
+// .perfectPair {
+//   margin-top: 10%;
+//   .container {
+//     width: 78%;
+//     margin: 0 auto;
+//     .row {
+//       display: flex;
+//       // align-items: center;
+//       justify-content: center;
+//       width: 100%;
+//       // gap: 12%;
+//       .perfectPairProductImage {
+//         width: 100%;
+//         height: auto;
+//         object-fit: cover;
+//       }
+//       .perfectPairProductAbout {
+//         width: 100%;
+//         height: auto;
+//         display: flex;
+//         flex-direction: column;
+//         .perfectPairHead {
+//           h2 {
+//             @include heading;
+//           }
+//         }
+//         .perfectText {
+//           p {
+//             font-size: 14px;
+//             letter-spacing: 0.6px;
+//           }
+//           margin-bottom: 20px;
+//         }
+//         .perfectCards {
+//           display: flex;
+//           flex-direction: column;
+//           gap: 20px;
+//           .perfectCard {
+//             display: flex;
+//             gap: 20px;
+//             .img {
+//               img {
+//                 width: 170px;
+//                 height: 190px;
+//                 object-fit: cover;
+//               }
+//             }
+//             .perfectTitle {
+//               h3 {
+//                 @include heading;
+//                 font-size: 24px !important;
+//               }
+//               p {
+//                 font-size: 14px;
+//                 margin-bottom: 15px;
+//               }
+//               span {
+//                 font-size: 12px;
+//                 color: #221c35;
+//                 margin-bottom: 5px;
+//               }
+//               .rating {
+//                 font-size: 14px;
+//                 margin-right: 5px;
+//                 margin-top: 5px;
+//                 display: flex;
+//                 width: 100%;
+//                 align-items: center;
+//                 img {
+//                   width: 19px;
+//                   height: 19px;
+//                   margin-right: 2px;
+//                 }
+//                 p{
+//                   margin: 15px 5px;
+//                 }
+//               }
               
-            }
-          }
-          button {
-            @include learnMore;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            p {
-              margin: 0 10px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 1300px) {
-  .perfectPair {
-    .container {
-      .row {
-        .perfectPairProductImage {
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 990px) {
-  .perfectPair {
-    .container {
-      .row {
-        .perfectPairProductAbout {
-          .perfectCards {
-            .perfectCard {
-              .perfectTitle {
-                .rating {
-                  display: flex;
-                  flex-direction: column;
-                  align-items: start;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 750px) {
-  .perfectPair {
-    .container {
-      .row {
-        display: flex;
-        flex-direction: column;
-        .perfectPairProductAbout {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          .perfectCards {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            justify-content: start;
-            align-items: start;
-            .perfectCard {
-              .img{
-                img{
-                  width:250px;
-                  height: auto;
-                }
-              }
-              .perfectTitle {
-                .rating {
-                  display: flex;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 600px) {
-  .perfectPair {
-    .container {
-      .row {
-       .perfectPairProductAbout {
-         .perfectCards {
-           .perfectCard {
-             .img{
-                img{
-                  width:170px;
-                  height: auto;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 350px) {
-  .perfectPair {
-    .container {
-      .row {
-       .perfectPairProductAbout {
-         .perfectCards {
-           .perfectCard {
-             .img{
-                img{
-                  width:120px;
-                  height: auto;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+//             }
+//           }
+//           button {
+//             @include learnMore;
+//             width: 100%;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             p {
+//               margin: 0 10px;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @media (max-width: 1300px) {
+//   .perfectPair {
+//     .container {
+//       .row {
+//         .perfectPairProductImage {
+//           img {
+//             width: 100%;
+//             height: auto;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @media (max-width: 990px) {
+//   .perfectPair {
+//     .container {
+//       .row {
+//         .perfectPairProductAbout {
+//           .perfectCards {
+//             .perfectCard {
+//               .perfectTitle {
+//                 .rating {
+//                   display: flex;
+//                   flex-direction: column;
+//                   align-items: start;
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @media (max-width: 750px) {
+//   .perfectPair {
+//     .container {
+//       .row {
+//         display: flex;
+//         flex-direction: column;
+//         .perfectPairProductAbout {
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           justify-content: center;
+//           .perfectCards {
+//             width: 100%;
+//             display: flex;
+//             flex-direction: column;
+//             gap: 10px;
+//             justify-content: start;
+//             align-items: start;
+//             .perfectCard {
+//               .img{
+//                 img{
+//                   width:250px;
+//                   height: auto;
+//                 }
+//               }
+//               .perfectTitle {
+//                 .rating {
+//                   display: flex;
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @media (max-width: 600px) {
+//   .perfectPair {
+//     .container {
+//       .row {
+//        .perfectPairProductAbout {
+//          .perfectCards {
+//            .perfectCard {
+//              .img{
+//                 img{
+//                   width:170px;
+//                   height: auto;
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @media (max-width: 350px) {
+//   .perfectPair {
+//     .container {
+//       .row {
+//        .perfectPairProductAbout {
+//          .perfectCards {
+//            .perfectCard {
+//              .img{
+//                 img{
+//                   width:120px;
+//                   height: auto;
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

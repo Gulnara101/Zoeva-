@@ -1,18 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
 import { IoMdClose, IoIosSearch } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import seller from "../Mocks/bestSellerData";
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [query, setQuery] = useState("");
   const searchRef = useRef(null);
+  const navigate = useNavigate();
 
   const filteredProducts =
     seller?.filter((product) =>
       product?.title?.toLowerCase().includes(query.toLowerCase())
     ) || [];
 
-  // Dışarı tıklamayı algılamak için useEffect
+  const handleClick = (item) => {
+    console.log("Navigating to: ", `/cardDetails/${item.id}`);
+    navigate(`/cardDetails/${item.id}`);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -45,19 +51,19 @@ const Search = () => {
         {query && (
           <div className="searchedProduct">
             {filteredProducts.length > 0 && <h4>Products</h4>}
-            {filteredProducts.length > 0 ? (
-              filteredProducts.slice(0, 4).map((product) => (
-                <div className="searched" key={product?.id}>
-                  <div className="productImg">
-                    <img src={product?.image} alt={product?.title} />
+            {filteredProducts.length > 0
+              ? filteredProducts.slice(0, 4).map((product) => (
+                  <div className="searched" key={product?.id}>
+                    <div className="productImg">
+                      <img src={product?.image} alt={product?.title} />
+                    </div>
+                    <div className="productDetails">
+                      <h3>{product?.title}</h3>
+                      <span>${product?.price}</span>
+                    </div>
                   </div>
-                  <div className="productDetails">
-                    <h3>{product?.title}</h3>
-                    <span>${product?.price}</span>
-                  </div>
-                </div>
-              ))
-            ) : null}
+                ))
+              : null}
             <div className="searchValue">
               <h3>Search for "{query}"</h3>
             </div>

@@ -17,7 +17,7 @@ const Discover = () => {
             foundation, favorite eyeshadow, or a bold brow look, we have the
             perfect brush for every beauty need.
           </p>
-          <Link to="#"> DISCOVER NOW</Link>
+          <Link to="/filter"> DISCOVER NOW</Link>
         </div>
         <div className="cart">
           <img
@@ -31,7 +31,7 @@ const Discover = () => {
             functions, they are designed to make all your beauty dreams come
             true.
           </p>
-          <Link to="#"> DISCOVER NOW</Link>
+          <Link to="/filter"> DISCOVER NOW</Link>
         </div>
         <div className="cart">
           <img
@@ -44,7 +44,7 @@ const Discover = () => {
             price, featuring iconic brushes we have curated for you.
             Additionally, each kit comes with a stylish ZOEVA Clear Pouch Bag.
           </p>
-          <Link to="#"> DISCOVER NOW</Link>
+          <Link to="/filter"> DISCOVER NOW</Link>
         </div>
       </div>
       <div className="discoverTwo">

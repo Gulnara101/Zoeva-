@@ -20,7 +20,8 @@
   text-align: center;
   position: relative;
   top: 0;
-  height: 100%;
+  max-height: 100vh; // Maksimum yükseklik ekleyerek ekranın dışına taşmasını engelle
+  overflow-y: auto;
   .icon {
     position: absolute;
     top: 10px;
@@ -44,6 +45,7 @@
       flex-direction: column;
       gap: 10px;
       .formDatas {
+        max-height: 100%; // İçerik kutusunun maksimum yüksekliğini belirle
         overflow-y: auto;
         label {
           font-size: 16px;

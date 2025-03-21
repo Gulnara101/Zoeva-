@@ -5,7 +5,7 @@ import { FaAngleDown, FaChevronUp } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom";
 import {
   AiOutlineLike,
-  AiOutlineDislike,
+  AiOutlineDislike, 
   AiOutlineLeft,
   AiOutlineRight,
 } from "react-icons/ai";
@@ -14,6 +14,7 @@ import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
 import Modul from "../CartDetails/CommentModul";
 import FormContext from "../../Context/FormContext";
+import data from "../../Mocks/reviewData";
 
 const Comments = () => {
   const [rating, setRating] = useState(5);
@@ -28,7 +29,7 @@ const Comments = () => {
     return JSON.parse(localStorage.getItem("reviews")) || [];
   });
   const context = useContext(FormContext);
-  console.log("Context Değeri:", context);
+
   useEffect(() => {
     localStorage.setItem("reviews", JSON.stringify(reviewsData));
   }, [reviewsData]);
@@ -45,11 +46,11 @@ const Comments = () => {
     getProduct(cardId);
   }, [cardId]);
 
-  if (!context) {
-    return <p>Veri yükleniyor...</p>;
-  }
+  // if (!context) {
+  //   return <p>Veri yükleniyor...</p>;
+  // }
 
-  const { formDataList } = context;
+  // const { formDataList } = context;
 
   const handleModulClick = () => {
     setOpenModul(!openModul);
@@ -286,7 +287,7 @@ const Comments = () => {
             <Link>Clear filters</Link>
           </div>
           <div className="reviews">
-            {formDataList.map((review, index) => (
+            {reviewsData.map((review, index) => (
               <div className="review" key={index}>
                 <div className="comment">
                   <div className="reviewInfo">

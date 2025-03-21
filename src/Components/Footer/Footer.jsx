@@ -24,16 +24,16 @@ const Footer = () => {
         <div className="row">
           <div className="footerContentTop">
             <div className="socialIcon">
-              <Link to="https://www.facebook.com/">
+              <Link to="https://www.facebook.com/" target="blank">
                 <FaFacebookSquare className="icons" />
               </Link>
-              <Link to="https://www.instagram.com/">
+              <Link to="https://www.instagram.com/" target="blank">
                 <FaInstagram className="icons" />
               </Link>
-              <Link to="https://www.tiktok.com/">
+              <Link to="https://www.tiktok.com/" target="blank">
                 <AiOutlineTikTok className="icons" />
               </Link>
-              <Link to="https://www.youtube.com/">
+              <Link to="https://www.youtube.com/" target="blank">
                 <FaYoutube className="icons" />
               </Link>
             </div>

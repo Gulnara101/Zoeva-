@@ -34,7 +34,7 @@ const Anwendung = () => {
   return (
     <section className="anwendung">
       <div className="container">
-        <div className="row">
+        <div className="rowA">
           {product?.video?.length > 0 && <h2>Anwendung</h2>}
           <div className="anwendungCarts">
             {product?.video?.map((video, index) => (
@@ -58,7 +58,7 @@ const Anwendung = () => {
           </div>
         </div>
         <div className="anwendungTwo">
-          <AnwendungSlide />
+          <AnwendungSlide /> 
         </div>
       </div>
     </section>

@@ -38,15 +38,15 @@ const Reviews = () => {
             slidesPerView={1}
             breakpoints={{
               0: {
-                slidesPerView: 1
+                slidesPerView: 1,
               },
               630: {
                 slidesPerView: 2,
                 centeredSlides: false,
               },
               990: {
-                slidesPerView: 3
-              }
+                slidesPerView: 3,
+              },
             }}
             centeredSlides={true}
             spaceBetween={30}

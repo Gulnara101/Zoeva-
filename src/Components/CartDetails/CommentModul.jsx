@@ -1,13 +1,13 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { IoMdClose, IoMdStarOutline } from "react-icons/io";
 import { MdOutlineStar, MdOutlineFileUpload } from "react-icons/md";
 import { Link } from "react-router-dom";
-import  FormContext  from "../../Context/FormContext";
+import FormContext from "../../Context/FormContext";
 
-const CommentModul = ({ required = false, setReviewsData}) => {
+const CommentModul = ({ required = false, setReviewsData }) => {
   const [reviewsData, setLocalReviewsData] = useState(() => {
     return JSON.parse(localStorage.getItem("reviews")) || [];
-  }); 
+  });
   const [hoverIndex, setHoverIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [comment, setComment] = useState("");
@@ -19,22 +19,24 @@ const CommentModul = ({ required = false, setReviewsData}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [userName, setUserName] = useState("");
-  const { addFormData } = useContext(FormContext);
+  // const { addFormData } = useContext(FormContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     review: "",
-    headline:""
+    headline: "",
   });
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addFormData(formData);
-    setFormData({ name: "", email: "", message: "" });
+    // addFormData(formData);
+    setFormData({ name: "", email: "", review: "", headline: "" });
     setIsSubmitted(true);
+    console.log(formData);
   };
 
   const messages = ["Very poor!", "Poor!", "Average!", "Good!", "Great!"];
@@ -207,9 +209,9 @@ const CommentModul = ({ required = false, setReviewsData}) => {
                       // value={userName}
                       // onChange={(e) => setUserName(e.target.value)}
                       // type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                     />
                     {error.userName && (
                       <p className="error-message">{error.userName}</p>

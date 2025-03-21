@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa6";
@@ -13,11 +13,12 @@ const Cart = ({ isOpen, setIsOpen }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
+  const [cartTop, setCartTop] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-  
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -29,20 +30,30 @@ const Cart = ({ isOpen, setIsOpen }) => {
     };
   }, [isOpen]);
 
-  console.log("totalPrice:", totalPrice, "Type:", typeof totalPrice);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setCartTop(160);
+      } else {
+        setCartTop(0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className={`mycart ${isOpen ? "open" : ""}`}>
-        <div className="cartText">
-          <h2>Your cart</h2>
-          <IoClose className="closeIcon" onClick={() => setIsOpen(false)} />
-        </div>
-      <div
-        className="
-      cartTop"
-      >
+    <div className={`mycart ${isOpen ? "open" : ""}`} style={{ top: `${cartTop}px` }}>
+      <div className="cartText">
+        <h2>Your cart</h2>
+        <IoClose className="closeIcon" onClick={() => setIsOpen(false)} />
+      </div>
+      <div className="cartTop">
         {cartItems.length === 0 ? (
-          <p className="emptyCart">Your cart is empty</p>
+          <p className="emptyCart" style={{fontWeight:"300"}}>Your cart is empty</p>
         ) : (
           cartItems.map((item) => (
             <div className="cartProduct" key={item.id}>
@@ -80,7 +91,9 @@ const Cart = ({ isOpen, setIsOpen }) => {
           <h4>Subtotal</h4>
           <p>${Number(totalPrice).toFixed(2)}</p>
         </div>
-        <Link to="/checkout">Checkout</Link>
+        <Link to="/checkout" className={cartItems.length === 0 ? "disabled" : ""}>
+          Checkout
+        </Link>
       </div>
     </div>
   );

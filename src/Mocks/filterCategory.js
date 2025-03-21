@@ -31,7 +31,7 @@ const products = [
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
-    id: 4,
+    id: 4, 
     name: "Zoeva Soft Kohl Eyeliner",
     category: "Pencil",
     price: Math.floor(Math.random() * 101),

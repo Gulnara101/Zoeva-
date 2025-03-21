@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import sellerData from "../../Mocks/bestSellerData";
 import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartRedux";
-
+ 
 const BestSellersSec = () => {
   const [activeCard, setActiveCard] = useState(null);
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const BestSellersSec = () => {
     const starsArray = Array(5).fill(star1);
     if (ratingValue > 4 && ratingValue < 4.8) {
       starsArray[4] = star2;
-    } 
+    }
     return starsArray;
   };
   const handleAddToCart = (item) => {
@@ -29,8 +29,8 @@ const BestSellersSec = () => {
   };
 
   return (
-    <section className="bestSeller"> 
-      <div className="container"> 
+    <section className="bestSeller">
+      <div className="container">
         <div className="row">
           <h3>Our bestsellers</h3>
           <div className="carts">
@@ -56,7 +56,15 @@ const BestSellersSec = () => {
                     <h4>{item.color}</h4>
                     <p>{item.price}</p>
                   </div>
-                  <Link onClick={() => handleAddToCart(item)}>{item.btn}</Link>
+                  <Link
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAddToCart(item);
+                    }}
+                  >
+                    {item.btn}
+                  </Link>
+
                   <div
                     className={
                       activeCard === item.id && item.ttl
@@ -109,7 +117,7 @@ const BestSellersSec = () => {
             })}
           </div>
           <div className="seeAll">
-            <Link>View All</Link>
+            <Link to="/filter">View All</Link>
           </div>
         </div>
       </div>

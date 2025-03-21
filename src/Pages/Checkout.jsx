@@ -85,7 +85,6 @@ const Checkout = () => {
               <form>
                 <div className="contactHeading">
                   <h3>Contact</h3>
-                  <Link>Log in</Link>
                 </div>
                 <div className="textInput">
                   <CustomInput type="email" placeholder="Email" />

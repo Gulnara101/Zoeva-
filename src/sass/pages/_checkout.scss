@@ -897,7 +897,11 @@
       .row {
         .checkout {
           .expressCheckout {
-            width: 90%;
+            width: 99%;
+            margin-left: 20px;
+          }
+          .checkoutForm{
+            padding: 10px;
           }
         }
       }
