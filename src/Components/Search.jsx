@@ -15,7 +15,6 @@ const Search = () => {
     ) || [];
 
   const handleClick = (item) => {
-    console.log("Navigating to: ", `/cardDetails/${item.id}`);
     navigate(`/cardDetails/${item.id}`);
   };
 
@@ -53,7 +52,11 @@ const Search = () => {
             {filteredProducts.length > 0 && <h4>Products</h4>}
             {filteredProducts.length > 0
               ? filteredProducts.slice(0, 4).map((product) => (
-                  <div className="searched" key={product?.id}>
+                  <div
+                    className="searched"
+                    key={product?.id}
+                    onClick={() => handleClick(product)}
+                  >
                     <div className="productImg">
                       <img src={product?.image} alt={product?.title} />
                     </div>

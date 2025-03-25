@@ -13,12 +13,13 @@ footer {
       font-weight: 600;
       color: white;
     }
-    p {
+    .p {
       color: white;
       font-size: 50px;
       font-weight: 200;
       font-family: "La Mango Light", Arial, sans-serif;
       line-height: 2.5rem;
+      text-align: center;
     }
     form {
       input {
@@ -172,8 +173,25 @@ footer {
     }
   }
 }
-@media (max-width: 370px) {
+@media (max-width: 385px) {
   footer {
+    .footerGetOff {
+      height: 50vh;
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        button{
+          width: 80%;
+        }
+        input{
+          width: 85%;
+        }
+      }
+    }
     .container {
       .row {
         .footerContentMedium {

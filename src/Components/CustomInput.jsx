@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const CustomInput = ({ type = "text", placeholder, value, onChange, hasError }) => {
+const CustomInput = ({
+  type,
+  name,
+  placeholder,
+  value,
+  onChange,
+  hasError,
+  onBlur,
+}) => {
+  const [isFilled, setIsFilled] = useState(false);
+
+  useEffect(() => {
+    setIsFilled(value && value.trim() !== "");
+  }, [value]);
+
   return (
     <div className="inputContainer">
       <input
-        className={`${hasError ? "error" : value ? "success" : ""}`}
         type={type}
+        name={name}
         value={value}
         onChange={onChange}
-        required
+        className={`${isFilled ? "filled" : ""} ${
+          hasError ? "inputError" : ""
+        }`}
+        onBlur={onBlur}
       />
-      <label className={value ? "active" : ""}>{placeholder}</label>
+      <label onClick={(e) => e.target.previousElementSibling.focus()}>
+        {placeholder}
+      </label>
     </div>
   );
 };

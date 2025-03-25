@@ -5,15 +5,16 @@
   input {
     width: 100%;
     padding: 15px 11px;
-    border-radius: 4px;
+    border-radius: 7px;
     border: 1px solid #ccc;
     font-size: 13px;
-    outline-color: rgb(201, 133, 145);
+    outline: none;
     background: transparent;
     transition: border-color 0.3s ease;
 
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
+    &:focus,
+    &.filled {
+      border-color: rgb(201, 133, 145);
     }
 
     &:focus + label,
@@ -23,8 +24,8 @@
       color: rgb(201, 133, 145);
     }
 
-    &.error {
-      border-color: red; // Boş olduqda qırmızı border
+    &.inputError {
+      border: 2px solid red;
     }
   }
 
@@ -36,11 +37,5 @@
     color: #aaa;
     font-size: 13px;
     transition: all 0.3s ease;
-  }
-
-  .error-text {
-    color: red; // Qırmızı rəngdə error mesajı
-    font-size: 12px;
-    margin-top: 5px;
   }
 }

@@ -4,7 +4,7 @@ import checkoutReducer from "./Checkout";
 
 const store = configureStore({
   reducer: {
-    checkout: checkoutReducer,
+    form: checkoutReducer,
     cart: cartReducer,
   },
 });

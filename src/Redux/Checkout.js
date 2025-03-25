@@ -1,35 +1,31 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-// const initialState = {
-//   email: "",
-//   shippingAddress: "",
-//   paymentMethod: "creditCard",
-//   Checked: false,
-//   valid: false, 
+const initialState = {
+  email: "",
+  country: "",
+  firstName: "",
+  lastName: "",
+  address: "",
+  apartment: "",
+  postalCode: "",
+  city: "",
+  phone: "",
+  errors: {}, // Hata mesajlarını saklamak için
+};
 
-// const checkoutSlice = createSlice({
-//   name: "checkout",
-//   initialState,
-//   reducers: {
-//     setEmail: (state, action) => {
-//       state.email = action.payload;
-//     },
-//     setShippingAddress: (state, action) => {
-//       state.shippingAddress = action.payload;
-//     },
-//     setPaymentMethod: (state, action) => {
-//       state.paymentMethod = action.payload;
-//     },
-//     toggleIsChecked: (state) => {
-//       state.isChecked = !state.Checked;
-//     },
-//     validateForm: (state) => {
-//       state.valid = state.email !== "" && state.shippingAddress !== "";
-//     },
-//   },
-// });
+const formSlice = createSlice({
+  name: "form",
+  initialState,
+  reducers: {
+    updateForm: (state, action) => {
+      return { ...state, ...action.payload };
+    },
+    resetForm: () => initialState,
+    setErrors: (state, action) => {
+      state.errors = action.payload;
+    },
+  },
+});
 
-// export const { setEmail, setShippingAddress, setPaymentMethod, toggleIsChecked, validateForm } =
-//   // checkoutSlice.actions;
-
-// // export default checkoutSlice.reducer;
+export const { updateForm, resetForm, setErrors } = formSlice.actions;
+export default formSlice.reducer;

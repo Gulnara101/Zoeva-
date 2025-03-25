@@ -70,6 +70,9 @@
               &:hover {
                 background-color: #4a2e97;
               }
+              &.active {
+                border: 3px solid grey;
+              }
             }
 
             .paypal {
@@ -78,6 +81,9 @@
               &:hover {
                 background-color: #f8b720;
               }
+              &.active {
+                border: 3px solid grey;
+              }
             }
 
             .gpay {
@@ -85,6 +91,9 @@
               background-color: #000;
               &:hover {
                 background-color: #000000da;
+              }
+              &.active {
+                border: 3px solid grey;
               }
             }
 
@@ -117,6 +126,8 @@
           width: 80%;
           padding: 37px;
           .textInput {
+            display: flex;
+            flex-direction: column;
             margin-top: 20px;
           }
           .contactHeading {
@@ -320,6 +331,11 @@
                   gap: 15px;
                   margin-top: 20px;
                   margin-bottom: 20px;
+                  .custom {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                  }
                 }
                 input {
                   background-color: white;
@@ -375,7 +391,7 @@
                     opacity 0.5s ease-in-out;
                 }
                 .billing.visible {
-                  max-height: 500px;
+                  max-height: 600px;
                   opacity: 1;
                 }
 
@@ -397,7 +413,7 @@
             }
             .creditCardActive.visible,
             .paypalActive.visible {
-              max-height: 740px;
+              max-height: 850px;
               opacity: 1;
             }
             .creditCardActive.hidden,
@@ -799,6 +815,12 @@
     }
   }
 }
+
+.errorText {
+  color: red;
+  font-size: 13px;
+  display: flex;
+}
 @media (max-width: 1400px) {
   .checkoutPage {
     .container {
@@ -900,7 +922,7 @@
             width: 99%;
             margin-left: 20px;
           }
-          .checkoutForm{
+          .checkoutForm {
             padding: 10px;
           }
         }

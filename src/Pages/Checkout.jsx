@@ -16,15 +16,40 @@ import paypal from "../Images/paypayBtn.svg";
 import shop from "../Images/svg/shop.svg";
 import InputsGroups from "../Components/InputsGroups";
 import cardSvg from "../Images/svg/card.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const [selectedOption, setSelectedOption] = useState("shipping");
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
   const [selectedMethod, setSelectedMethod] = useState("creditCard");
   const [inputValue, setInputValue] = useState("");
   const [discount, setDiscount] = useState(0);
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    apartment: "",
+    city: "",
+    zip: "",
+    state: "",
+    phone: "",
+    cardNumber: "",
+    expiryDate: "",
+    securityCode: "",
+    cardName: "",
+    saveInfo: false,
+  });
+
+  const [errors, setErrors] = useState({});
+  const [active, setActive] = useState(null);
+
+  const toggleActive = (type) => {
+    setActive(active === type ? null : type);
+  };
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -47,6 +72,105 @@ const Checkout = () => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (name === "securityCode" && value.length > 4) {
+      return;
+    }
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const validateForm = () => {
+    let newErrors = {};
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.lastName) newErrors.lastName = "Enter a last name";
+    if (!formData.firstName) newErrors.firstName = "Enter a first name";
+    if (!formData.address) newErrors.address = "Address is required";
+    if (!formData.apartment) newErrors.apartment = "Apartment is required";
+    if (!formData.city) newErrors.city = "City is required";
+    if (!formData.phone) newErrors.phone = "Phone is required";
+    if (!formData.state) newErrors.state = "State is required";
+    if (!formData.zip) newErrors.zip = "ZIP code is required";
+    if (!formData.cardNumber) newErrors.cardNumber = "Card number is required";
+    if (!formData.expiryDate)
+      newErrors.expiryDate = "Expiration date is required";
+    if (!formData.securityCode)
+      newErrors.securityCode = "Security code is required";
+    if (!formData.cardName) newErrors.cardName = "Card holder is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+  const handleExpiryChange = (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length > 6) value = value.slice(0, 6);
+    if (value.length >= 3) {
+      value = `${value.slice(0, 2)}/${value.slice(2)}`;
+    }
+
+    setFormData({ ...formData, expiryDate: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateForm();
+    if (
+      !formData.cardNumber ||
+      !formData.expiryDate ||
+      !formData.securityCode ||
+      !formData.cardName ||
+      !formData.saveInfo ||
+      !formData.email ||
+      !formData.lastName ||
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.address ||
+      !formData.apartment ||
+      !formData.city
+    ) {
+      toast.error("Please fill in all the fields!", { position: "top-right" });
+      return;
+    }
+    toast.success("Payment successful!", { position: "top-right" });
+    setFormData({
+      email: "",
+      firstName: "",
+      lastName: "",
+      address: "",
+      apartment: "",
+      city: "",
+      zip: "",
+      state: "",
+      phone: "",
+      cardNumber: "",
+      expiryDate: "",
+      securityCode: "",
+      cardName: "",
+      saveInfo: false,
+    });
+    setErrors({});
+  };
+  const handleBlur = (e) => {
+    if (e.target.type === "email") {
+      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value);
+
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: isValidEmail ? "" : "Please enter a valid email!",
+      }));
+    }
+  };
+
+  const handleCardNumberChange = (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length > 16) value = value.slice(0, 16);
+    value = value.replace(/(.{4})/g, "$1 ").trim();
+    setFormData({ ...formData, cardNumber: value });
+  };
+
   return (
     <section className="checkoutPage">
       <div className="container">
@@ -65,14 +189,23 @@ const Checkout = () => {
                 <h3>Express checkout</h3>
               </div>
               <div className="payType">
-                <Link className="shopPay">
-                  <img src={shopPay} alt="#" />
+                <Link
+                  className={`shopPay ${active === "shopPay" ? "active" : ""}`}
+                  onClick={() => toggleActive("shopPay")}
+                >
+                  <img src={shopPay} alt="Shop Pay" />
                 </Link>
-                <Link className="paypal">
-                  <img src={Paypal} alt="#" />
+                <Link
+                  className={`paypal ${active === "paypal" ? "active" : ""}`}
+                  onClick={() => toggleActive("paypal")}
+                >
+                  <img src={Paypal} alt="PayPal" />
                 </Link>
-                <Link className="gpay">
-                  <img src={Gpay} alt="#" />
+                <Link
+                  className={`gpay ${active === "gpay" ? "active" : ""}`}
+                  onClick={() => toggleActive("gpay")}
+                >
+                  <img src={Gpay} alt="Google Pay" />
                 </Link>
               </div>
               <div class="lineContainer">
@@ -87,17 +220,37 @@ const Checkout = () => {
                   <h3>Contact</h3>
                 </div>
                 <div className="textInput">
-                  <CustomInput type="email" placeholder="Email" />
+                  <CustomInput
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    hasError={!!errors.email}
+                    onBlur={handleBlur}
+                  />
+                  {errors.email && (
+                    <span className="errorText">{errors.email}</span>
+                  )}
                 </div>
                 <div className="contactWithEmail">
                   <label className="checkboxContainer">
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      name="saveInfo"
+                      checked={formData.saveInfo}
+                      onChange={handleChange}
+                    />
                     <span className="customCheckbox"></span>
                     <p>Email me with news and offers</p>
                   </label>
                 </div>
                 <h3 className="delivery">Delivery</h3>
-                <InputsGroups />
+                <InputsGroups
+                  formData={formData}
+                  handleChange={handleChange}
+                  hasError={errors}
+                />
                 <h4>Shipping method</h4>
                 <div className="shipping">
                   <p>
@@ -144,18 +297,61 @@ const Checkout = () => {
                     }`}
                   >
                     <div className="cardActiveContainer">
-                      <CustomInput placeholder="Card Number" type="number" />
+                      <CustomInput
+                        placeholder="Card Number"
+                        type="text"
+                        name="cardNumber"
+                        value={formData.cardNumber}
+                        onChange={handleCardNumberChange}
+                        hasError={!!errors.cardNumber}
+                      />
+                      {errors.cardNumber && (
+                        <span className="errorText">{errors.cardNumber}</span>
+                      )}
+
                       <div className="cardActive">
-                        <CustomInput
-                          placeholder="Expiration (MM / YY)"
-                          type="number"
-                        />
-                        <CustomInput
-                          placeholder="Security Code"
-                          type="number"
-                        />
+                        <div className="custom">
+                          <CustomInput
+                            placeholder="Expiration (MM / YY)"
+                            type="text"
+                            name="expiryDate"
+                            value={formData.expiryDate}
+                            onChange={handleExpiryChange}
+                            hasError={!!errors.expiryDate}
+                          />
+                          {errors.expiryDate && (
+                            <span className="errorText">
+                              {errors.expiryDate}
+                            </span>
+                          )}
+                        </div>
+                        <div className="custom">
+                          <CustomInput
+                            placeholder="Security Code"
+                            type="number"
+                            name="securityCode"
+                            value={formData.securityCode}
+                            onChange={handleChange}
+                            hasError={!!errors.securityCode}
+                          />
+                          {errors.expiryDate && (
+                            <span className="errorText">
+                              {errors.securityCode}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                      <CustomInput placeholder="Name on card" type="text" />
+                      <CustomInput
+                        placeholder="Name on card"
+                        type="text"
+                        value={formData.cardName}
+                        onChange={handleChange}
+                        hasError={!!errors.cardName}
+                        name="cardName"
+                      />
+                      {errors.cardName && (
+                        <span className="errorText">{errors.cardName}</span>
+                      )}
                       <div className="checkBoxDeactive">
                         <label className="checkboxContainer">
                           <input
@@ -175,7 +371,11 @@ const Checkout = () => {
                         <div className="billingHead">
                           <h4>Billing address</h4>
                         </div>
-                        <InputsGroups />
+                        <InputsGroups
+                          formData={formData}
+                          handleChange={handleChange}
+                          hasError={errors}
+                        />
                       </div>
                     </div>
                   </div>
@@ -243,7 +443,13 @@ const Checkout = () => {
                       selectedOption === "different" ? "show" : ""
                     }`}
                   >
-                    {selectedOption === "different" && <InputsGroups />}
+                    {selectedOption === "different" && (
+                      <InputsGroups
+                        formData={formData}
+                        handleChange={handleChange}
+                        hasError={errors}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="secure">
@@ -254,16 +460,23 @@ const Checkout = () => {
                   <img src={shop} alt="#" />
                 </div>
                 {selectedMethod === "paypal" ? (
-                  <button className="paypalBtn">
+                  <button className="paypalBtn" onClick={handleSubmit}>
                     Pay with <img src={paypal} alt="#" />
                   </button>
                 ) : (
-                  <button type="submit" className="payBtn">Pay now</button>
+                  <button
+                    type="submit"
+                    className="payBtn"
+                    onClick={handleSubmit}
+                  >
+                    Pay now
+                  </button>
                 )}
                 <div className="end">
                   <Link>Cancellation policy</Link>
                 </div>
               </form>
+              <ToastContainer />
             </div>
           </div>
           <div className="discountCode">

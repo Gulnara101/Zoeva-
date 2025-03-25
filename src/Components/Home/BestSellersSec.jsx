@@ -14,7 +14,7 @@ const BestSellersSec = () => {
     navigate(`/cardDetails/${item.id}`);
   };
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   const checkRating = (rating) => {
     const ratingValue = parseFloat(rating);

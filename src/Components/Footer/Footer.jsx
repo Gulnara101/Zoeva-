@@ -13,8 +13,8 @@ const Footer = () => {
     <footer>
       <div className="footerGetOff">
         <h3>10% off</h3>
-        <p>your first order</p>
-        <p>Sign up for the newsletter now</p>
+        <p className="p">your first order</p>
+        <p className="p">Sign up for the newsletter now</p>
         <form>
           <input type="text" placeholder="E-mail" required />
           <button type="submit">GET 10% OFF</button>

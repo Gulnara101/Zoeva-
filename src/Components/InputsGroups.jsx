@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import CustomInput from "../Components/CustomInput";
 import countryData from "../Mocks/countries";
-import { GoQuestion } from "react-icons/go";
 
-const InputsGroups = () => {
+const InputsGroups = ({ formData = {}, handleChange, hasError = {} }) => {
   const [selected, setSelected] = useState("");
 
   return (
     <div className="inputsGroups">
       <div className="selectContainer">
         <select
-          value={selected}
-          onChange={(e) => setSelected(e.target.value)}
-          className={selected ? "filled" : ""}
+          value={formData.state}
+          className={formData.state ? "filled" : ""}
+          name="state"
+          onChange={(e) => {
+            setSelected(e.target.value);
+            handleChange(e);
+          }}
         >
           <option value="" disabled hidden></option>
           <option value="" disabled selected>
@@ -27,26 +30,94 @@ const InputsGroups = () => {
         <label className={selected ? "active" : ""}>Country/Region</label>
       </div>
       <div className="userName">
-        <CustomInput placeholder="First name" />
-        <CustomInput placeholder="Last name" />
+        <div className="custom">
+          <CustomInput
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData?.firstName || ""}
+            onChange={handleChange}
+            hasError={!!hasError.firstName}
+          />
+          {hasError.firstName && (
+            <span className="errorText">{hasError.firstName}</span>
+          )}
+        </div>
+        <div className="custom">
+          <CustomInput
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+            hasError={!!hasError.lastName}
+          />
+          {hasError.lastName && (
+            <span className="errorText">{hasError.lastName}</span>
+          )}
+        </div>
       </div>
       <div className="textInput">
-        <CustomInput placeholder="Address" />
+        <CustomInput
+          placeholder="Address"
+          name="address"
+          type="text"
+          value={formData.address}
+          onChange={handleChange}
+          hasError={!!hasError.address}
+        />
+        {hasError.address && (
+          <span className="errorText">{hasError.address}</span>
+        )}
       </div>
       <div className="textInput">
-        <CustomInput placeholder="Apartment, suite, etc. (optional)" />
+        <CustomInput
+          placeholder="Apartment, suite, etc. (optional)"
+          type="text"
+          name="apartment"
+          value={formData.apartment}
+          onChange={handleChange}
+          hasError={!!hasError.apartment}
+        />
+        {hasError.apartment && (
+          <span className="errorText">{hasError.apartment}</span>
+        )}
       </div>
       <div className="postal">
-        <CustomInput placeholder="Postal code" type="number" />
-        <CustomInput placeholder="City" />
+        <div className="custom">
+          <CustomInput
+            placeholder="Postal code"
+            type="number"
+            name="zip"
+            value={formData.zip}
+            onChange={handleChange}
+            hasError={!!hasError.zip}
+          />
+          {hasError.zip && <span className="errorText">{hasError.zip}</span>}
+        </div>
+        <div className="custom">
+          <CustomInput
+            placeholder="City"
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            hasError={!!hasError.city}
+          />
+          {hasError.city && <span className="errorText">{hasError.city}</span>}
+        </div>
       </div>
       <div className="inputAnswear">
         <CustomInput
           className="phone"
           type="number"
+          name="phone"
           placeholder="Phone (optional)"
+          value={formData.phone}
+          onChange={handleChange}
+          hasError={!!hasError.phone}
         />
-        <GoQuestion className="question" />
+        {hasError.phone && <span className="errorText">{hasError.phone}</span>}
       </div>
     </div>
   );
