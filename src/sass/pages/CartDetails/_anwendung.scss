@@ -1,8 +1,8 @@
 @import "../../mixins";
 .anwendung {
-  margin-top: 10%;
+  margin-top: 15px;
   .container {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     .rowA {
       display: flex;
@@ -69,20 +69,19 @@
         }
       }
     }
-    .anwendungTwo{
+    .anwendungTwo {
       display: none;
-      // background: red !important;
     }
   }
 }
-@media (max-width:990px){
-  .anwendung{
-    .container{
-      .rowA{
+@media (max-width: 990px) {
+  .anwendung {
+    .container {
+      .rowA {
         display: none;
       }
-      .anwendungTwo{
-        display: block ;
+      .anwendungTwo {
+        display: block;
       }
     }
   }

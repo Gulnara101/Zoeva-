@@ -16,6 +16,7 @@ const CardDetail = () => {
   const [openId, setOpenId] = useState(null);
   const { cardId } = useParams();
   const [product, setProduct] = useState(null);
+  const [mainImage, setMainImage] = useState(null); // Initially set to null, will update after product is fetched
 
   const toggleFAQ = (id) => {
     setOpenId(openId === id ? null : id);
@@ -31,12 +32,17 @@ const CardDetail = () => {
     return starsArray;
   };
 
+  const handleImageClick = (img) => {
+    setMainImage(img); // Update the main image when an image is clicked
+  };
+
   const getProduct = (id) => {
     const selectedProduct = bestdatam.find(
       (product) => product.id === Number(id)
     );
     if (selectedProduct) {
       setProduct(selectedProduct);
+      setMainImage(selectedProduct.image); // Set the main image after product is fetched
     }
   };
 
@@ -56,26 +62,30 @@ const CardDetail = () => {
         <div className="productMore">
           <div className="productMoreImg">
             <div className="inOutIcon">
-              <MdKeyboardArrowUp />
+              <MdKeyboardArrowUp style={{ cursor: "pointer" }} />
             </div>
             <div className="leftRightIcon">
-              <MdKeyboardArrowLeft />
+              <MdKeyboardArrowLeft style={{ cursor: "pointer" }} />
             </div>
             <div className="moreImages">
-              <img src={product.image} alt="#" />
-              <img src={product.image} alt="#" />
-              <img src={product.image} alt="#" />
-              <img src={product.image} alt="#" />
+              {product.otherImgs.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`Image ${index}`}
+                  onClick={() => handleImageClick(img)} // Click event to change main image
+                />
+              ))}
             </div>
-            <div className="inOutIcon">
+            <div className="inOutIcon" style={{ cursor: "pointer" }}>
               <MdKeyboardArrowDown />
             </div>
-            <div className="leftRightIcon">
+            <div className="leftRightIcon" style={{ cursor: "pointer" }}>
               <MdKeyboardArrowRight />
             </div>
           </div>
           <div className="mainProduct">
-            <img src={product.image} alt={product.title} />
+            <img src={mainImage} alt={product.title} />
           </div>
         </div>
         <div className="mainProductDetails">

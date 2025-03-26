@@ -4,7 +4,7 @@ import Aboutsec from "../../Images/zoeva-about (1).jpg";
 
 const AboutZoeva = () => {
   return (
-    <section className="aboutsec">
+    <section className="aboutsec"> 
       <div className="container">
         <div className="row">
           <div className="aboutText">

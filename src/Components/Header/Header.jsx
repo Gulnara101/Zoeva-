@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
-import { CiUser, CiShoppingBasket } from "react-icons/ci";
+import { CiShoppingBasket } from "react-icons/ci";
 import Logo from "../../Images/svg/logo.svg";
 import BrushSets from "../Header/BrushSets";
 import Brushes from "../Header/Brushes";
@@ -31,6 +31,17 @@ const Header = () => {
   const [modulLng, setModulLng] = useState(false);
   const [search, setSearch] = useState(false);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const [selectedLang, setSelectedLang] = useState("en");
+
+  const handleLanguageChange = (newLang) => {
+    setSelectedLang(newLang); // Update language when selected
+  };
+
+  const currentTranslation = {
+    en: "English",
+    tr: "Türkçe",
+    ru: "Русский",
+  }[selectedLang];
 
   const toggleModul = () => {
     setModulLng((prev) => !prev);
@@ -73,7 +84,6 @@ const Header = () => {
               <IoSearchOutline className="icon" />
               <p className="controlP">SEARCH</p>
             </div>
-            <CiUser className="userIcon" />
             <CiShoppingBasket
               className="icon"
               onClick={() => setCartOpen(true)}
@@ -88,17 +98,11 @@ const Header = () => {
             <img src="#" alt="" />
             <div className="lng" onClick={toggleModul}>
               <img src={flag} alt="#" />
-              <p className="controlP">ENGLISH</p>
+              <p className="controlP">{`${currentTranslation.toUpperCase()}`}</p>
             </div>
-
-
-
             <div className="quantities">
               <span>{totalQuantity}</span>
             </div>
-
-
-
           </div>
         </div>
         <div className="burgerMenuIcon" onClick={toggleMenu}>
@@ -165,7 +169,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      {modulLng && <Language />}
+      {modulLng && <Language onLanguageChange={handleLanguageChange} />}
       {search && <Search />}
     </header>
   );

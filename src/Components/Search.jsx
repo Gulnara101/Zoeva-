@@ -16,15 +16,18 @@ const Search = () => {
 
   const handleClick = (item) => {
     navigate(`/cardDetails/${item.id}`);
+    setIsOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      if (event.target.closest(".searched")) {
+        return;
+      }
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -53,9 +56,12 @@ const Search = () => {
             {filteredProducts.length > 0
               ? filteredProducts.slice(0, 4).map((product) => (
                   <div
+                    key={product.id}
                     className="searched"
-                    key={product?.id}
-                    onClick={() => handleClick(product)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleClick(product);
+                    }}
                   >
                     <div className="productImg">
                       <img src={product?.image} alt={product?.title} />

@@ -15,7 +15,7 @@ const Anwendung = () => {
       );
       setProduct(selectedProduct || null);
     };
-
+ 
     getProduct(cardId);
   }, [cardId]);
 

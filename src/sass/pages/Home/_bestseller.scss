@@ -1,5 +1,6 @@
 @import "../../mixins";
 .bestSeller {
+  margin-top: 20px;
   .container {
     width: 98%;
     margin: 0 auto;
@@ -9,7 +10,7 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      h3 {
+      h3 { 
         @include heading;
       }
       .carts {

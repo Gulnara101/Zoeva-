@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import sellerData from "../../Mocks/bestSellerData";
 import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartRedux";
  
-const BestSellersSec = () => {
+const BestSellersSec = () => { 
   const [activeCard, setActiveCard] = useState(null);
   const navigate = useNavigate();
 
@@ -53,7 +53,7 @@ const BestSellersSec = () => {
                   </div>
                   <div className="cartText">
                     <h3>{item.title}</h3>
-                    <h4>{item.color}</h4>
+                    <h4>{item.color}</h4> 
                     <p>{item.price}</p>
                   </div>
                   <Link
