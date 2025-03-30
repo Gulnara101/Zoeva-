@@ -7,7 +7,7 @@ const MoreZoeva = () => {
     <section className="moreOfZoevaSec">
       <div className="container">
         <div className="row">
-          <h2>More of Zoeva</h2> 
+          <h2>More of Zoeva</h2>
           <div className="carts">
             <div className="cart">
               <img
@@ -20,7 +20,7 @@ const MoreZoeva = () => {
                   Create unforgettable moments with our eye makeup, perfect for
                   natural looks or dramatic smoky effects.
                 </p>
-                <Link>DISCOVER NOW</Link>
+                <Link to="/filter">DISCOVER NOW</Link>
               </div>
             </div>
             <div className="cart">
@@ -34,7 +34,7 @@ const MoreZoeva = () => {
                   Our lip products perfect your look with matte, creamy, and
                   glossy finishes.
                 </p>
-                <Link>DISCOVER NOW</Link>
+                <Link to="/filter">DISCOVER NOW</Link>
               </div>
             </div>
             <div className="cart">
@@ -48,13 +48,13 @@ const MoreZoeva = () => {
                   Fresh, healthy, and radiant skin thanks to our innovative and
                   vegan skincare products.
                 </p>
-                <Link>DISCOVER NOW</Link>
+                <Link to="/filter">DISCOVER NOW</Link>
               </div>
             </div>
           </div>
         </div>
         <div className="moreeTwo">
-          <MoreTwo /> 
+          <MoreTwo />
         </div>
       </div>
     </section>

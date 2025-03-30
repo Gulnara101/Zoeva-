@@ -36,7 +36,7 @@ const MoreTwo = () => {
                 <div className="cartText">
                   <h3>Eye-Make-Up</h3>
                   <p>Create unforgettable moments with our eye makeup.</p>
-                  <Link>DISCOVER NOW</Link>
+                  <Link to="/filter">DISCOVER NOW</Link>
                 </div>
               </div>
             </SwiperSlide>
@@ -49,7 +49,7 @@ const MoreTwo = () => {
                 <div className="cartText">
                   <h3>Lip-Make-Up</h3>
                   <p>Our lip products perfect your look.</p>
-                  <Link>DISCOVER NOW</Link>
+                  <Link to="/filter">DISCOVER NOW</Link>
                 </div>
               </div>
             </SwiperSlide>
@@ -62,7 +62,7 @@ const MoreTwo = () => {
                 <div className="cartText">
                   <h3>Skincare</h3>
                   <p>Fresh, healthy, and radiant skin with our skincare.</p>
-                  <Link>DISCOVER NOW</Link>
+                  <Link to="/filter">DISCOVER NOW</Link>
                 </div>
               </div>
             </SwiperSlide>

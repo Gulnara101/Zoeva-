@@ -6,7 +6,7 @@ import { addToCart } from "../../Redux/CartRedux";
 
 const NewInSec = () => {
   const dispatch = useDispatch();
-
+ 
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
   };

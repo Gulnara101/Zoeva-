@@ -15,7 +15,7 @@ const BestSellersSec = () => {
   };
 
   const dispatch = useDispatch(); 
-
+ 
   const checkRating = (rating) => {
     const ratingValue = parseFloat(rating);
     const starsArray = Array(5).fill(star1);

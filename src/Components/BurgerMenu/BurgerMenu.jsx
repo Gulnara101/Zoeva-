@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState ,useEffect } from "react";
 import {
   RiArrowLeftSLine,
   RiArrowRightSLine,
@@ -7,13 +7,11 @@ import {
 } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
-
-import burgerData from "../../Mocks/burgerMenu"; 
+import burgerData from "../../Mocks/burgerMenu";
 import Eye from "../BurgerMenu/EyesBurger";
 import Face from "../BurgerMenu/FaceBurger";
 import Lips from "../BurgerMenu/LipsBurger";
 import Brush from "../BurgerMenu/BrushesBurger";
-import MainContext from "../../Context/MainContext";
 
 const BurgerMenu = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -28,11 +26,6 @@ const BurgerMenu = () => {
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
-
-  const handleBack = () => {
-    setSelectedComponent(null);
-  };
-
   const resetBurgerMenu = () => {
     setSelectedComponent(null);
   };
@@ -49,127 +42,134 @@ const BurgerMenu = () => {
       setSelectedComponent(<Brush resetBurgerMenu={resetBurgerMenu} />);
     }
   };
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "auto";
-  //   }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"; // Scroll'u kapat
+    } else {
+      document.body.style.overflow = ""; // Scroll'u aç
+    }
 
-  //   return () => {
-  //     document.body.style.overflow = "auto"; // Reset when the component unmounts
-  //   };
-  // }, [isOpen]);
-
+    return () => {
+      document.body.style.overflow = ""; // Component unmount olunca resetle
+    };
+  }, [isOpen]);
   return (
-    <div className={`burgerMenu ${isOpen ? "open" : ""}`}>
-      <div className="menu">
-        <RiArrowLeftSLine onClick={handleBack} />
-        <h4>Menu</h4>
-        <IoClose onClick={() => setIsOpen(false)} />
-      </div>
-      {burgerData.slice(0, 1).map((item) => (
-        <div className="burger" key={item.id}>
-          <img src={item.image} alt={item.title} />
-          <h3>{item.title}</h3>
+    <>
+      <div
+        className={`overlaay ${isOpen ? "" : "activee"}`}
+        onClick={toggleMenu} 
+      ></div>
+      <div className={`burgerMenu ${isOpen ? "openBurger" : ""}`}>
+        <div className="menu">
+          <RiArrowLeftSLine onClick={toggleMenu} />
+          <h4>Menu</h4>
+          <IoClose onClick={toggleMenu} />
         </div>
-      ))}
-      <div className="burgerList">
-        <ul className="navList">
-          <h4>MAKEUP</h4>
-          {burgerData.slice(1, 4).map((item, index) => (
-            <li
-              className="navItem"
-              key={item.id}
-              onClick={() => handleItemClick(index + 1)}
-            >
-              <div className="left">
-                <img src={item.image} alt={item.title} />
-                <h3>{item.title}</h3>
-              </div>
-              <div className="right">
-                <RiArrowRightSLine />
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="burgerList">
-        <ul className="navList">
-          <h4>BRUSHES & ACCESSORIES</h4>
-          {burgerData.slice(4, 8).map((item, index) => (
-            <li
-              className="navItem"
-              key={item.id}
-              onClick={() => handleItemClick(index + 4)}
-            >
-              <div className="left">
-                <img src={item.image} alt={item.title} />
-                <h3>{item.title}</h3>
-              </div>
-              <div className="right">
-                {index === 0 && <RiArrowRightSLine />}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="burgerList">
-        <ul className="navList">
-          <h4>SKINCARE</h4>
-          {burgerData.slice(8, 9).map((item) => (
-            <li className="navItem" key={item.id}>
-              <div className="left">
-                <img src={item.image} alt={item.title} />
-                <h3>{item.title}</h3>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="burgerList">
-        <ul className="navList">
-          <h4>ABOUT ZOEVA</h4>
-          {burgerData.slice(9, 10).map((item) => (
-            <li className="navItem" key={item.id}>
-              <div className="left">
-                <img src={item.image} alt={item.title} />
-                <h3>{item.title}</h3>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="burgerLogin">
-        <FaRegUser />
-        <p>Log in</p>
-      </div>
-      {burgerData.slice(29, 32).map((item, index) => (
-        <div className="endBurger" key={item.id}>
-          <ul className="titles" onClick={() => handleToggle(index)}>
-            <li className="headTitle">
-              <div className="head">
-                {item.title}
-                {openIndex === index ? (
-                  <RiArrowUpSLine className="downIcon" />
-                ) : (
-                  <RiArrowDownSLine className="downIcon" />
-                )}
-              </div>
-              <ul className={`children ${openIndex === index ? "open" : ""}`}>
-                {item.children.map((child, childIndex) => (
-                  <li key={child.id || `child-${childIndex}`}>{child.title}</li>
-                ))}
-              </ul>
-            </li>
+        {burgerData.slice(0, 1).map((item) => (
+          <div className="burger" key={item.id}>
+            <img src={item.image} alt={item.title} />
+            <h3>{item.title}</h3>
+          </div>
+        ))}
+        <div className="burgerList">
+          <ul className="navList">
+            <h4>MAKEUP</h4>
+            {burgerData.slice(1, 4).map((item, index) => (
+              <li
+                className="navItem"
+                key={item.id}
+                onClick={() => handleItemClick(index + 1)}
+              >
+                <div className="left">
+                  <img src={item.image} alt={item.title} />
+                  <h3>{item.title}</h3>
+                </div>
+                <div className="right">
+                  <RiArrowRightSLine />
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
-      ))}
+        <div className="burgerList">
+          <ul className="navList">
+            <h4>BRUSHES & ACCESSORIES</h4>
+            {burgerData.slice(4, 8).map((item, index) => (
+              <li
+                className="navItem"
+                key={item.id}
+                onClick={() => handleItemClick(index + 4)}
+              >
+                <div className="left">
+                  <img src={item.image} alt={item.title} />
+                  <h3>{item.title}</h3>
+                </div>
+                <div className="right">
+                  {index === 0 && <RiArrowRightSLine />}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="burgerList">
+          <ul className="navList">
+            <h4>SKINCARE</h4>
+            {burgerData.slice(8, 9).map((item) => (
+              <li className="navItem" key={item.id}>
+                <div className="left">
+                  <img src={item.image} alt={item.title} />
+                  <h3>{item.title}</h3>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="burgerList">
+          <ul className="navList">
+            <h4>ABOUT ZOEVA</h4>
+            {burgerData.slice(9, 10).map((item) => (
+              <li className="navItem" key={item.id}>
+                <div className="left">
+                  <img src={item.image} alt={item.title} />
+                  <h3>{item.title}</h3>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="burgerLogin">
+          <FaRegUser />
+          <p>Log in</p>
+        </div>
+        {burgerData.slice(29, 32).map((item, index) => (
+          <div className="endBurger" key={item.id}>
+            <ul className="titles" onClick={() => handleToggle(index)}>
+              <li className="headTitle">
+                <div className="head">
+                  {item.title}
+                  {openIndex === index ? (
+                    <RiArrowUpSLine className="downIcon" />
+                  ) : (
+                    <RiArrowDownSLine className="downIcon" />
+                  )}
+                </div>
+                <ul className={`children ${openIndex === index ? "open" : ""}`}>
+                  {item.children.map((child, childIndex) => (
+                    <li key={child.id || `child-${childIndex}`}>
+                      {child.title}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            </ul>
+          </div>
+        ))}
 
-      <div ref={element} className="selectedComponent active">
-        {selectedComponent}
+        <div ref={element} className="selectedComponent active">
+          {selectedComponent}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

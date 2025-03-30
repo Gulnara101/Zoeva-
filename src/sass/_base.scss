@@ -5,24 +5,28 @@
   font-style: normal;
 }
 
-@font-face{
+@font-face {
   font-family: "La Mango Regular";
   src: url("../Fonts/LaMangoRegular.woff2") format("woff2");
   font-style: normal;
 }
 
-@font-face{
+@font-face {
   font-family: "La Mango Light";
   src: url("../Fonts/LaMangoLight.woff2") format("woff2");
   font-style: normal;
 }
 
-@font-face{
+@font-face {
   font-family: "La Mango Bold";
   src: url("../Fonts/LaMangoBold.woff2") format("woff2");
   font-style: normal;
 }
-
+@font-face {
+  font-family: "Dancing Script";
+  src: url("../Fonts/DancingScript-Regular.ttf") format("woff2");
+  font-style: normal;
+}
 
 * {
   margin: 0;
@@ -34,11 +38,11 @@
   font-family: "Graphik Regular Web", Arial, sans-serif;
 }
 
-.container{
+.container {
   width: 98%;
   margin: 0 auto;
 }
 
-.cartPageDetails{
+.cartPageDetails {
   margin-top: 165px;
 }

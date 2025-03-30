@@ -16,7 +16,7 @@ const CardDetail = () => {
   const [openId, setOpenId] = useState(null);
   const { cardId } = useParams();
   const [product, setProduct] = useState(null);
-  const [mainImage, setMainImage] = useState(null); // Initially set to null, will update after product is fetched
+  const [mainImage, setMainImage] = useState(null); 
 
   const toggleFAQ = (id) => {
     setOpenId(openId === id ? null : id);
@@ -33,7 +33,7 @@ const CardDetail = () => {
   };
 
   const handleImageClick = (img) => {
-    setMainImage(img); // Update the main image when an image is clicked
+    setMainImage(img); 
   };
 
   const getProduct = (id) => {
@@ -42,7 +42,7 @@ const CardDetail = () => {
     );
     if (selectedProduct) {
       setProduct(selectedProduct);
-      setMainImage(selectedProduct.image); // Set the main image after product is fetched
+      setMainImage(selectedProduct.image); 
     }
   };
 

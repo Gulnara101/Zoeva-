@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { IoMdClose, IoMdStarOutline } from "react-icons/io";
 import { MdOutlineStar, MdOutlineFileUpload } from "react-icons/md";
 import { Link } from "react-router-dom";
-import FormContext from "../../Context/FormContext";
 
 const CommentModul = ({ required = false, setReviewsData }) => {
   const [reviewsData, setLocalReviewsData] = useState(() => {
@@ -10,33 +9,62 @@ const CommentModul = ({ required = false, setReviewsData }) => {
   });
   const [hoverIndex, setHoverIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [comment, setComment] = useState("");
   const [error, setError] = useState({});
   const [images, setImages] = useState([]);
-  const [selectedOptions, setSelectedOptions] = useState({});
-  const [email, setEmail] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState({
+    "Do you want to tell us your age?": "",
+    "What skin type do you have?": "",
+    "What is your skin tone?": "",
+    "What undertone do you have?": "",
+  });
+
   const [isValid, setIsValid] = useState(true);
+  const [heading, setHeading] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
-  const [userName, setUserName] = useState("");
-  // const { addFormData } = useContext(FormContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     review: "",
     headline: "",
   });
+  const formDatam = [
+    {
+      label: "Do you want to tell us your age?",
+      options: ["under 18", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"],
+    },
+    {
+      label: "What skin type do you have?",
+      options: [
+        "Normal",
+        "Dry",
+        "Oily",
+        "Combination",
+        "Impurities",
+        "Highly Sensitive",
+      ],
+    },
+    {
+      label: "What is your skin tone?",
+      options: [
+        "Very pale",
+        "Fair",
+        "Light",
+        "Light to medium",
+        "Medium",
+        "Tanned",
+        "Dark",
+        "Very dark",
+      ],
+    },
+    {
+      label: "What undertone do you have?",
+      options: ["Cool", "Neutral", "Warm"],
+    },
+  ];
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // addFormData(formData);
-    setFormData({ name: "", email: "", review: "", headline: "" });
-    setIsSubmitted(true);
-    console.log(formData);
   };
 
   const messages = ["Very poor!", "Poor!", "Average!", "Good!", "Great!"];
@@ -54,12 +82,6 @@ const CommentModul = ({ required = false, setReviewsData }) => {
 
   const handleClose = () => {
     setIsOpen(false);
-  };
-
-  const validateEmail = (value) => {
-    setEmail(value);
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsValid(emailRegex.test(value));
   };
 
   const handleSelect = (question, option) => {
@@ -80,47 +102,32 @@ const CommentModul = ({ required = false, setReviewsData }) => {
     if (required) setError("");
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   let errors = {};
-
-  //   if (selectedIndex === null) errors.rating = "A star rating is required";
-  //   if (!comment.trim()) errors.comment = "Please write a review";
-  //   if (!userName.trim()) errors.userName = "Name is required";
-  //   if (!email.trim() || !isValid) errors.email = "Valid email is required";
-
-  //   if (Object.keys(errors).length > 0) {
-  //     setError(errors);
-  //     return;
-  //   }
-
-  //   const newReview = {
-  //     id: (reviewsData.length + 1).toString(),
-  //     comment,
-  //     name: userName,
-  //     date: new Date().toISOString().split("T")[0],
-  //     rating: selectedIndex + 1,
-  //     status: "Verified Buyer",
-  //     likes: 0,
-  //     dislikes: 0,
-  //   };
-
-  //   setLocalReviewsData((prev) => {
-  //     const updatedReviews = [...prev, newReview];
-  //     localStorage.setItem("reviews", JSON.stringify(updatedReviews));
-  //     return updatedReviews;
-  //   });
-
-  //   setReviewsData((prev) => [...prev, newReview]);
-  //   setError({});
-  //   setComment("");
-  //   setSelectedIndex(null);
-  //   setEmail("");
-  //   setUserName("");
-  //   setIsSubmitted(true);
-  // };
-
   if (!isOpen) return null;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newReview = {
+      name: formData.name,
+      email: formData.email,
+      comment: formData.review,
+      rating: selectedIndex + 1,
+      image: "",
+      comImg: images.length > 0 ? images[0] : null,
+      likes: 0,
+      dislikes: 0,
+      status: "Verified Buyer",
+      date: new Date().toISOString(),
+      selectedOptions,
+      heading: heading,
+    };
+    console.log(newReview);
+    const updatedReviews = [newReview, ...reviewsData];
+    setReviewsData(updatedReviews);
+    localStorage.setItem("reviews", JSON.stringify(updatedReviews));
+
+    setIsSubmitted(true);
+  };
+
   return (
     <div className="commentModulOverlay" onClick={handleClose}>
       <div className="commentModul" onClick={(e) => e.stopPropagation()}>
@@ -184,8 +191,6 @@ const CommentModul = ({ required = false, setReviewsData }) => {
 
                 <label>Write a review *</label>
                 <textarea
-                  // value={comment}
-                  // onChange={(e) => setComment(e.target.value)}
                   rows="5"
                   cols="72"
                   placeholder="Tell us what you like and what you don't like"
@@ -199,16 +204,17 @@ const CommentModul = ({ required = false, setReviewsData }) => {
                 )}
 
                 <label>Add a heading *</label>
-                <textarea placeholder="Summarize your experience" required />
-
+                <textarea
+                  placeholder="Summarize your experience"
+                  required
+                  value={heading}
+                  onChange={(e) => setHeading(e.target.value)}
+                />
                 <div className="userInfo">
                   <div className="user">
                     <label>Your name *</label>
                     <input
                       type="text"
-                      // value={userName}
-                      // onChange={(e) => setUserName(e.target.value)}
-                      // type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
@@ -270,48 +276,7 @@ const CommentModul = ({ required = false, setReviewsData }) => {
                   </div>
                 </div>
 
-                {[
-                  {
-                    label: "Do you want to tell us your age?",
-                    options: [
-                      "under 18",
-                      "18-24",
-                      "25-34",
-                      "35-44",
-                      "45-54",
-                      "55-64",
-                      "65+",
-                    ],
-                  },
-                  {
-                    label: "What skin type do you have?",
-                    options: [
-                      "Normal",
-                      "Dry",
-                      "Oily",
-                      "Combination",
-                      "Impurities",
-                      "Highly Sensitive",
-                    ],
-                  },
-                  {
-                    label: "What is your skin tone?",
-                    options: [
-                      "Very pale",
-                      "Fair",
-                      "Light",
-                      "Light to medium",
-                      "Medium",
-                      "Tanned",
-                      "Dark",
-                      "Very dark",
-                    ],
-                  },
-                  {
-                    label: "What undertone do you have?",
-                    options: ["Cool", "Neutral", "Warm"],
-                  },
-                ].map(({ label, options }) => (
+                {formDatam.map(({ label, options }) => (
                   <div className="addChoose" key={label}>
                     <label>{label} Choose 1</label>
                     <ul>

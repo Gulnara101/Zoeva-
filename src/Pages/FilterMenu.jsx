@@ -4,8 +4,11 @@ import star1 from "../Images/svg/stars/star1.svg";
 import star2 from "../Images/svg/stars/star2.svg";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { FaAngleDown, FaChevronUp } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/CartRedux";
 
 const FilterMenu = () => {
+  const dispatch = useDispatch();
   const [filters, setFilters] = useState({
     rating: "",
     price: [],
@@ -25,6 +28,9 @@ const FilterMenu = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
   const checkRating = (rating) => {
     const ratingValue = parseFloat(rating);
     const starsArray = Array(5).fill(star1);
@@ -300,10 +306,12 @@ const FilterMenu = () => {
                     <span>{item.rating}</span>
                   </div>
                   <div className="cartText">
-                    <h3>{item.name}</h3>
+                    <h3>{item.title}</h3>
                     <p>${item.price}</p>
                   </div>
-                  <button>ADD TO CART</button>
+                  <button onClick={() => handleAddToCart(item)}>
+                    ADD TO CART
+                  </button>
                   <div className="countColor">
                     {Array.isArray(item.img) && item.img.length > 3 && (
                       <div className="hoverImgsMoreCount">

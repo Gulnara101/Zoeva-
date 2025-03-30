@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MdOutlineStarPurple500, MdOutlineStarOutline } from "react-icons/md";
-import { FiSearch } from "react-icons/fi";
-import { FaAngleDown, FaChevronUp } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom";
 import {
   AiOutlineLike,
-  AiOutlineDislike, 
+  AiOutlineDislike,
   AiOutlineLeft,
   AiOutlineRight,
 } from "react-icons/ai";
@@ -13,14 +11,10 @@ import bestdatam from "../../Mocks/bestSellerData";
 import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
 import Modul from "../CartDetails/CommentModul";
-import FormContext from "../../Context/FormContext";
-import data from "../../Mocks/reviewData";
 
 const Comments = () => {
   const [rating, setRating] = useState(5);
   const [isOpen, setIsOpen] = useState(false);
-  const [isSortOpen, setIsSortOpen] = useState(false);
-  const [selected, setSelected] = useState("Sort by");
   const { cardId } = useParams();
   const [product, setProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +22,9 @@ const Comments = () => {
   const [reviewsData, setReviewsData] = useState(() => {
     return JSON.parse(localStorage.getItem("reviews")) || [];
   });
-  const context = useContext(FormContext);
+
+  const [withMedia, setWithMedia] = useState(false);
+  const [selectedAge, setSelectedAge] = useState("All");
 
   useEffect(() => {
     localStorage.setItem("reviews", JSON.stringify(reviewsData));
@@ -45,24 +41,32 @@ const Comments = () => {
   useEffect(() => {
     getProduct(cardId);
   }, [cardId]);
+  let reviewsPerPage = 5;
+  const totalPages = Math.ceil(reviewsData.length / reviewsPerPage);
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  const currentReviews = reviewsData.slice(
+    indexOfFirstReview,
+    indexOfLastReview
+  );
 
-  // if (!context) {
-  //   return <p>Veri yükleniyor...</p>;
-  // }
+  useEffect(() => {
+    localStorage.setItem("reviews", JSON.stringify(reviewsData));
+  }, [reviewsData]);
+  const [filteredReviews, setFilteredReviews] = useState(currentReviews);
 
-  // const { formDataList } = context;
-
+  useEffect(() => {
+    setFilteredReviews((prevReviews) => {
+      if (JSON.stringify(prevReviews) === JSON.stringify(currentReviews)) {
+        return prevReviews; // Prevent unnecessary re-renders
+      }
+      return currentReviews;
+    });
+  }, [currentReviews]); 
+  
   const handleModulClick = () => {
     setOpenModul(!openModul);
   };
-
-  const options = [
-    "Highest rating",
-    "Lowest rating",
-    "With Media",
-    "Most recent",
-    "Verified purchase",
-  ];
 
   const handleRatingClick = (value) => {
     setRating(value);
@@ -78,26 +82,116 @@ const Comments = () => {
     }
     return starsArray;
   };
+  useEffect(() => {
+    let updatedReviews = [...reviewsData]; // Orijinal diziyi bozmamak için kopyala
+  
+    if (rating) {
+      updatedReviews = updatedReviews.filter(
+        (review) => review.rating === rating
+      );
+    }
+  
+    if (withMedia) {
+      updatedReviews = updatedReviews.filter(
+        (review) => review.comImg !== null
+      );
+    }
+  
+    // Pagination (sayfalama)
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    const paginatedReviews = updatedReviews.slice(indexOfFirstReview, indexOfLastReview);
+  
+    setFilteredReviews(paginatedReviews);
+  
+  }, [rating, withMedia, currentPage]); // `reviewsData` eklendiğinde sonsuz döngü olabilir!
+  
+  
+
 
   if (!product) {
     return <p>Loading...</p>;
   }
 
   const stars = checkRating(product.rating);
-  const reviewsPerPage = 5;
-  const totalPages = Math.ceil(reviewsData.length / reviewsPerPage);
-  const indexOfLastReview = currentPage * reviewsPerPage;
-  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-  const currentReviews = reviewsData.slice(
-    indexOfFirstReview,
-    indexOfLastReview
-  );
+
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
   const starCounts = reviewsData.reduce((acc, review) => {
     acc[review.rating] = (acc[review.rating] || 0) + 1;
     return acc;
   }, {});
   const ratings = [5, 4, 3, 2, 1];
+
+  const handleLike = (index) => {
+    setReviewsData((prevReviews) =>
+      prevReviews.map((review, i) => {
+        if (i === index) {
+          if (review.disliked) {
+            return {
+              ...review,
+              likes: review.likes + 1,
+              dislikes: review.dislikes - 1,
+              liked: true,
+              disliked: false,
+            };
+          } else if (!review.liked) {
+            return { ...review, likes: review.likes + 1, liked: true };
+          }
+        }
+        return review;
+      })
+    );
+  };
+
+  const handleDislike = (index) => {
+    setReviewsData((prevReviews) =>
+      prevReviews.map((review, i) => {
+        if (i === index) {
+          if (review.liked) {
+            return {
+              ...review,
+              dislikes: review.dislikes + 1,
+              likes: review.likes - 1,
+              disliked: true,
+              liked: false,
+            };
+          } else if (!review.disliked) {
+            return { ...review, dislikes: review.dislikes + 1, disliked: true };
+          }
+        }
+        return review;
+      })
+    );
+  };
+  const handleClearFilters = () => {
+    setFilteredReviews(currentReviews);
+    setRating(null);
+    setWithMedia(false);
+    setSelectedAge("All");
+  };
+
+  const handleRatinggClick = (selectedRating) => {
+    setRating(selectedRating);
+    setIsOpen(false);
+
+    const filtered = reviewsData.filter((review) =>
+      selectedRating ? review.rating === selectedRating : true
+    );
+
+    setFilteredReviews(filtered);
+  };
+
+  const handleWithMediaClick = () => {
+    setWithMedia(!withMedia);
+
+    const filtered = reviewsData.filter((review) =>
+      withMedia ? true : review.comImg !== null
+    );
+
+    setFilteredReviews(filtered);
+  };
+  
+
   return (
     <section className="comments">
       <div className="container">
@@ -147,10 +241,6 @@ const Comments = () => {
             </div>
           </div>
           <div className="reviewStarsFilter">
-            <div className="search">
-              <FiSearch className="searchIcon" />
-              <input type="search" placeholder="Search reviews" />
-            </div>
             <div className="ratingDropdown">
               <button
                 className="dropdownButton"
@@ -176,7 +266,6 @@ const Comments = () => {
                   "Rating"
                 )}
               </button>
-
               {isOpen && (
                 <ul className="dropdownList">
                   <li
@@ -193,7 +282,7 @@ const Comments = () => {
                       className={`dropdownItem ${
                         rating === value ? "active" : ""
                       }`}
-                      onClick={() => handleRatingClick(value)}
+                      onClick={() => handleRatinggClick(value)}
                     >
                       {[...Array(5)].map((_, index) =>
                         index < value ? (
@@ -210,95 +299,33 @@ const Comments = () => {
             <div className="withMedia">
               <p>With Media</p>
               <label class="customRadio">
-                <input type="radio" name="option" />
+                <input
+                  type="radio"
+                  name="option"
+                  onChange={handleWithMediaClick}
+                />
                 <span class="slider"></span>
               </label>
             </div>
-            <select name="select">
-              <option value="option">All</option>
-              <option value="option">unter 18</option>
-              <option value="option">18-24</option>
-              <option value="option">25-34</option>
-              <option value="option">35-44</option>
-              <option value="option">45-54</option>
-              <option value="option">55-64</option>
-              <option value="option">65+</option>
-            </select>
-            <select name="select">
-              <option value="option">All</option>
-              <option value="option">Normal Skin</option>
-              <option value="option">Dry Skin</option>
-              <option value="option">Oily Skin</option>
-              <option value="option">Combination Skin</option>
-              <option value="option">Impurites</option>
-              <option value="option">High Sensitive</option>
-            </select>
-            <select name="select">
-              <option value="option">All</option>
-              <option value="option">Very pale</option>
-              <option value="option">Blass</option>
-              <option value="option">Hell</option>
-              <option value="option">Light to Medium</option>
-              <option value="option">Medium</option>
-              <option value="option">Tanned</option>
-              <option value="option">Browned to Dark</option>
-              <option value="option">Dark</option>
-              <option value="option">Very Dark</option>
-            </select>
-            <select name="select">
-              <option value="option">All</option>
-              <option value="option">Cool</option>
-              <option value="option">Neutral</option>
-              <option value="option">Warm</option>
-            </select>
-          </div>
-          <div className="ratingSort">
-            <div
-              className="sortHeader"
-              onClick={() => setIsSortOpen(!isSortOpen)}
-            >
-              Sort by :{selected}{" "}
-              {isSortOpen ? <FaChevronUp /> : <FaAngleDown />}
-            </div>
-
-            {isSortOpen && (
-              <ul className="sortList">
-                {options.map((option, index) => (
-                  <li
-                    key={index}
-                    className={`sortItem ${
-                      selected === option ? "active" : ""
-                    }`}
-                    onClick={() => {
-                      setSelected(option);
-                      setIsSortOpen(false);
-                    }}
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            )}
           </div>
           <div className="ratingClear">
             <p>
-              We found <span>5</span> matching reviews
+              We found <span>{reviewsData.length}</span> matching reviews
             </p>
-            <Link>Clear filters</Link>
+            <Link onClick={handleClearFilters}>Clear filters</Link>
           </div>
           <div className="reviews">
-            {reviewsData.map((review, index) => (
+            {filteredReviews.map((review, index) => (
               <div className="review" key={index}>
                 <div className="comment">
                   <div className="reviewInfo">
                     <div className="reviewer">
                       <div className="reviewerProfile">
-                        <img src={review.image} alt="#" />
                         <div className="reviewerInfo">
                           <h3>{review.name}</h3>
                           <span>{review.status}</span>
                         </div>
-                        <div class="verifiedBadge">✔</div>
+                        <div className="verifiedBadge">✔</div>
                       </div>
                       <div className="revierSelect">
                         <div className="revierSelects">
@@ -311,17 +338,30 @@ const Comments = () => {
                         </div>
                         <div className="revierSelects">
                           <ul className="listSelects">
-                            <li className="listSelectItem">45-54</li>
-                            <li className="listSelectItem">Normal skin</li>
-                            <li className="listSelectItem">Tanned</li>
-                            <li className="listSelectItem">Warm</li>
+                            {review.selectedOptions &&
+                            Object.entries(review.selectedOptions).length >
+                              0 ? (
+                              Object.entries(review.selectedOptions).map(
+                                ([question, answer]) => (
+                                  <li key={question} className="listSelectItem">
+                                    {answer}
+                                  </li>
+                                )
+                              )
+                            ) : (
+                              <li>-</li>
+                            )}
                           </ul>
                         </div>
                       </div>
-                      <h3>See less</h3>
-                      <h3>See more</h3>
                       <div className="comentDate">
-                        <time datetime="2024-02-27T14:30:00">27/02/24</time>
+                        <time
+                          dateTime={review.date || new Date().toISOString()}
+                        >
+                          {review.date
+                            ? new Date(review.date).toLocaleDateString("tr-TR")
+                            : "Tarih yok"}
+                        </time>
                       </div>
                     </div>
                     <div className="reviewerComments">
@@ -332,12 +372,10 @@ const Comments = () => {
                             className="starIcons"
                           />
                         ))}
-                        <p>Very Good!</p>
+                        <p>{review.heading || "No heading"}</p>
                       </div>
                       <div className="reviewerComment">
                         <p>{review.comment}</p>
-                        <span>Read more</span>
-                        <span>Read less</span>
                         {review.comImg && (
                           <img src={review.comImg} alt="Comment Image" />
                         )}
@@ -345,39 +383,63 @@ const Comments = () => {
                     </div>
                   </div>
                   <div className="commentDate">
-                    <time datetime="2024-02-27T14:30:00">27/02/24</time>
+                    <time dateTime={review.date || new Date().toISOString()}>
+                      {review.date
+                        ? new Date(review.date).toLocaleDateString("tr-TR")
+                        : "Tarih yok"}
+                    </time>
                   </div>
                 </div>
                 <div className="reviewHelpful">
                   <p>Was this review helpful?</p>
-                  <AiOutlineLike className="like" />
+                  <AiOutlineLike
+                    className="like"
+                    onClick={() => handleLike(index)}
+                  />
                   <p>{review.likes}</p>
-                  <AiOutlineDislike className="like" />
+                  <AiOutlineDislike
+                    className="like"
+                    onClick={() => handleDislike(index)}
+                  />
                   <p>{review.dislikes}</p>
                 </div>
               </div>
             ))}
             <div className="pagination">
               <div
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage(currentPage - 1)}
+                className={`pagination-button ${
+                  currentPage === 1 ? "disabled" : ""
+                }`}
+                onClick={() =>
+                  currentPage > 1 && setCurrentPage(currentPage - 1)
+                }
               >
-                <AiOutlineLeft className="icon" />
+                <AiOutlineLeft className="icon" style={{ cursor: "pointer" }} />
               </div>
               {pageNumbers.map((number) => (
                 <div
                   key={number}
-                  className={currentPage === number ? "active" : "deactive"}
+                  className={`pagination-number ${
+                    currentPage === number ? "active" : "deactive"
+                  }`}
                   onClick={() => setCurrentPage(number)}
                 >
                   {number}
                 </div>
               ))}
+
               <div
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage(currentPage + 1)}
+                className={`pagination-button ${
+                  currentPage === totalPages ? "disabled" : ""
+                }`}
+                onClick={() =>
+                  currentPage < totalPages && setCurrentPage(currentPage + 1)
+                }
               >
-                <AiOutlineRight className="icon" />
+                <AiOutlineRight
+                  className="icon"
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             </div>
           </div>

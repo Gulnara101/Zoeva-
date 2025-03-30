@@ -32,18 +32,21 @@ const Cart = ({ isOpen, setIsOpen }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setCartTop(160);
+      const scrollY = window.scrollY;
+      if (scrollY === 0) {
+        setCartTop(155);
+      } else if (scrollY <= 155) {
+        setCartTop(scrollY);
       } else {
-        setCartTop(0);
+        setCartTop(155);
       }
     };
-
+  
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, []); 
 
   return (
     <div className={`mycart ${isOpen ? "open" : ""}`} style={{ top: `${cartTop}px` }}>

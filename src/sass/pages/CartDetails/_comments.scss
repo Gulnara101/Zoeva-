@@ -115,6 +115,7 @@
         width: 90%;
         height: 100%;
         gap: 20px;
+        justify-content: center;
         .search {
           display: flex;
           align-items: center;
@@ -364,28 +365,30 @@
                     height: 15px;
                     border-radius: 20px;
                     position: absolute;
-                    left: 24px;
-                    top: 25px;
+                    left: 90px;
+                    top: 42px;
                   }
                 }
                 .revierSelect {
                   display: flex;
                   align-items: center;
-                  gap: 40px;
+                  gap: 0;
                   margin-top: 20px;
                   .revierSelects {
                     display: flex;
                     .listSelects {
                       display: flex;
                       flex-direction: column;
-                      gap: 5px;
+                      width: 100px;
                       .listHeadSelects {
                         color: rgba(0, 0, 0, 0.856);
                         font-size: 14px;
+                        margin-top: 4px;
                       }
                       .listSelectItem {
                         color: rgba(29, 28, 28, 0.623);
                         font-size: 14px;
+                        margin-top: 4px;
                       }
                     }
                   }
@@ -453,40 +456,59 @@
         }
         .pagination {
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
           margin-top: 20px;
-          gap: 20px;
-          .icon {
-            font-size: 15px;
+
+          .arrow {
             cursor: pointer;
-          }
-          .deactive {
-            cursor: pointer;
-            &:hover {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: white;
-              border: 1px solid black;
-              width: 25px;
-              height: 30px;
-              background-color: #221c35;
-              border-radius: 5px;
-              cursor: pointer;
-            }
-          }
-          .active {
+            padding: 5px;
+            font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            border: 1px solid black;
-            width: 25px;
-            height: 30px;
-            background-color: #221c35;
-            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            &:hover {
+              background-color: #f0f0f0;
+            }
+            &.disabled {
+              cursor: not-allowed;
+              opacity: 0.5;
+            }
+          }
+
+          .dots {
+            padding: 0 10px;
+            font-size: 18px;
+            color: #777;
+          }
+
+          .active {
+            font-weight: bold;
+            color: #007bff;
             cursor: pointer;
+            &:hover {
+              background-color: #e0f7fa;
+            }
+          }
+
+          .deactive {
+            color: #555;
+            cursor: pointer;
+            &:hover {
+              background-color: #f5f5f5;
+            }
+          }
+
+          div {
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+          }
+
+          .icon {
+            font-size: 20px;
+            color: #007bff;
           }
         }
       }

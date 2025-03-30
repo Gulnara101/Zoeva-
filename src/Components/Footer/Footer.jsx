@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import footerPaymentIcons from "../../Mocks/footerPaymentIcon";
 import { Link } from "react-router-dom";
 import { FaFacebookSquare, FaInstagram, FaYoutube } from "react-icons/fa";
@@ -9,16 +9,32 @@ import greenStar from "../../Images/svg/greenStar.svg";
 import greenStarTwo from "../../Images/svg/greenStarTwo.svg";
 
 const Footer = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
   return (
     <footer>
       <div className="footerGetOff">
         <h3>10% off</h3>
         <p className="p">your first order</p>
         <p className="p">Sign up for the newsletter now</p>
-        <form>
-          <input type="text" placeholder="E-mail" required />
-          <button type="submit">GET 10% OFF</button>
-        </form>
+        {!submitted ? (
+          <form onSubmit={handleSubmit} className="discountForm">
+            <input type="email" placeholder="E-mail" required />
+            <button type="submit">GET 10% OFF</button>
+          </form>
+        ) : (
+          <h3 className="confirmationMessage">
+            Welcome to the Sisterhood!
+            <p>
+              Please confirm your email address via the link in the confirmation
+              email!
+            </p>
+          </h3>
+        )}
       </div>
       <div className="container">
         <div className="row">
@@ -57,7 +73,7 @@ const Footer = () => {
             <h2>Excellent</h2>
             <img src={greenStar} alt="#" />
             <p>2.393 reviews on</p>
-            <img src={greenStarTwo} alt="#" className="trustpilot"/>
+            <img src={greenStarTwo} alt="#" className="trustpilot" />
           </div>
           <div className="footerContentBottom">
             <div className="iconLogo">
