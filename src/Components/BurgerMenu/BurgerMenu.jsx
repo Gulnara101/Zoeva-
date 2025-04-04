@@ -1,4 +1,4 @@
-import React, { useRef, useState ,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   RiArrowLeftSLine,
   RiArrowRightSLine,
@@ -57,13 +57,16 @@ const BurgerMenu = () => {
     <>
       <div
         className={`overlaay ${isOpen ? "" : "activee"}`}
-        onClick={toggleMenu} 
+        onClick={toggleMenu}
       ></div>
       <div className={`burgerMenu ${isOpen ? "openBurger" : ""}`}>
         <div className="menu">
-          <RiArrowLeftSLine onClick={toggleMenu} />
+          <RiArrowLeftSLine
+            onClick={toggleMenu}
+            style={{ cursor: "pointer" }}
+          />
           <h4>Menu</h4>
-          <IoClose onClick={toggleMenu} />
+          <IoClose onClick={toggleMenu} style={{ cursor: "pointer" }} />
         </div>
         {burgerData.slice(0, 1).map((item) => (
           <div className="burger" key={item.id}>

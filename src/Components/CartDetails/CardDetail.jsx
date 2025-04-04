@@ -11,12 +11,16 @@ import faqData from "../../Mocks/faqMenu";
 import bestdatam from "../../Mocks/bestSellerData";
 import star1 from "../../Images/svg/stars/star1.svg";
 import star2 from "../../Images/svg/stars/star2.svg";
+import { addToCart } from "../../Redux/CartRedux";
+import { useDispatch } from "react-redux";
 
 const CardDetail = () => {
   const [openId, setOpenId] = useState(null);
   const { cardId } = useParams();
   const [product, setProduct] = useState(null);
-  const [mainImage, setMainImage] = useState(null); 
+  const [mainImage, setMainImage] = useState(null);
+    const dispatch = useDispatch(); 
+  
 
   const toggleFAQ = (id) => {
     setOpenId(openId === id ? null : id);
@@ -31,9 +35,12 @@ const CardDetail = () => {
     }
     return starsArray;
   };
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
 
   const handleImageClick = (img) => {
-    setMainImage(img); 
+    setMainImage(img);
   };
 
   const getProduct = (id) => {
@@ -42,7 +49,7 @@ const CardDetail = () => {
     );
     if (selectedProduct) {
       setProduct(selectedProduct);
-      setMainImage(selectedProduct.image); 
+      setMainImage(selectedProduct.image);
     }
   };
 
@@ -73,7 +80,7 @@ const CardDetail = () => {
                   key={index}
                   src={img}
                   alt={`Image ${index}`}
-                  onClick={() => handleImageClick(img)} // Click event to change main image
+                  onClick={() => handleImageClick(img)} 
                 />
               ))}
             </div>
@@ -106,7 +113,12 @@ const CardDetail = () => {
               <p>{product.rating}</p>
             </div>
             <p className="productColor">{product.color}</p>
-            <button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleAddToCart(product);
+              }}
+            >
               ADD TO CART <p>|</p> {product.price}
             </button>
             <div className="delivery">

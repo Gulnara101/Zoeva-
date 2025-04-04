@@ -46,7 +46,6 @@ const HeroSec = () => {
           muted
           playsInline
         />
-        <Link>SHOP NOW</Link>
       </SwiperSlide>
     </Swiper>
   );

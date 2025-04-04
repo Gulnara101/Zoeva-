@@ -109,7 +109,7 @@
     width: 90%;
     margin: 0 auto;
     right: 18px;
-  
+
     .totalNum {
       background-color: rgb(255, 255, 255);
       height: 60px;
@@ -117,30 +117,29 @@
       width: 100%;
       align-items: center;
       justify-content: space-between;
-  
+
       h4 {
         font-size: 15px;
         font-weight: 700;
       }
-  
+
       p {
         font-size: 16px;
       }
     }
-  
+
     a {
       width: 100%;
       text-align: center;
       @include learnMore;
-      
+
       &.disabled {
         opacity: 0.5;
-        cursor: not-allowed; 
-        pointer-events: none;  
+        cursor: not-allowed;
+        pointer-events: none;
       }
     }
   }
-  
 }
 
 @media (max-width: 767px) {
@@ -149,6 +148,14 @@
     right: -690px;
     &.open {
       right: 0;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .mycart {
+    &.open{
+      top: 130px !important;
+      width: 100%;
     }
   }
 }

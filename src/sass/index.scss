@@ -18,8 +18,6 @@
 @use "./pages/Home/hero";
 @use "./pages/Home/discoversec";
 @use "./pages/Home//discoverTwo";
-@use "./pages/Home/values";
-@use "./pages//Home/valueTwo";
 @use "./pages/Home/morezoevasec";
 @use "./pages//Home/more2";
 @use "./pages/Home/reviews";
@@ -34,7 +32,7 @@
 @use "./pages/CartDetails/weAlsoRecom";
 @use "./pages/CartDetails/kurzlichAngesehen";
 @use "./pages/CartDetails/gutzuwissen";
-@use "./pages/CartDetails/anwenSlider";
+@use "./pages/CartDetails/anwenTwo";
 
 // Header page
 @use "./components/Header/topBar";

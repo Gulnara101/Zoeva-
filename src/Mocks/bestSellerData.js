@@ -71,7 +71,7 @@ const bestSeller = [
     id: 1,
     image: img9,
     rating: "4.5 (702)", 
-    title: "Ooh la Lash Length & Lift Tubing Mascara",
+    title: "Ooh la Lash & Lift Tubing Mascara",
     price: "€22,00",
     btn: "ADD TO CART",
     color: "Lengthening and lifting tubing mascara",
@@ -122,7 +122,7 @@ const bestSeller = [
   {
     id: 3,
     image: im11,
-    rating: "4.6 (10987)",
+    rating: "4.6 (1098)",
     title: "Velvet Love Eyeliner Pencil",
     price: "€16,00",
     btn: "ADD TO CART",

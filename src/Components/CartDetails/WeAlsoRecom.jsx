@@ -45,9 +45,9 @@ const WeAlsoRecom = () => {
             }}
           >
             {sellerData.slice(0, 8).map((item) => (
-              <SwiperSlide key={item.id} className="swiperSlidePage">
+              <SwiperSlide key={item.id} className="swiperSlidePage" >
                 <div
-                  className="cart"
+                  className="cart" 
                   key={item.id}
                   onMouseEnter={() => setActiveCard(item.id)}
                   onMouseLeave={() => setActiveCard(null)}

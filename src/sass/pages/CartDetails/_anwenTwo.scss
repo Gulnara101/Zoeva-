@@ -1,0 +1,9 @@
+@media (max-width: 320px) {
+  .anwendungSliderVideo {
+    video {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+    }
+  }
+}

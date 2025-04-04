@@ -8,10 +8,10 @@ const BrushesBurger = ({resetBurgerMenu}) => {
     <div className="faceBurgerMenu">
       <div className="burgerHeadMenu">
         <div onClick={resetBurgerMenu}>
-               <RiArrowLeftSLine />
+               <RiArrowLeftSLine style={{ cursor: "pointer" }}/>
                </div>
         <h4>BRUSHES</h4>
-        <IoClose />
+        <IoClose style={{ cursor: "pointer" }}/>
       </div>
       <div className="menuList">
         <ul className="navList">

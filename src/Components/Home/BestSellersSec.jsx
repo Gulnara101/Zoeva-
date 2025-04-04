@@ -15,8 +15,8 @@ const BestSellersSec = () => {
   };
 
   const dispatch = useDispatch(); 
- 
-  const checkRating = (rating) => {
+  
+  const checkRating = (rating) => { 
     const ratingValue = parseFloat(rating);
     const starsArray = Array(5).fill(star1);
     if (ratingValue > 4 && ratingValue < 4.8) {
@@ -83,13 +83,14 @@ const BestSellersSec = () => {
                             <img src={mini} alt={item.ttl} />
                           ) : (
                             <div
-                              className="color"
-                              style={{
-                                backgroundColor: mini.value,
-                                width: 50,
-                                height: 16,
-                              }}
-                            ></div>
+  className="color"
+  style={{
+    backgroundColor: mini.value,
+    width: window.innerWidth <= 768 ? 20 : 50,
+    height: 16,
+  }}
+></div>
+
                           )}
                         </div>
                       ))}

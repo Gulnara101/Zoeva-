@@ -884,6 +884,23 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .checkoutPage {
+    .container {
+      .row {
+        .checkout {
+          .checkoutForm {
+            width: 100%;
+          }
+        }
+        .discountCode {
+          width: 100%;
+          padding-bottom: 45px;
+        }
+      }
+    }
+  }
+}
 @media (max-width: 551px) {
   .checkoutPage {
     .container {

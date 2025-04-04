@@ -15,7 +15,7 @@ const Discover = () => {
           <p>
             Discover our complete range of make-up brushes. Whether for your
             foundation, favorite eyeshadow, or a bold brow look, we have the
-            perfect brush for every beauty need.
+            perfect brush for every beauty need. ZOEVA brush sets are the perfect
           </p>
           <Link to="/filter"> DISCOVER NOW</Link>
         </div>

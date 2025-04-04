@@ -18,7 +18,7 @@ const MoreZoeva = () => {
                 <h3>Eye-Make-Up</h3>
                 <p>
                   Create unforgettable moments with our eye makeup, perfect for
-                  natural looks or dramatic smoky effects.
+                  natural looks or dramatic smoky.
                 </p>
                 <Link to="/filter">DISCOVER NOW</Link>
               </div>

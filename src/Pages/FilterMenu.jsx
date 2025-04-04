@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import products from "../Mocks/filterCategory";
 import star1 from "../Images/svg/stars/star1.svg";
 import star2 from "../Images/svg/stars/star2.svg";
@@ -6,9 +6,11 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { FaAngleDown, FaChevronUp } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Redux/CartRedux";
+import axios from "axios";
 
 const FilterMenu = () => {
   const dispatch = useDispatch();
+  const [allProducts, setAllProducts] = useState([]);
   const [filters, setFilters] = useState({
     rating: "",
     price: [],
@@ -86,7 +88,7 @@ const FilterMenu = () => {
   };
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
+    return allProducts.filter((product) => {
       const ratingMatch = filters.rating
         ? product.rating >= parseFloat(filters.rating)
         : true;
@@ -144,10 +146,9 @@ const FilterMenu = () => {
         powderMatch
       );
     });
-  }, [filters]);
+  }, [allProducts, filters]);
 
   const totalItems = filteredProducts.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -156,13 +157,27 @@ const FilterMenu = () => {
     indexOfLastItem
   );
 
+  const getCategoryCount = (category) => {
+    return products.filter((product) => product.category === category).length;
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/products")
+      .then((response) => setAllProducts(response.data))
+      .catch((error) => console.error("Ürünleri çekerken hata oluştu:", error));
+  }, []);
+  const productsPerPage = 6;
+  const totalPages = Math.ceil(allProducts.length / productsPerPage);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = allProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const getCategoryCount = (category) => {
-    return products.filter((product) => product.category === category).length;
-  };
   return (
     <div className="filterPage">
       <div className="filter-menu">
@@ -293,7 +308,7 @@ const FilterMenu = () => {
       <div className="filteredProducts">
         <h3>Filtered Products</h3>
         <ul>
-          {currentItems.map((item) => {
+          {filteredProducts.map((item) => {
             const starsArray = checkRating(item.rating);
             return (
               <li key={item.id}>
@@ -306,7 +321,7 @@ const FilterMenu = () => {
                     <span>{item.rating}</span>
                   </div>
                   <div className="cartText">
-                    <h3>{item.title}</h3>
+                    <h3>{item.name}</h3>
                     <p>${item.price}</p>
                   </div>
                   <button onClick={() => handleAddToCart(item)}>
@@ -332,28 +347,31 @@ const FilterMenu = () => {
           })}
         </ul>
         <div className="pagination">
-          <div
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
-            <AiOutlineLeft className="icon" />
-          </div>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <div
-              key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
-              className={currentPage === index + 1 ? "active" : "deactive"}
-            >
-              {index + 1}
-            </div>
-          ))}
-          <div
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
-            <AiOutlineRight className="icon" />
-          </div>
+        <div
+          className={`pagination-btn ${currentPage === 1 ? 'disabled' : ''}`}
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          <AiOutlineLeft className="icon" />
         </div>
+
+        {/* Page numbers */}
+        {Array.from({ length: totalPages }, (_, index) => (
+          <div
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className={`page-number ${currentPage === index + 1 ? 'active' : ''}`}
+          >
+            {index + 1}
+          </div>
+        ))}
+
+        <div
+          className={`pagination-btn ${currentPage === totalPages ? 'disabled' : ''}`}
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          <AiOutlineRight className="icon" />
+        </div>
+      </div>
       </div>
     </div>
   );

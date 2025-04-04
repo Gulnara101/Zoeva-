@@ -1,6 +1,5 @@
 import React from "react";
 import AboutZoeva from "../Components/Home/AboutZoeva";
-import Values from "../Components/Home/Values";
 import SoldSec from "../Components/Home/SoldSec";
 import HeroSec from "../Components/Home/HeroSec";
 import Discover from "../Components/Home/Discover";
@@ -20,7 +19,6 @@ const Home = () => {
       <AboutZoeva />
       <MoreZoeva />
       <Reviews />
-      <Values />
     </div>
   );
 };

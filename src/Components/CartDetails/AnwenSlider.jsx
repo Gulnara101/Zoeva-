@@ -32,6 +32,7 @@ const AnwenSlider = () => {
             loop={false}
             speed={1000}
             className="myAnwendungSwiper"
+            style={{zIndex:"0"}}
           >
             {videos.map((video, index) => (
               <SwiperSlide key={index} className="swiperSlidePagee">
@@ -57,7 +58,8 @@ const AnwenSlider = () => {
                       muted
                       style={{
                         width: "100%",
-                        height: "500px",
+                        // height: "500px",
+                        width: window.innerWidth <= 320 ? 500 : 270,
                         objectFit: "cover",
                       }}
                     />
